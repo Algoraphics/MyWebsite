@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "app.tsx",
+    "Website.tsx",
+    "AboutMe.tsx",
+    "Work.tsx",
+    "Art.tsx"
+  ]
+}
