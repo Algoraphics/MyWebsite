@@ -3,8 +3,22 @@
     <title>Ethan Rabb: The Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>
-    <script type="x-shader/x-fragment" id="image">
+    <!--<script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>-->
+
+    <style>
+        .shader-web-background-fallback {
+            background-color: #212121;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- scripts -->
+    <script src="./dist/app-bundle.js"></script>
+    <!--<script type="x-shader/x-fragment" id="image">
                 #ifdef GL_ES
         precision highp float;
         #endif
@@ -207,18 +221,5 @@
                 }
             }
         });
-    </script>
-    <style>
-        .shader-web-background-fallback {
-            background-color: #212121;
-            background-position: center;
-            background-size: cover;
-            background-attachment: fixed;
-        }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
-    <!-- scripts -->
-    <script src="./dist/app-bundle.js"></script>
+    </script>-->
 </body>

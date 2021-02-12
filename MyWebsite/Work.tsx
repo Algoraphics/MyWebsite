@@ -11,7 +11,6 @@ export class Work extends React.Component {
     render() {
         return (
             <>
-                I've worked at 2 companies, each for about 3 years, since graduating with an MS/BS in Computer Science in 2015.
                 <h3>ForeFlight (Boeing)</h3>
                 Most recently I worked at ForeFlight.
                 <h3>Quantcast</h3>

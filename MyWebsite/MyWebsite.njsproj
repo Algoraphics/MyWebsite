@@ -127,6 +127,9 @@
     <TypeScriptCompile Include="Art.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Shader.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Work.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>

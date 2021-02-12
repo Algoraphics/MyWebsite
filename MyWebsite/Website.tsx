@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Surface } from "gl-react-dom";
 import './styles.css';
 import './sassystyles.scss';
 import { AboutMe } from './AboutMe';
 import { Work } from './Work';
 import { Art } from './Art';
+import { Shader } from './Shader';
 
 declare var require: any
 
@@ -175,14 +177,52 @@ const Window = styled.div`
 
 const FullWindow = styled.div`
   padding: 0 0 100 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
 `
+
+const ShaderContainer = styled.div`
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -9999;
+`
+
+function MovingShader(props) {
+    const [date, setDate] = useState(0.0);
+
+    useEffect(() => {
+        var timerID = setInterval(() => tick(), 10);
+
+        return function cleanup() {
+            clearInterval(timerID);
+        };
+    });
+
+    function tick() {
+        setDate(date + 0.05);
+    }
+
+    return (
+        <ShaderContainer>
+            <Surface width={window.innerWidth} height={window.innerHeight}>
+                <Shader active={1.0} time={date} />
+            </Surface>
+        </ShaderContainer>
+    );
+}
 
 export class Website extends React.Component {
     render() {
         return (
-            <FullWindow>
-                <TabGroup />
-            </FullWindow>
+            <>
+                <MovingShader />
+                <FullWindow id="FullWindow">
+                    <TabGroup />
+                </FullWindow>
+            </>
         );
     }
 }

@@ -9,6 +9,8 @@
   "dependencies": {
     "css-loader": "^5.0.1",
     "express": "~4.17.1",
+    "gl-react": "^5.0.0",
+    "gl-react-dom": "^5.0.0",
     "node-sass": "^5.0.0",
     "path": "~0.12.7",
     "react": "^16.14.0",

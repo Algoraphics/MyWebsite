@@ -16,6 +16,7 @@
     "Website.tsx",
     "AboutMe.tsx",
     "Work.tsx",
-    "Art.tsx"
+    "Art.tsx",
+    "Shader.tsx"
   ]
 }
