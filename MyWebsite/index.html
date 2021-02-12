@@ -209,6 +209,7 @@
                 // will happen once per frame
                 stMouseX = ctx.toShaderX(mouseX) / ctx.width;
                 stMouseY = (ctx.toShaderY(mouseY) / ctx.height);
+                console.log("MouseX is " + mouseX + " and ctx.ToShaderX(mouseX) is " + ctx.toShaderX(mouseX) + " and ctx.width is " + ctx.width + " so stMouseX is " + stMouseX)
             },
             shaders: {
                 image: {

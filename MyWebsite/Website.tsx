@@ -141,8 +141,7 @@ function TabGroup() {
     })
     const isMobile = dimensions.width <= 1000;
     return (
-        <TabPage id="window" maxWidth={isMobile ? "625px" : "1200px"
-}>
+        <TabPage id="window" maxWidth={isMobile ? "625px" : "1200px"}>
             <div id="tabuttons" className="tab-buttons">
                 {types.map((type) => (
                     <Tab
@@ -158,7 +157,7 @@ function TabGroup() {
                 ))}
             </div>
             <br />
-            <TabWindow traits={traitMap[active]} isMobile={isMobile} />
+            <TabWindow traits={traitMap[active]} isMobile={isMobile}/>
         </TabPage>
     );
 }
@@ -168,15 +167,16 @@ const types = ["About Me", "Work", "Art", "Demo"];
 const Window = styled.div`
   background-color: #212121;
   color: white;
-  min-height: 50%;
+  min-height: 500px;
   font-size: 20px;
-  padding: 10 10 10 10;
+  padding: 10;
   max-width: 85%;
   margin: auto;
 `;
 
 const FullWindow = styled.div`
   padding: 0 0 100 0;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -187,11 +187,15 @@ const ShaderContainer = styled.div`
     width: 100vw;
     height: 100vh;
     position: fixed;
-    z-index: -9999;
+    z-index: 0;
 `
 
 function MovingShader(props) {
-    const [date, setDate] = useState(0.0);
+    const [time, setTime] = useState(400.0);
+    const [activate, setActivate] = useState(0.0);
+    const [holding, setHolding] = useState(false);
+    const [mouseX, setMouseX] = useState(0.0);
+    const [mouseY, setMouseY] = useState(0.0);
 
     useEffect(() => {
         var timerID = setInterval(() => tick(), 10);
@@ -201,14 +205,47 @@ function MovingShader(props) {
         };
     });
 
+    document.addEventListener("mousemove", (event) => {
+        setMouseX(2.*event.clientX / window.innerWidth);
+        setMouseY(2.0-2.*event.clientY / window.innerHeight);
+    });
+
+    document.addEventListener("mousedown", (event) => {
+        setHolding(true);
+        var target = event.target;
+        if (target instanceof HTMLButtonElement) {
+            if (target.innerText === "Demo") {
+                if (activate === 0.) {
+                    setActivate(0.01);
+                }
+            }
+            else {
+                setActivate(0.0);
+            }
+        }
+        else {
+        }
+    });
+
+    document.addEventListener("mouseup", (event) => {
+        setHolding(false);
+    });
+
     function tick() {
-        setDate(date + 0.05);
+        var timeAdd = 0.002;
+        if (holding && activate > 0.) {
+            timeAdd = timeAdd * 20.0;
+        }
+        if (activate > 0. && activate < 1.) {
+            setActivate(activate + 0.002);
+        }
+        setTime(time + timeAdd);
     }
 
     return (
         <ShaderContainer>
             <Surface width={window.innerWidth} height={window.innerHeight}>
-                <Shader active={1.0} time={date} />
+                <Shader active={activate} time={time} mouse={[mouseX, mouseY]}/>
             </Surface>
         </ShaderContainer>
     );

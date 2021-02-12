@@ -11,7 +11,7 @@ const shaders = Shaders.create({
         uniform vec2 mouse;
         uniform vec2 resolution;
 
-        #define time (time / 3. + 1180.0)
+        #define time (time + 500.0)
         #define PI 3.14159265358979323846
 
         float box(vec2 _st, vec2 _size, float _smoothEdges){
@@ -44,12 +44,10 @@ const shaders = Shaders.create({
                     cos(tm)+sin(tm*0.1)+cos(tm*0.8)+sin(tm*-1.1)+cos(tm*1.5)
                     )+4.0)*0.03;
             vec2 resV = ( gl_FragCoord.xy / resolution );
-                float bdist = clamp(1.5 - 6.*distance(mouse, resV), 0., 1.);
+            float bdist = clamp(1.5 - 6.*distance(mouse, resV), 0., 1.);
             float tdist = 1.0 - 0.2*bdist;
-                vec2 vdist = vec2(distance(mouse.x, resV.x), distance(mouse.x, resV.x));
+            vec2 vdist = vec2(distance(mouse.x, resV.x), distance(mouse.x, resV.x));
 
-
-            //vec2 mspt = (vec2(sin(tm), cos(tm)) + 10.5) * 0.015;
             float R = 0.0;
             float RR = 0.0;
             float RRR = 0.0;
@@ -65,7 +63,6 @@ const shaders = Shaders.create({
 
             vec2 b = gl_FragCoord.xy/(resolution);
             b = rotate2D(b, PI*Z, 0.05*xa);
-            //b = vec2(box(b,vec2(1.1),0.95));
 
             for ( int i = 0; i < 25; i++ ){
                 float br = dot(b,b);
@@ -84,20 +81,17 @@ const shaders = Shaders.create({
                 }
 
                 R *= 1.05;
-                R += br;//b.x;
+                R += br;
                 if(i < 24){
                     RR *= 1.05;
-                    RR += br;//b.x;
+                    RR += br;
                     if(i <23){
                         RRR *= 1.05;
-                        RRR += br;//b.x;
+                        RRR += br;
                     }
                 }
 
                 v = vec2( dot(v, xa), dot(v, ya)) * Z + shift;
-                //b = vec2( dot(b.xy, xa), dot(b.xy, ya)) * Z + shift;
-                //b = rotate2D(vec2( dot(v, xa), dot(v, ya)), PI*Z, ya);
-                //b = vec2( dot(b, xa), dot(b, ya));
                 b = vec2(box(v,vec2(5.*tdist),0.9*tdist)) + shift * 0.42;
             }
             float c = ((mod(R,2.0)>1.0)?1.0-fract(R):fract(R));
@@ -130,13 +124,13 @@ const shaders = Shaders.create({
 });
 
 export class Shader extends React.Component {
-    props: { active: any; time: any; };
+    props: { active: any; time: any; mouse: any;};
 
     render() {
         var time = this.props.time;
-        var mouse = [0.5, 0.5];
-        var resolution = [window.innerWidth, window.innerHeight]
+        var mouse = this.props.mouse;
         var active = this.props.active;
+        var resolution = [window.innerWidth, window.innerHeight];
         return (
                 <Node shader={shaders.fractalShader} uniforms={{ active, time, mouse, resolution }} />
         );
