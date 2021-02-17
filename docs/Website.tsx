@@ -87,20 +87,22 @@ const TabPage = styled.div`
 
 
 const Tab = styled.button`
-  padding: 10px 30px;
+  padding: ${(props) => props.padding};
   cursor: pointer;
+  border-width: thin;
+  border-style: ${(props) => props.border};
+  outline: 0;
   background: #575757;
   color: white;
-  border: 0;
-  outline: 0;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
   transition: ease border-bottom 250ms;
-  ${({ active }) =>
-        active &&
+  ${({ activeTab }) =>
+        activeTab &&
         `
     background: yellow;
     color: black;
+    border: 0;
   `}
 `;
 
@@ -118,38 +120,21 @@ function hideTabPage(doHide) {
     }
 }
 
-function TabGroup() {
-    const [active, setActive] = useState(types[0]);
-    const [dimensions, setDimensions] = React.useState({
-        height: window.innerHeight,
-        width: window.innerWidth
-    })
-    React.useEffect(() => {
-        function handleResize() {
-            setDimensions({
-                height: window.innerHeight,
-                width: window.innerWidth
-            })
-
-        }
-
-        window.addEventListener('resize', handleResize)
-
-        return _ => {
-            window.removeEventListener('resize', handleResize)
-        }
-    })
-    const isMobile = dimensions.width <= 1000;
+function TabGroup(props) {
+    const [activeTab, setActiveTab] = useState(types[0]);
+    
     return (
-        <TabPage id="window" maxWidth={isMobile ? "625px" : "1200px"}>
+        <TabPage id="window" maxWidth={props.isMobile ? "625px" : "1200px"}>
             <div id="tabuttons" className="tab-buttons">
                 {types.map((type) => (
                     <Tab
+                        padding={props.isMobile ? "10 15" : "10 30"}
+                        border={props.isMobile ? "solid" : "unset"}
                         key={type}
-                        active={active === type}
+                        activeTab={activeTab === type}
                         onClick={() => {
                             hideTabPage((type === "Demo"));
-                            setActive(type);
+                            setActiveTab(type);
                         }}
                     >
                         {type}
@@ -157,7 +142,7 @@ function TabGroup() {
                 ))}
             </div>
             <br />
-            <TabWindow traits={traitMap[active]} isMobile={isMobile}/>
+            <TabWindow traits={traitMap[activeTab]} isMobile={props.isMobile}/>
         </TabPage>
     );
 }
@@ -169,7 +154,7 @@ const Window = styled.div`
   color: white;
   min-height: 500px;
   font-size: 20px;
-  padding: 10;
+  padding: 30 10;
   max-width: 85%;
   margin: auto;
 `;
@@ -181,6 +166,7 @@ const FullWindow = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
+  z-index: 1;
 `
 
 const ShaderContainer = styled.div`
@@ -217,6 +203,7 @@ function MovingShader(props) {
             if (target.innerText === "Demo") {
                 if (activate === 0.) {
                     setActivate(0.01);
+                    window.scrollTo(0, 0);
                 }
             }
             else {
@@ -244,22 +231,47 @@ function MovingShader(props) {
 
     return (
         <ShaderContainer>
-            <Surface width={window.innerWidth} height={window.innerHeight}>
-                <Shader active={activate} time={time} mouse={[mouseX, mouseY]}/>
+            <Surface width={props.isMobile ? "100%" : window.innerWidth}
+                height={props.isMobile ? "100%" : window.innerHeight}>
+                <Shader active={activate} time={time} mouse={[mouseX, mouseY]} mobile={props.isMobile}/>
             </Surface>
         </ShaderContainer>
     );
 }
 
+function WebsiteContainer() {
+    const [dimensions, setDimensions] = React.useState({
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
+    React.useEffect(() => {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+        }
+    })
+    const isMobile = dimensions.width <= 1000;
+    //<MovingShader isMobile={isMobile} />
+    return (
+        <>
+            <FullWindow id="FullWindow">
+                <TabGroup isMobile={isMobile} />
+            </FullWindow>
+        </>
+    );
+}
+
 export class Website extends React.Component {
     render() {
-        return (
-            <>
-                <MovingShader />
-                <FullWindow id="FullWindow">
-                    <TabGroup />
-                </FullWindow>
-            </>
-        );
+        return <WebsiteContainer/>
     }
 }

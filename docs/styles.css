@@ -22,6 +22,10 @@ iframe {
 }
 
 .tab-buttons {
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    z-index: 1;
     text-align: center;
     display: flex;
     flex-wrap: nowrap;

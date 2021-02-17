@@ -123,16 +123,40 @@ const shaders = Shaders.create({
     }
 });
 
+function ShaderWrapper(props) {
+    var time = props.time;
+    var active = props.active;
+    var resolution = [window.innerWidth, window.innerHeight];
+    const [mouseX, setMouseX] = React.useState(0.0);
+    const [mouseY, setMouseY] = React.useState(0.0);
+
+    document.addEventListener("mousemove", (event) => {
+        setMouseX(2. * event.clientX / window.innerWidth);
+        setMouseY(2.0 - 2. * event.clientY / window.innerHeight);
+    });
+
+    var mouse = [mouseX, mouseY];
+
+    return (
+        <Node shader={shaders.fractalShader} uniforms={{ active, time, mouse, resolution }} />
+    ); 
+}
+
 export class Shader extends React.Component {
-    props: { active: any; time: any; mouse: any;};
+    props: { active: any; time: any; mouse: any; isMobile: any;};
 
     render() {
         var time = this.props.time;
         var mouse = this.props.mouse;
         var active = this.props.active;
+        var mobile = this.props.isMobile;
         var resolution = [window.innerWidth, window.innerHeight];
+        if (mobile) {
+            //TODO is this working? Wanna set the res right for mobile
+            resolution = [window.innerWidth / 8, window.innerHeight / 8];
+        }
         return (
-                <Node shader={shaders.fractalShader} uniforms={{ active, time, mouse, resolution }} />
+            <ShaderWrapper active={active} time={time} resolution={resolution} />
         );
     }
 }

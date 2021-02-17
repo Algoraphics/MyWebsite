@@ -322,6 +322,19 @@ var shaders = gl_react_1.Shaders.create({
         frag: gl_react_1.GLSL(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n        precision highp float;\n        varying vec2 uv;\n        uniform float blue;\n        uniform float active;\n        uniform float time;\n        uniform vec2 mouse;\n        uniform vec2 resolution;\n\n        #define time (time + 500.0)\n        #define PI 3.14159265358979323846\n\n        float box(vec2 _st, vec2 _size, float _smoothEdges){\n            _size = vec2(1.75)-_size*0.75;\n            vec2 aa = vec2(_smoothEdges*0.5);\n            vec2 uv = smoothstep(_size,_size+aa,_st);\n            uv *= smoothstep(_size,_size+aa,vec2(1.0)-_st);\n            return uv.x*uv.y;\n        }\n\n        vec2 tile(vec2 _st, float _zoom){\n            _st *= _zoom;\n            return fract(_st);\n        }\n\n        vec2 rotate2D(vec2 _st, float _angle, vec2 shift){\n            _st -= 0.5 + shift.x;\n            _st =  mat2(cos(_angle),-sin(_angle),\n                        sin(_angle),cos(_angle)) * _st;\n            _st += 0.5 + shift.y;\n            return _st;\n        }\n\n        void main() {\n            vec2 v = (gl_FragCoord.xy - resolution/2.0) / min(resolution.y,resolution.x) * 5.0;\n            vec2 vv = v; vec2 vvv = v;\n            float tm = time*0.05;\n            vec2 mspt = (vec2(\n                    sin(tm)+cos(tm*0.2)+sin(tm*0.5)+cos(tm*-0.4)+sin(tm*1.3),\n                    cos(tm)+sin(tm*0.1)+cos(tm*0.8)+sin(tm*-1.1)+cos(tm*1.5)\n                    )+4.0)*0.03;\n            vec2 resV = ( gl_FragCoord.xy / resolution );\n            float bdist = clamp(1.5 - 6.*distance(mouse, resV), 0., 1.);\n            float tdist = 1.0 - 0.2*bdist;\n            vec2 vdist = vec2(distance(mouse.x, resV.x), distance(mouse.x, resV.x));\n\n            float R = 0.0;\n            float RR = 0.0;\n            float RRR = 0.0;\n            float a = (.6-mspt.x)*6.2;\n            float C = cos(a);\n            float S = sin(a);\n            vec2 xa=vec2(C, -S);\n            vec2 ya=vec2(S, C);\n            vec2 shift = vec2( 1.2, 1.62);\n            float Z = 1.0 + mspt.y*6.0;\n            float ZZ = 1.0 + (mspt.y)*6.2;\n            float ZZZ = 1.0 + (mspt.y)*6.9;\n\n            vec2 b = gl_FragCoord.xy/(resolution);\n            b = rotate2D(b, PI*Z, 0.05*xa);\n\n            for ( int i = 0; i < 25; i++ ){\n                float br = dot(b,b);\n                float r = dot(v,v);\n                if ( r > sin(tm) + 3.0 )\n                {\n                    r = (sin(tm) + 3.0)/r ;\n                    v.x = v.x * r + 0.;\n                    v.y = v.y * r + 0.;\n                }\n                if ( br > 0.75 )\n                {\n                    br = (0.56)/br ;\n                    //v.x = v.x * r + 0.;\n                    //v.y = v.y * r + 0.;\n                }\n\n                R *= 1.05;\n                R += br;\n                if(i < 24){\n                    RR *= 1.05;\n                    RR += br;\n                    if(i <23){\n                        RRR *= 1.05;\n                        RRR += br;\n                    }\n                }\n\n                v = vec2( dot(v, xa), dot(v, ya)) * Z + shift;\n                b = vec2(box(v,vec2(5.*tdist),0.9*tdist)) + shift * 0.42;\n            }\n            float c = ((mod(R,2.0)>1.0)?1.0-fract(R):fract(R));\n            float cc = ((mod(RR,2.0)>1.0)?1.0-fract(RR):fract(RR));\n            float ccc = ((mod(RRR,2.0)>1.0)?1.0-fract(RRR):fract(RRR));\n\n            // Complex wave for blackout\n            float sine = -1.2*(sin(4.*tm) + sin(2.*tm));\n            float blackout = 2.4 - 0.7*bdist;\n            if (blackout > 3.5) {\n                    blackout = 3.4 - (-1.2 + bdist);\n            }\n            if (ccc+cc+c < blackout) {\n                // Gradient into blackout\n                float diff = ccc+cc+c - blackout;\n                float m = -0.75;\n                ccc = ccc - m*diff;\n                cc = cc - m*diff;\n                c = c-m*diff;\n            }  \n\n          float gray = ccc+cc+c / 3. - 0.8;\n\n          vec4 color = vec4(cc,c,ccc, 1.);\n          vec4 grayscale = vec4(gray,gray,gray, 1.);\n          gl_FragColor = color*active + (1. - active)*grayscale;\n        }\n"], ["\n        precision highp float;\n        varying vec2 uv;\n        uniform float blue;\n        uniform float active;\n        uniform float time;\n        uniform vec2 mouse;\n        uniform vec2 resolution;\n\n        #define time (time + 500.0)\n        #define PI 3.14159265358979323846\n\n        float box(vec2 _st, vec2 _size, float _smoothEdges){\n            _size = vec2(1.75)-_size*0.75;\n            vec2 aa = vec2(_smoothEdges*0.5);\n            vec2 uv = smoothstep(_size,_size+aa,_st);\n            uv *= smoothstep(_size,_size+aa,vec2(1.0)-_st);\n            return uv.x*uv.y;\n        }\n\n        vec2 tile(vec2 _st, float _zoom){\n            _st *= _zoom;\n            return fract(_st);\n        }\n\n        vec2 rotate2D(vec2 _st, float _angle, vec2 shift){\n            _st -= 0.5 + shift.x;\n            _st =  mat2(cos(_angle),-sin(_angle),\n                        sin(_angle),cos(_angle)) * _st;\n            _st += 0.5 + shift.y;\n            return _st;\n        }\n\n        void main() {\n            vec2 v = (gl_FragCoord.xy - resolution/2.0) / min(resolution.y,resolution.x) * 5.0;\n            vec2 vv = v; vec2 vvv = v;\n            float tm = time*0.05;\n            vec2 mspt = (vec2(\n                    sin(tm)+cos(tm*0.2)+sin(tm*0.5)+cos(tm*-0.4)+sin(tm*1.3),\n                    cos(tm)+sin(tm*0.1)+cos(tm*0.8)+sin(tm*-1.1)+cos(tm*1.5)\n                    )+4.0)*0.03;\n            vec2 resV = ( gl_FragCoord.xy / resolution );\n            float bdist = clamp(1.5 - 6.*distance(mouse, resV), 0., 1.);\n            float tdist = 1.0 - 0.2*bdist;\n            vec2 vdist = vec2(distance(mouse.x, resV.x), distance(mouse.x, resV.x));\n\n            float R = 0.0;\n            float RR = 0.0;\n            float RRR = 0.0;\n            float a = (.6-mspt.x)*6.2;\n            float C = cos(a);\n            float S = sin(a);\n            vec2 xa=vec2(C, -S);\n            vec2 ya=vec2(S, C);\n            vec2 shift = vec2( 1.2, 1.62);\n            float Z = 1.0 + mspt.y*6.0;\n            float ZZ = 1.0 + (mspt.y)*6.2;\n            float ZZZ = 1.0 + (mspt.y)*6.9;\n\n            vec2 b = gl_FragCoord.xy/(resolution);\n            b = rotate2D(b, PI*Z, 0.05*xa);\n\n            for ( int i = 0; i < 25; i++ ){\n                float br = dot(b,b);\n                float r = dot(v,v);\n                if ( r > sin(tm) + 3.0 )\n                {\n                    r = (sin(tm) + 3.0)/r ;\n                    v.x = v.x * r + 0.;\n                    v.y = v.y * r + 0.;\n                }\n                if ( br > 0.75 )\n                {\n                    br = (0.56)/br ;\n                    //v.x = v.x * r + 0.;\n                    //v.y = v.y * r + 0.;\n                }\n\n                R *= 1.05;\n                R += br;\n                if(i < 24){\n                    RR *= 1.05;\n                    RR += br;\n                    if(i <23){\n                        RRR *= 1.05;\n                        RRR += br;\n                    }\n                }\n\n                v = vec2( dot(v, xa), dot(v, ya)) * Z + shift;\n                b = vec2(box(v,vec2(5.*tdist),0.9*tdist)) + shift * 0.42;\n            }\n            float c = ((mod(R,2.0)>1.0)?1.0-fract(R):fract(R));\n            float cc = ((mod(RR,2.0)>1.0)?1.0-fract(RR):fract(RR));\n            float ccc = ((mod(RRR,2.0)>1.0)?1.0-fract(RRR):fract(RRR));\n\n            // Complex wave for blackout\n            float sine = -1.2*(sin(4.*tm) + sin(2.*tm));\n            float blackout = 2.4 - 0.7*bdist;\n            if (blackout > 3.5) {\n                    blackout = 3.4 - (-1.2 + bdist);\n            }\n            if (ccc+cc+c < blackout) {\n                // Gradient into blackout\n                float diff = ccc+cc+c - blackout;\n                float m = -0.75;\n                ccc = ccc - m*diff;\n                cc = cc - m*diff;\n                c = c-m*diff;\n            }  \n\n          float gray = ccc+cc+c / 3. - 0.8;\n\n          vec4 color = vec4(cc,c,ccc, 1.);\n          vec4 grayscale = vec4(gray,gray,gray, 1.);\n          gl_FragColor = color*active + (1. - active)*grayscale;\n        }\n"])))
     }
 });
+function ShaderWrapper(props) {
+    var time = props.time;
+    var active = props.active;
+    var resolution = [window.innerWidth, window.innerHeight];
+    var _a = React.useState(0.0), mouseX = _a[0], setMouseX = _a[1];
+    var _b = React.useState(0.0), mouseY = _b[0], setMouseY = _b[1];
+    document.addEventListener("mousemove", function (event) {
+        setMouseX(2. * event.clientX / window.innerWidth);
+        setMouseY(2.0 - 2. * event.clientY / window.innerHeight);
+    });
+    var mouse = [mouseX, mouseY];
+    return (React.createElement(gl_react_1.Node, { shader: shaders.fractalShader, uniforms: { active: active, time: time, mouse: mouse, resolution: resolution } }));
+}
 var Shader = /** @class */ (function (_super) {
     __extends(Shader, _super);
     function Shader() {
@@ -331,8 +344,13 @@ var Shader = /** @class */ (function (_super) {
         var time = this.props.time;
         var mouse = this.props.mouse;
         var active = this.props.active;
+        var mobile = this.props.isMobile;
         var resolution = [window.innerWidth, window.innerHeight];
-        return (React.createElement(gl_react_1.Node, { shader: shaders.fractalShader, uniforms: { active: active, time: time, mouse: mouse, resolution: resolution } }));
+        if (mobile) {
+            //TODO is this working? Wanna set the res right for mobile
+            resolution = [window.innerWidth / 8, window.innerHeight / 8];
+        }
+        return (React.createElement(ShaderWrapper, { active: active, time: time, resolution: resolution }));
     };
     return Shader;
 }(React.Component));
@@ -424,11 +442,11 @@ function TabWindow(props) {
     return (React.createElement(Window, { id: "tabwindow" }, getWindow(props.traits[1], props.isMobile)));
 }
 var TabPage = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  max-width: ", ";\n  min-height: 100vh;\n"], ["\n  max-width: ", ";\n  min-height: 100vh;\n"])), function (props) { return props.maxWidth; });
-var Tab = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: 10px 30px;\n  cursor: pointer;\n  background: #575757;\n  color: white;\n  border: 0;\n  outline: 0;\n  white-space: nowrap;\n  border-bottom: 2px solid transparent;\n  transition: ease border-bottom 250ms;\n  ", "\n"], ["\n  padding: 10px 30px;\n  cursor: pointer;\n  background: #575757;\n  color: white;\n  border: 0;\n  outline: 0;\n  white-space: nowrap;\n  border-bottom: 2px solid transparent;\n  transition: ease border-bottom 250ms;\n  ",
-    "\n"])), function (_a) {
-    var active = _a.active;
-    return active &&
-        "\n    background: yellow;\n    color: black;\n  ";
+var Tab = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid transparent;\n  transition: ease border-bottom 250ms;\n  ", "\n"], ["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid transparent;\n  transition: ease border-bottom 250ms;\n  ",
+    "\n"])), function (props) { return props.padding; }, function (props) { return props.border; }, function (_a) {
+    var activeTab = _a.activeTab;
+    return activeTab &&
+        "\n    background: yellow;\n    color: black;\n    border: 0;\n  ";
 });
 function hideTabPage(doHide) {
     var window = document.getElementById("window");
@@ -443,36 +461,19 @@ function hideTabPage(doHide) {
         tabButtons.classList.remove("nothing");
     }
 }
-function TabGroup() {
-    var _a = react_1.useState(types[0]), active = _a[0], setActive = _a[1];
-    var _b = React.useState({
-        height: window.innerHeight,
-        width: window.innerWidth
-    }), dimensions = _b[0], setDimensions = _b[1];
-    React.useEffect(function () {
-        function handleResize() {
-            setDimensions({
-                height: window.innerHeight,
-                width: window.innerWidth
-            });
-        }
-        window.addEventListener('resize', handleResize);
-        return function (_) {
-            window.removeEventListener('resize', handleResize);
-        };
-    });
-    var isMobile = dimensions.width <= 1000;
-    return (React.createElement(TabPage, { id: "window", maxWidth: isMobile ? "625px" : "1200px" },
-        React.createElement("div", { id: "tabuttons", className: "tab-buttons" }, types.map(function (type) { return (React.createElement(Tab, { key: type, active: active === type, onClick: function () {
+function TabGroup(props) {
+    var _a = react_1.useState(types[0]), activeTab = _a[0], setActiveTab = _a[1];
+    return (React.createElement(TabPage, { id: "window", maxWidth: props.isMobile ? "625px" : "1200px" },
+        React.createElement("div", { id: "tabuttons", className: "tab-buttons" }, types.map(function (type) { return (React.createElement(Tab, { padding: props.isMobile ? "10 15" : "10 30", border: props.isMobile ? "solid" : "unset", key: type, activeTab: activeTab === type, onClick: function () {
                 hideTabPage((type === "Demo"));
-                setActive(type);
+                setActiveTab(type);
             } }, type)); })),
         React.createElement("br", null),
-        React.createElement(TabWindow, { traits: traitMap[active], isMobile: isMobile })));
+        React.createElement(TabWindow, { traits: traitMap[activeTab], isMobile: props.isMobile })));
 }
 var types = ["About Me", "Work", "Art", "Demo"];
-var Window = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: 20px;\n  padding: 10;\n  max-width: 85%;\n  margin: auto;\n"], ["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: 20px;\n  padding: 10;\n  max-width: 85%;\n  margin: auto;\n"])));
-var FullWindow = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n"], ["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n"])));
+var Window = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: 20px;\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n"], ["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: 20px;\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n"])));
+var FullWindow = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
 var ShaderContainer = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"], ["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"])));
 function MovingShader(props) {
     var _a = react_1.useState(400.0), time = _a[0], setTime = _a[1];
@@ -497,6 +498,7 @@ function MovingShader(props) {
             if (target.innerText === "Demo") {
                 if (activate === 0.) {
                     setActivate(0.01);
+                    window.scrollTo(0, 0);
                 }
             }
             else {
@@ -520,8 +522,31 @@ function MovingShader(props) {
         setTime(time + timeAdd);
     }
     return (React.createElement(ShaderContainer, null,
-        React.createElement(gl_react_dom_1.Surface, { width: window.innerWidth, height: window.innerHeight },
-            React.createElement(Shader_1.Shader, { active: activate, time: time, mouse: [mouseX, mouseY] }))));
+        React.createElement(gl_react_dom_1.Surface, { width: props.isMobile ? "100%" : window.innerWidth, height: props.isMobile ? "100%" : window.innerHeight },
+            React.createElement(Shader_1.Shader, { active: activate, time: time, mouse: [mouseX, mouseY], mobile: props.isMobile }))));
+}
+function WebsiteContainer() {
+    var _a = React.useState({
+        height: window.innerHeight,
+        width: window.innerWidth
+    }), dimensions = _a[0], setDimensions = _a[1];
+    React.useEffect(function () {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            });
+        }
+        window.addEventListener('resize', handleResize);
+        return function (_) {
+            window.removeEventListener('resize', handleResize);
+        };
+    });
+    var isMobile = dimensions.width <= 1000;
+    //<MovingShader isMobile={isMobile} />
+    return (React.createElement(React.Fragment, null,
+        React.createElement(FullWindow, { id: "FullWindow" },
+            React.createElement(TabGroup, { isMobile: isMobile }))));
 }
 var Website = /** @class */ (function (_super) {
     __extends(Website, _super);
@@ -529,10 +554,7 @@ var Website = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Website.prototype.render = function () {
-        return (React.createElement(React.Fragment, null,
-            React.createElement(MovingShader, null),
-            React.createElement(FullWindow, { id: "FullWindow" },
-                React.createElement(TabGroup, null))));
+        return React.createElement(WebsiteContainer, null);
     };
     return Website;
 }(React.Component));
@@ -3622,7 +3644,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "#slime {\n  margin-bottom: -25px; }\n\na {\n  text-decoration: none; }\n\na:link {\n  color: yellow; }\n\na:visited {\n  color: goldenrod; }\n\niframe {\n  display: block;\n  border: none;\n  height: 80vh;\n  width: 100%; }\n\n.tab-buttons {\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center; }\n\n.WhiteSquare {\n  color: black;\n  padding: 20px;\n  display: inline-block;\n  background-color: red;\n  position: relative;\n  transition: all 2s ease; }\n\n.active-stretch {\n  background-color: yellow;\n  width: 800px; }\n\n.active-square {\n  animation-name: example;\n  animation-duration: 10s;\n  animation-iteration-count: infinite; }\n\n.window-translucent {\n  transition: all 10s ease;\n  opacity: 0.1;\n  min-height: 60px !important; }\n\n@keyframes example {\n  0% {\n    background-color: red;\n    left: 0px;\n    top: 0px; }\n  25% {\n    background-color: yellow;\n    left: 800px;\n    top: 0px; }\n  50% {\n    background-color: blue;\n    left: 800px;\n    top: 500px; }\n  75% {\n    background-color: green;\n    left: 0px;\n    top: 500px; }\n  100% {\n    background-color: red;\n    left: 0px;\n    top: 0px; } }\n", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAAA;EACI,oBAAoB,EAAA;;AAGxB;EACI,qBAAqB,EAAA;;AAGzB;EACI,aAAa,EAAA;;AAGjB;EACI,gBAAgB,EAAA;;AAGpB;EACI,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,WAAW,EAAA;;AAGf;EACI,kBAAkB;EAClB,aAAa;EACb,iBAAiB;EACjB,uBAAuB,EAAA;;AAG3B;EACI,YAAY;EACZ,aAAa;EACb,qBAAqB;EACrB,qBAAqB;EACrB,kBAAkB;EAClB,uBAAuB,EAAA;;AAG3B;EACI,wBAAwB;EACxB,YAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uBAAuB;EACvB,mCAAmC,EAAA;;AAGvC;EACI,wBAAwB;EACxB,YAAY;EACZ,2BAA2B,EAAA;;AAG/B;EACI;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA;EAGZ;IACI,wBAAwB;IACxB,WAAW;IACX,QAAQ,EAAA;EAGZ;IACI,sBAAsB;IACtB,WAAW;IACX,UAAU,EAAA;EAGd;IACI,uBAAuB;IACvB,SAAS;IACT,UAAU,EAAA;EAGd;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA,EAAA","sourcesContent":["#slime {\r\n    margin-bottom: -25px;\r\n}\r\n\r\na {\r\n    text-decoration: none;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.tab-buttons {\r\n    text-align: center;\r\n    display: flex;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    transition: all 10s ease;\r\n    opacity: 0.1;\r\n    min-height: 60px !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "#slime {\n  margin-bottom: -25px; }\n\na {\n  text-decoration: none; }\n\na:link {\n  color: yellow; }\n\na:visited {\n  color: goldenrod; }\n\niframe {\n  display: block;\n  border: none;\n  height: 80vh;\n  width: 100%; }\n\n.tab-buttons {\n  position: fixed;\n  left: 50%;\n  right: 50%;\n  z-index: 1;\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center; }\n\n.WhiteSquare {\n  color: black;\n  padding: 20px;\n  display: inline-block;\n  background-color: red;\n  position: relative;\n  transition: all 2s ease; }\n\n.active-stretch {\n  background-color: yellow;\n  width: 800px; }\n\n.active-square {\n  animation-name: example;\n  animation-duration: 10s;\n  animation-iteration-count: infinite; }\n\n.window-translucent {\n  transition: all 10s ease;\n  opacity: 0.1;\n  min-height: 60px !important; }\n\n@keyframes example {\n  0% {\n    background-color: red;\n    left: 0px;\n    top: 0px; }\n  25% {\n    background-color: yellow;\n    left: 800px;\n    top: 0px; }\n  50% {\n    background-color: blue;\n    left: 800px;\n    top: 500px; }\n  75% {\n    background-color: green;\n    left: 0px;\n    top: 500px; }\n  100% {\n    background-color: red;\n    left: 0px;\n    top: 0px; } }\n", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAAA;EACI,oBAAoB,EAAA;;AAGxB;EACI,qBAAqB,EAAA;;AAGzB;EACI,aAAa,EAAA;;AAGjB;EACI,gBAAgB,EAAA;;AAGpB;EACI,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,WAAW,EAAA;;AAGf;EACI,eAAe;EACf,SAAS;EACT,UAAU;EACV,UAAU;EACV,kBAAkB;EAClB,aAAa;EACb,iBAAiB;EACjB,uBAAuB,EAAA;;AAG3B;EACI,YAAY;EACZ,aAAa;EACb,qBAAqB;EACrB,qBAAqB;EACrB,kBAAkB;EAClB,uBAAuB,EAAA;;AAG3B;EACI,wBAAwB;EACxB,YAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uBAAuB;EACvB,mCAAmC,EAAA;;AAGvC;EACI,wBAAwB;EACxB,YAAY;EACZ,2BAA2B,EAAA;;AAG/B;EACI;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA;EAGZ;IACI,wBAAwB;IACxB,WAAW;IACX,QAAQ,EAAA;EAGZ;IACI,sBAAsB;IACtB,WAAW;IACX,UAAU,EAAA;EAGd;IACI,uBAAuB;IACvB,SAAS;IACT,UAAU,EAAA;EAGd;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA,EAAA","sourcesContent":["#slime {\r\n    margin-bottom: -25px;\r\n}\r\n\r\na {\r\n    text-decoration: none;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.tab-buttons {\r\n    position: fixed;\r\n    left: 50%;\r\n    right: 50%;\r\n    z-index: 1;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    transition: all 10s ease;\r\n    opacity: 0.1;\r\n    min-height: 60px !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
