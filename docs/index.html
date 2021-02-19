@@ -353,7 +353,7 @@
         var mouseX;
         var mouseY;
         var activate = 0.;
-        var powerLevel = 0.;
+        var powerLevel = -0.2;
         var mouse = 1.0;
         document.addEventListener("mousemove", (event) => {
             mouseX = event.clientX;
@@ -381,7 +381,7 @@
                     timeAdd += 1.5;
                 }
                 else if (target.innerText === "Increase Complexity") {
-                    if (powerLevel < 1.5) {
+                    if (powerLevel < 2.) {
                         powerLevel += 0.1;
                     }
                 }

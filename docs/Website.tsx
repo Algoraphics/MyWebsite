@@ -77,7 +77,9 @@ function getWindow(topic, isMobile) {
 
 function TabWindow(props) {
     return (
-        <Window id="tabwindow" fontSize={props.isMobile ? "14px" : "18px"}>
+        <Window id="tabwindow"
+            fontSize={props.isMobile ? "14px" : "18px"}
+        >
             {getWindow(props.traits[1], props.isMobile)}
         </Window>
     );
@@ -139,7 +141,7 @@ const ControlButtonGroup = styled.div`
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    transition: all 2s ease;
+    transition: all 0.5s ease;
     transform: scale(0.25);
 `
 
@@ -151,7 +153,7 @@ const controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mous
 
 const controlMap = {
     visible: {
-        path: "websiteIcons/visibleWhite.png",
+        path: "websiteIcons/VisibleWhite.png",
         hover: "Show/Hide Controls"
     },
     pause: {
@@ -278,9 +280,10 @@ const Window = styled.div`
   min-height: 500px;
   font-size: ${(props) => props.fontSize};
   padding: 30 10;
-  max-width: 85%;
+  max-width: 75%
   margin: auto;
-  transition: 5s ease;
+  border-radius: 2%;
+  transition: 1s ease;
   transition-property: opacity;
   transform-origin: top;
 `;

@@ -134,7 +134,9 @@ function AboutPage(props) {
         "Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products, especially if they help make the world a better place to live in.",
         React.createElement("br", null),
         React.createElement("br", null),
-        "For a full Resume and more detail about my work, go to the \"Work\" tab."));
+        "For a full Resume and more detail about my work, go to the ",
+        React.createElement("b", null, "Work"),
+        " tab."));
     var aboutIntroDesktop = (React.createElement(AboutTextSection, null,
         React.createElement(DeskFace, { src: "Headshot.jpg", title: "It me", height: "320" }),
         introText));
@@ -144,7 +146,11 @@ function AboutPage(props) {
         introText));
     var additional = (React.createElement(AboutTextSection, null,
         React.createElement("h2", null, "What's this strange, trippy background?"),
-        "In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! You can get the full experience in the \"Demo\" tab, or go to the \"Art\" tab for more examples and info.",
+        "In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! You can play around with it on the ",
+        React.createElement("b", null, "Demo"),
+        " tab, or find more examples and info on the ",
+        React.createElement("b", null, "Art"),
+        " tab.",
         React.createElement("br", null),
         React.createElement("br", null),
         "I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer.",
@@ -214,7 +220,7 @@ var FractalBox = styled_components_1.default.div(templateObject_8 || (templateOb
     //TODO make scale size a prop that is different based on isMobile. No need to have the images expand past the screen edges.
 ])));
 //TODO make scale size a prop that is different based on isMobile. No need to have the images expand past the screen edges.
-var FractalImg = styled_components_1.default.img(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 3s ease-in-out;\n"], ["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 3s ease-in-out;\n"])));
+var FractalImg = styled_components_1.default.img(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 0.5s ease-in-out;\n"], ["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 0.5s ease-in-out;\n"])));
 var BufferBox = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    height: 100px;\n"], ["\n    height: 100px;\n"])));
 function FractalGallery(props) {
     var activeId = "none";
@@ -235,13 +241,15 @@ function FractalGallery(props) {
             }
         }
     });
-    var imgHeight = "100";
     var images = [];
     for (var i = 2; i < 56; ++i) {
+        if (props.isMobile) {
+            i++;
+        }
         var path = "PsychoPics/Screenshot (" + i + ").png";
         var id = "fractalImg" + i;
         //onClick={event => { this.props.isMobile ? event.target.classList.toggle("fractal-mobile-zoom") : event.target.classList.toggle("fractal-zoom") }}
-        images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: imgHeight }));
+        images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: props.isMobile ? "200" : "100" }));
     }
     return (React.createElement(FractalBox, null, images));
 }
@@ -271,7 +279,10 @@ var Art = /** @class */ (function (_super) {
             " is an immersive VR music video set to \"Side of the Road\" by Big Black Delta.",
             React.createElement("br", null),
             React.createElement("br", null),
-            "I wanted to give viewers a sense of scale with this experience, beginning with a very grounded visual of \"traveling down the road\" which gradually increases in scope, and becomes more surreal."));
+            "I wanted to give viewers a sense of scale with this experience, beginning with a very grounded visual of \"traveling down the road\" which gradually increases in scope and becomes more surreal.",
+            React.createElement("br", null),
+            React.createElement("br", null),
+            "It shows the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them."));
         var slimeBoxDesktop = (React.createElement(SlimeBoxDesktop, { id: "deskbox" },
             slimePreview,
             React.createElement(SlimeTextDesktop, null, slimeText)));
@@ -284,10 +295,7 @@ var Art = /** @class */ (function (_super) {
             this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop,
             React.createElement("br", null),
             React.createElement("br", null),
-            "Slime Freighter demonstrates the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them.",
-            React.createElement("br", null),
-            React.createElement("br", null),
-            "Assets in this video were handmade using GLSL shaders and WebGL geometry, and their placement is procedurally generated, so each experience is a bit different.",
+            "Assets in this video were handmade using GLSL shaders and WebGL geometry, and their placement is procedurally generated in Javascript, so each experience is a bit different.",
             React.createElement("br", null),
             React.createElement("br", null),
             "Nearly everything in the video is synchronized to the beat of the music, using a customized audio-reactivity component that I built for the project.",
@@ -296,17 +304,14 @@ var Art = /** @class */ (function (_super) {
                 "A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                "Personally I'd always found music visualizers to be repetitive, but it is quite challenging to create a visualizer that even comes close to the unreachable ideal of \"infinite variety.\" Shaders seemed to provide a chance to challenge this goal, so I decided to investigate.",
-                React.createElement("br", null),
-                React.createElement("br", null),
                 React.createElement("a", { href: "http://www.psycho-bubbles.glitch.me", target: "_blank" }, "Opal & Bismuth"),
-                " are the result, after quite a bit of tinkering with fractal GLSL math. The two use the same basic algorithms, but Opal is based on circular geometry while Bismuth is based on rectangles.",
+                " are my attempt to create a visualizer that will always show something new. They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                "Click the link in their name to see the full VR version. I added user-controlled settings for additional variety, and mapped them to 3D spheres in VR so viewers can surround themselves with the visualizations.",
+                "Click the link in their name to see the full VR app with both visualizers and some other small works.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                "A preview of Bismuth is available on the \"Demo\" tab, or you can browse the gallery below to see samples of both visualizers. ",
+                "An interactive Bismuth preview is available on the \"Demo\" tab, or you can browse the gallery below to see samples of both visualizers. ",
                 React.createElement("b", null, " Click to Zoom! "),
                 React.createElement("br", null),
                 React.createElement("br", null)),
@@ -360,10 +365,10 @@ function DemoPage(props) {
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/RewindWhite.png" }),
         React.createElement(InfoIcon, { src: "websiteIcons/FastForwardWhite.png" }),
-        "\u00A0\u00A0 Rewind / Fast Forward. Click multiple times to increase speed!",
+        "\u00A0\u00A0 Rewind / Fast Forward. Click multiple times to increase speed",
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/PauseWhite.png" }),
-        "\u00A0\u00A0 Pause. Mouse interaction still works while paused!",
+        "\u00A0\u00A0 Pause. Mouse interaction still works while paused",
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/PlayWhite.png" }),
         "\u00A0\u00A0 Resume movement at default speed",
@@ -561,12 +566,12 @@ var Tab = styled_components_1.default.button(templateObject_3 || (templateObject
         "\n    background: yellow;\n    color: black;\n    border: 0;\n  ";
 });
 var ControlButton = styled_components_1.default.button(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"], ["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"])));
-var ControlButtonGroup = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 2s ease;\n    transform: scale(0.25);\n"], ["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 2s ease;\n    transform: scale(0.25);\n"])));
+var ControlButtonGroup = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"], ["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"])));
 var ControlIcon = styled_components_1.default.img(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    padding: 5px;\n"], ["\n    padding: 5px;\n"])));
 var controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mouse", "powerDown", "powerUp"];
 var controlMap = {
     visible: {
-        path: "websiteIcons/visibleWhite.png",
+        path: "websiteIcons/VisibleWhite.png",
         hover: "Show/Hide Controls"
     },
     pause: {
@@ -658,7 +663,7 @@ function TabGroup(props) {
         React.createElement(TabWindow, { traits: traitMap[activeTab], isMobile: props.isMobile })));
 }
 var types = ["About Me", "Work", "Art", "Demo"];
-var Window = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n  transition: 5s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n  transition: 5s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; });
+var Window = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: 2%;\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: 2%;\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; });
 var FullWindow = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
 var ShaderContainer = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"], ["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"])));
 function MovingShader(props) {
@@ -766,10 +771,11 @@ var Work = /** @class */ (function (_super) {
     }
     Work.prototype.render = function () {
         return (React.createElement(React.Fragment, null,
+            "The bulk of my industry work has been split between two jobs, each for about 3 years.",
             React.createElement("h3", null, "ForeFlight (Boeing)"),
-            "Most recently I worked at ForeFlight.",
+            "In 2017, I moved to Austin, TX and began working at ForeFlight (acquired by Boeing in 2019). I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting. I also helped build and improve features for the Logbook web interface and created internal tools to help other teams manage data.",
             React.createElement("h3", null, "Quantcast"),
-            "After graduation, I moved to San Francisco to work at Quantcast. I worked on the Real-Time team (later renamed to Edge Services). We owned the core back-end systems serving ads to millions of users per day.",
+            "After graduating college, I moved to San Francisco to work at Quantcast. I worked on the Real-Time / Edge Services team. We owned the core back-end systems serving real-time ads to millions of users per day. My responsibilities focused on feature addition, testing, and cloud migration for always-on services with expectations of very high throughput and low response latency.",
             React.createElement("h2", null, "Resume"),
             "This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.",
             React.createElement(WorkSection, null,

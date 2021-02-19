@@ -17,9 +17,9 @@ function DemoPage(props) {
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
             <InfoIcon src="websiteIcons/RewindWhite.png" />
-            <InfoIcon src="websiteIcons/FastForwardWhite.png" />&nbsp;&nbsp; Rewind / Fast Forward. Click multiple times to increase speed!
+            <InfoIcon src="websiteIcons/FastForwardWhite.png" />&nbsp;&nbsp; Rewind / Fast Forward. Click multiple times to increase speed
             <br />
-            <InfoIcon src="websiteIcons/PauseWhite.png" />&nbsp;&nbsp; Pause. Mouse interaction still works while paused!
+            <InfoIcon src="websiteIcons/PauseWhite.png" />&nbsp;&nbsp; Pause. Mouse interaction still works while paused
             <br />
             <InfoIcon src="websiteIcons/PlayWhite.png" />&nbsp;&nbsp; Resume movement at default speed
             <br />

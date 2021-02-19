@@ -43,7 +43,7 @@ function AboutPage(props) {var introText = (
                         Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products,
                         especially if they help make the world a better place to live in.
                 <br /><br />
-                        For a full Resume and more detail about my work, go to the "Work" tab.
+                        For a full Resume and more detail about my work, go to the <b>Work</b> tab.
             </AboutTextSection>
         );
         var aboutIntroDesktop = (
@@ -64,7 +64,7 @@ function AboutPage(props) {var introText = (
             <AboutTextSection>
                 <h2>What's this strange, trippy background?</h2>
                 In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! 
-                You can get the full experience in the "Demo" tab, or go to the "Art" tab for more examples and info.
+                You can play around with it on the <b>Demo</b> tab, or find more examples and info on the <b>Art</b> tab.
                 <br /><br />
                 I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer. 
                 <h2>Do you ever leave your computer?</h2>

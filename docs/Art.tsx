@@ -54,7 +54,7 @@ const FractalBox = styled.div`
 const FractalImg = styled.img`
   flex: 0 9%;
   margin-bottom: 2%;
-  transition: transform 3s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 `
 
 const BufferBox = styled.div`
@@ -81,13 +81,15 @@ function FractalGallery(props) {
         }
     });
 
-    var imgHeight = "100";
     const images = [];
     for (var i = 2; i < 56; ++i) {
+        if (props.isMobile) {
+            i++;
+        }
         var path = "PsychoPics/Screenshot (" + i + ").png";
         var id = "fractalImg" + i;
         //onClick={event => { this.props.isMobile ? event.target.classList.toggle("fractal-mobile-zoom") : event.target.classList.toggle("fractal-zoom") }}
-        images.push(<FractalImg key={i} id={id} src={path} height={imgHeight} />);
+        images.push(<FractalImg key={i} id={id} src={path} height={props.isMobile ? "200" : "100"} />);
     }
     return (
         <FractalBox>
@@ -136,10 +138,12 @@ export class Art extends React.Component {
         var slimeText = (
             <div>
                 <a href="http://www.slime-freighter.glitch.me" target="_blank">Slime Freighter</a> is
-                        an immersive VR music video set to "Side of the Road" by Big Black Delta.
+                    an immersive VR music video set to "Side of the Road" by Big Black Delta.
                 <br /><br />
-                        I wanted to give viewers a sense of scale with this experience, beginning with a very grounded
-                        visual of "traveling down the road" which gradually increases in scope, and becomes more surreal.
+                    I wanted to give viewers a sense of scale with this experience, beginning with a very grounded
+                    visual of "traveling down the road" which gradually increases in scope and becomes more surreal.
+                <br /><br />
+                    It shows the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them.
             </div>
         );
         var slimeBoxDesktop = (
@@ -165,10 +169,8 @@ export class Art extends React.Component {
                 <h1>Slime Freighter</h1>
                 {this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop}
                 <br /><br />
-                Slime Freighter demonstrates the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them.
-                <br /><br />
                 Assets in this video were handmade using GLSL shaders and WebGL geometry,
-                and their placement is procedurally generated, so each experience is a bit different.
+                and their placement is procedurally generated in Javascript, so each experience is a bit different.
                 <br /><br />
                 Nearly everything in the video is synchronized to the beat of the music, using a customized
                 audio-reactivity component that I built for the project.
@@ -176,16 +178,12 @@ export class Art extends React.Component {
                 <FractalText>
                     A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.
                     <br /><br />
-                    Personally I'd always found music visualizers to be repetitive, but it is quite challenging to create a visualizer that even
-                    comes close to the unreachable ideal of "infinite variety." Shaders seemed to provide a chance to challenge this goal, so I decided to investigate.
+                    <a href="http://www.psycho-bubbles.glitch.me" target="_blank">Opal & Bismuth</a> are my attempt to create a visualizer that will always show something new. 
+                    They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.
                     <br /><br />
-                    <a href="http://www.psycho-bubbles.glitch.me" target="_blank">Opal & Bismuth</a> are the result, after quite a bit of tinkering
-                    with fractal GLSL math. The two use the same basic algorithms, but Opal is based on circular geometry while Bismuth is based on rectangles.
+                    Click the link in their name to see the full VR app with both visualizers and some other small works.
                     <br /><br />
-                    Click the link in their name to see the full VR version. I added user-controlled settings for additional variety, 
-                    and mapped them to 3D spheres in VR so viewers can surround themselves with the visualizations.
-                    <br /><br />
-                    A preview of Bismuth is available on the "Demo" tab, or you can browse the gallery below to see samples of both visualizers. <b> Click to Zoom! </b>
+                    An interactive Bismuth preview is available on the "Demo" tab, or you can browse the gallery below to see samples of both visualizers. <b> Click to Zoom! </b>
                     <br /><br />
                 </FractalText>
                 <FractalGallery isMobile={this.props.isMobile}/>
