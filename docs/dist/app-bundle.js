@@ -140,7 +140,7 @@ function AboutPage(props) {
         introText));
     var aboutIntroMobile = (React.createElement(MobileTextSection, null,
         React.createElement(MobileWrap, null,
-            React.createElement(MobileFace, { src: "Headshot.jpg", title: "It me", height: "320" })),
+            React.createElement(MobileFace, { src: "Headshot.jpg", title: "It me", height: "270" })),
         introText));
     var additional = (React.createElement(AboutTextSection, null,
         React.createElement("h2", null, "What's this strange, trippy background?"),
@@ -158,7 +158,6 @@ function AboutPage(props) {
         props.isMobile ? aboutIntroMobile : aboutIntroDesktop,
         additional));
 }
-//Pass state as parameter so we don't have to calculate mobile for every page?
 var AboutMe = /** @class */ (function (_super) {
     __extends(AboutMe, _super);
     function AboutMe(props) {
@@ -205,44 +204,74 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 var ArtSection = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"], ["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"])));
-var SlimePreview = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    overflow: hidden;\n    display: inline-block;\n    width: 475px;\n    height: 280px;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"], ["\n    overflow: hidden;\n    display: inline-block;\n    width: 475px;\n    height: 280px;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"])));
+var SlimePreview = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"], ["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"])));
 var SlimeBoxDesktop = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n"], ["\n    display: flex;\n"])));
-var SlimeBoxMobile = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    flex-wrap: wrap;\n"], ["\n    display: flex;\n    flex-wrap: wrap;\n"])));
-var SlimeTextMobile = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 5 5 0 5;\n"], ["\n    padding: 5 5 0 5;\n"])));
+var SlimeBoxMobile = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n"], ["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n"])));
+var SlimeTextMobile = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 5 0 0 0;\n"], ["\n    padding: 5 0 0 0;\n"])));
 var SlimeTextDesktop = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    display: inline-block;\n    padding: 10 10 10 30;\n    vertical-align: top;\n    width: 50%;\n"], ["\n    display: inline-block;\n    padding: 10 10 10 30;\n    vertical-align: top;\n    width: 50%;\n"])));
 var FractalText = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: inline-block;\n    padding: 10 10 10 10;\n"], ["\n    display: inline-block;\n    padding: 10 10 10 10;\n"])));
 var FractalBox = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"], ["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"
     //TODO make scale size a prop that is different based on isMobile. No need to have the images expand past the screen edges.
 ])));
 //TODO make scale size a prop that is different based on isMobile. No need to have the images expand past the screen edges.
-var FractalImg = styled_components_1.default.img(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 3s ease-in-out;\n  &:hover {\n    transform: scale(6);\n  }\n"], ["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 3s ease-in-out;\n  &:hover {\n    transform: scale(6);\n  }\n"])));
+var FractalImg = styled_components_1.default.img(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 3s ease-in-out;\n"], ["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 3s ease-in-out;\n"])));
 var BufferBox = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    height: 100px;\n"], ["\n    height: 100px;\n"])));
+function FractalGallery(props) {
+    var activeId = "none";
+    var targetProp = props.isMobile ? "fractal-mobile-zoom" : "fractal-zoom";
+    document.addEventListener("mousedown", function (event) {
+        var target = event.target;
+        if (activeId !== "none") {
+            var prevImg = document.getElementById(activeId);
+            prevImg.classList.remove(targetProp);
+        }
+        if (target instanceof HTMLImageElement && target.id.length > 0) {
+            if (target.id === activeId) {
+                activeId = "none";
+            }
+            else {
+                target.classList.add(targetProp);
+                activeId = target.id;
+            }
+        }
+    });
+    var imgHeight = "100";
+    var images = [];
+    for (var i = 2; i < 56; ++i) {
+        var path = "PsychoPics/Screenshot (" + i + ").png";
+        var id = "fractalImg" + i;
+        //onClick={event => { this.props.isMobile ? event.target.classList.toggle("fractal-mobile-zoom") : event.target.classList.toggle("fractal-zoom") }}
+        images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: imgHeight }));
+    }
+    return (React.createElement(FractalBox, null, images));
+}
+function VideoElement(props) {
+    if (props.isMobile) {
+        return (React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: "180", width: "340", preload: "true" },
+            React.createElement("source", { src: "SlimePreviewCropped.mp4", type: "video/mp4" }),
+            "Your browser does not support this preview video.Click to see the full experience."));
+    }
+    else
+        return (React.createElement("video", { id: "slimeMobile", loop: true, height: "270", width: "500", preload: "true", onMouseOver: function (event) { return event.target.play(); }, onMouseOut: function (event) { return event.target.pause(); } },
+            React.createElement("source", { src: "SlimePreviewCropped.mp4", type: "video/mp4" }),
+            "Your browser does not support this preview video. Click to see the full experience."));
+}
 var Art = /** @class */ (function (_super) {
     __extends(Art, _super);
     function Art(props) {
         return _super.call(this, props) || this;
     }
     Art.prototype.render = function () {
-        var imgHeight = "100";
-        var images = [];
-        for (var i = 2; i < 56; ++i) {
-            var path = "PsychoPics/Screenshot (" + i + ").png";
-            images.push(React.createElement(FractalImg, { key: i, src: path, height: imgHeight }));
-        }
+        // height={this.props.isMobile ? "150px" : "275px"}
         var slimePreview = (React.createElement(SlimePreview, null,
-            React.createElement("a", { href: "http://www.slime-freighter.glitch.me" },
-                React.createElement("video", { id: "slime", loop: true, height: "280", width: "500", preload: "true", onMouseOver: function (event) { return event.target.play(); }, onMouseOut: function (event) { return event.target.pause(); } },
-                    React.createElement("source", { src: "SlimePreview.mp4", type: "video/mp4" }),
-                    "Your browser does not support this preview video. Click to see the full experience."))));
+            React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
+                React.createElement(VideoElement, { isMobile: this.props.isMobile }))));
         var slimeText = (React.createElement("div", null,
-            React.createElement("a", { href: "http://www.slime-freighter.glitch.me" }, "Slime Freighter"),
+            React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" }, "Slime Freighter"),
             " is an immersive VR music video set to \"Side of the Road\" by Big Black Delta.",
             React.createElement("br", null),
             React.createElement("br", null),
-            "I wanted to give viewers a sense of scale with this experience, beginning with a very grounded visual of \"traveling down the road\" which gradually becomes more surreal.",
-            React.createElement("br", null),
-            React.createElement("br", null),
-            "It demonstrates the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them."));
+            "I wanted to give viewers a sense of scale with this experience, beginning with a very grounded visual of \"traveling down the road\" which gradually increases in scope, and becomes more surreal."));
         var slimeBoxDesktop = (React.createElement(SlimeBoxDesktop, { id: "deskbox" },
             slimePreview,
             React.createElement(SlimeTextDesktop, null, slimeText)));
@@ -255,6 +284,9 @@ var Art = /** @class */ (function (_super) {
             this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop,
             React.createElement("br", null),
             React.createElement("br", null),
+            "Slime Freighter demonstrates the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them.",
+            React.createElement("br", null),
+            React.createElement("br", null),
             "Assets in this video were handmade using GLSL shaders and WebGL geometry, and their placement is procedurally generated, so each experience is a bit different.",
             React.createElement("br", null),
             React.createElement("br", null),
@@ -264,26 +296,102 @@ var Art = /** @class */ (function (_super) {
                 "A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                "Personally I'd always found music visualizers to be repetitive, but it is quite challenging to create a visualizer that even comes close to the unreachable ideal of \"infinite variety.\"",
+                "Personally I'd always found music visualizers to be repetitive, but it is quite challenging to create a visualizer that even comes close to the unreachable ideal of \"infinite variety.\" Shaders seemed to provide a chance to challenge this goal, so I decided to investigate.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                React.createElement("a", { href: "http://www.psycho-bubbles.glitch.me" }, "Opal & Bismuth"),
-                " are the result, after quite a bit of tinkering with fractal GLSL math. The two use the same basic algorithms, but Opal is based on circular geometry while Bismuth is more rectangular.",
+                React.createElement("a", { href: "http://www.psycho-bubbles.glitch.me", target: "_blank" }, "Opal & Bismuth"),
+                " are the result, after quite a bit of tinkering with fractal GLSL math. The two use the same basic algorithms, but Opal is based on circular geometry while Bismuth is based on rectangles.",
                 React.createElement("br", null),
                 React.createElement("br", null),
                 "Click the link in their name to see the full VR version. I added user-controlled settings for additional variety, and mapped them to 3D spheres in VR so viewers can surround themselves with the visualizations.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                "A preview of Bismuth is available on the \"Demo\" tab, or you can browse the gallery below to see samples of both visualizers.",
+                "A preview of Bismuth is available on the \"Demo\" tab, or you can browse the gallery below to see samples of both visualizers. ",
+                React.createElement("b", null, " Click to Zoom! "),
                 React.createElement("br", null),
                 React.createElement("br", null)),
-            React.createElement(FractalBox, null, images),
+            React.createElement(FractalGallery, { isMobile: this.props.isMobile }),
             React.createElement(BufferBox, null)));
     };
     return Art;
 }(React.Component));
 exports.Art = Art;
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10;
+
+
+/***/ }),
+
+/***/ "./Demo.tsx":
+/*!******************!*\
+  !*** ./Demo.tsx ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var InfoIcon = styled_components_1.default.img(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    height: 40px;\n    padding-bottom: 3px;\n    vertical-align: middle;\n"], ["\n    height: 40px;\n    padding-bottom: 3px;\n    vertical-align: middle;\n"])));
+var DemoText = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    padding: 50 0 0 0;\n"], ["\n    padding: 50 0 0 0;\n"])));
+function DemoPage(props) {
+    return (React.createElement(DemoText, null,
+        React.createElement(InfoIcon, { src: "websiteIcons/VisibleWhite.png" }),
+        "\u00A0\u00A0 ",
+        React.createElement("b", null, "Show/Hide this information panel"),
+        React.createElement("br", null),
+        React.createElement(InfoIcon, { src: "websiteIcons/RewindWhite.png" }),
+        React.createElement(InfoIcon, { src: "websiteIcons/FastForwardWhite.png" }),
+        "\u00A0\u00A0 Rewind / Fast Forward. Click multiple times to increase speed!",
+        React.createElement("br", null),
+        React.createElement(InfoIcon, { src: "websiteIcons/PauseWhite.png" }),
+        "\u00A0\u00A0 Pause. Mouse interaction still works while paused!",
+        React.createElement("br", null),
+        React.createElement(InfoIcon, { src: "websiteIcons/PlayWhite.png" }),
+        "\u00A0\u00A0 Resume movement at default speed",
+        React.createElement("br", null),
+        React.createElement(InfoIcon, { src: "websiteIcons/MouseWhite.png" }),
+        "\u00A0\u00A0 Toggle mouse interaction (enabled by default)",
+        React.createElement("br", null),
+        React.createElement(InfoIcon, { src: "websiteIcons/PowerUpWhite.png" }),
+        "\u00A0\u00A0 Add complexity (the coolest button)",
+        React.createElement("br", null),
+        React.createElement(InfoIcon, { src: "websiteIcons/PowerDownWhite.png" }),
+        "\u00A0\u00A0 Reduce complexity (helps with framerate)"));
+}
+var Demo = /** @class */ (function (_super) {
+    __extends(Demo, _super);
+    function Demo(props) {
+        return _super.call(this, props) || this;
+    }
+    Demo.prototype.componentDidMount = function () {
+        window.scrollTo(0, 0);
+    };
+    Demo.prototype.render = function () {
+        return (React.createElement(DemoPage, { isMobile: this.props.isMobile }));
+    };
+    return Demo;
+}(React.Component));
+exports.Demo = Demo;
+var templateObject_1, templateObject_2;
 
 
 /***/ }),
@@ -395,6 +503,7 @@ __webpack_require__(/*! ./sassystyles.scss */ "./sassystyles.scss");
 var AboutMe_1 = __webpack_require__(/*! ./AboutMe */ "./AboutMe.tsx");
 var Work_1 = __webpack_require__(/*! ./Work */ "./Work.tsx");
 var Art_1 = __webpack_require__(/*! ./Art */ "./Art.tsx");
+var Demo_1 = __webpack_require__(/*! ./Demo */ "./Demo.tsx");
 var Shader_1 = __webpack_require__(/*! ./Shader */ "./Shader.tsx");
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var theme = {
@@ -418,7 +527,7 @@ var theme = {
 var traitMap = {
     "About Me": ["black", "AboutMe"],
     "Work": ["black", "Work"],
-    "Demo": ["black", "Click and move to interact. Use the navigation buttons above to go back at any time."],
+    "Demo": ["black", "Demo"],
     "Art": ["black", "Art"]
 };
 var Button = styled_components_1.default.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  background-color: ", ";\n  color: black;\n  outline: 0;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: ease background-color 250ms;\n  &:hover {\n    background-color: ", ";\n  }\n  &:disabled {\n    cursor: default;\n    opacity: 0.7;\n  }\n"], ["\n  background-color: ", ";\n  color: black;\n  outline: 0;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: ease background-color 250ms;\n  &:hover {\n    background-color: ", ";\n  }\n  &:disabled {\n    cursor: default;\n    opacity: 0.7;\n  }\n"])), function (props) { return theme[props.theme].default; }, function (props) { return theme[props.theme].hover; });
@@ -433,48 +542,125 @@ function getWindow(topic, isMobile) {
     else if (topic === "Art") {
         text = React.createElement(Art_1.Art, { isMobile: isMobile });
     }
+    else if (topic === "Demo") {
+        text = React.createElement(Demo_1.Demo, { isMobile: isMobile });
+    }
     else {
         text = topic;
     }
     return text;
 }
 function TabWindow(props) {
-    return (React.createElement(Window, { id: "tabwindow" }, getWindow(props.traits[1], props.isMobile)));
+    return (React.createElement(Window, { id: "tabwindow", fontSize: props.isMobile ? "14px" : "18px" }, getWindow(props.traits[1], props.isMobile)));
 }
 var TabPage = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  max-width: ", ";\n  min-height: 100vh;\n"], ["\n  max-width: ", ";\n  min-height: 100vh;\n"])), function (props) { return props.maxWidth; });
-var Tab = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid transparent;\n  transition: ease border-bottom 250ms;\n  ", "\n"], ["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid transparent;\n  transition: ease border-bottom 250ms;\n  ",
+var Tab = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ", "\n"], ["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ",
     "\n"])), function (props) { return props.padding; }, function (props) { return props.border; }, function (_a) {
     var activeTab = _a.activeTab;
     return activeTab &&
         "\n    background: yellow;\n    color: black;\n    border: 0;\n  ";
 });
-function hideTabPage(doHide) {
+var ControlButton = styled_components_1.default.button(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"], ["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"])));
+var ControlButtonGroup = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 2s ease;\n    transform: scale(0.25);\n"], ["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 2s ease;\n    transform: scale(0.25);\n"])));
+var ControlIcon = styled_components_1.default.img(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    padding: 5px;\n"], ["\n    padding: 5px;\n"])));
+var controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mouse", "powerDown", "powerUp"];
+var controlMap = {
+    visible: {
+        path: "websiteIcons/visibleWhite.png",
+        hover: "Show/Hide Controls"
+    },
+    pause: {
+        path: "websiteIcons/PauseWhite.png",
+        hover: "Pause"
+    },
+    play: {
+        path: "websiteIcons/PlayWhite.png",
+        hover: "Play"
+    },
+    rewind: {
+        path: "websiteIcons/RewindWhite.png",
+        hover: "Rewind"
+    },
+    fastForward: {
+        path: "websiteIcons/FastForwardWhite.png",
+        hover: "Fast Forward"
+    },
+    mouse: {
+        path: "websiteIcons/MouseWhite.png",
+        hover: "Toggle Cursor Interactivity"
+    },
+    powerUp: {
+        path: "websiteIcons/PowerDownWhite.png",
+        hover: "Decrease Complexity"
+    },
+    powerDown: {
+        path: "websiteIcons/PowerUpWhite.png",
+        hover: "Increase Complexity"
+    },
+};
+function ControlButtons(props) {
+    return (React.createElement(ControlButtonGroup, { id: "controlbuttons" }, controlTypes.map(function (type) { return (React.createElement(ControlButton, { id: "controlbutton", key: type },
+        controlMap[type].hover,
+        React.createElement(ControlIcon, { src: controlMap[type].path, title: controlMap[type].hover, height: props.isMobile ? "25px" : "40px" }))); })));
+}
+function activateControls(doHide) {
+    var window = document.getElementById("window");
+    var controlButtons = window.querySelector("#controlbuttons");
+    if (doHide) {
+        controlButtons.classList.add("show-controls");
+    }
+    else {
+        controlButtons.classList.remove("show-controls");
+    }
+}
+function activateDemo(demoActive) {
     var window = document.getElementById("window");
     var tabWindow = window.querySelector("#tabwindow");
-    var tabButtons = window.querySelector("#tabuttons");
-    if (doHide) {
+    //var tabButtons = window.querySelector("#tabuttons");
+    if (demoActive) {
         tabWindow.classList.add("window-translucent");
-        tabButtons.classList.add("nothing");
+        //tabButtons.classList.add("nothing");
     }
     else {
         tabWindow.classList.remove("window-translucent");
-        tabButtons.classList.remove("nothing");
+        //tabButtons.classList.remove("nothing");
     }
 }
 function TabGroup(props) {
     var _a = react_1.useState(types[0]), activeTab = _a[0], setActiveTab = _a[1];
+    var demoActive = false;
+    document.addEventListener("mousedown", function (event) {
+        var target = event.target;
+        if (target instanceof HTMLButtonElement) {
+            if (target.innerText === "Show/Hide Controls") {
+                demoActive = !demoActive;
+                activateDemo(demoActive);
+            }
+        }
+        else if (target instanceof HTMLImageElement) {
+            if (target.title === "Show/Hide Controls") {
+                demoActive = !demoActive;
+                activateDemo(demoActive);
+            }
+        }
+    });
     return (React.createElement(TabPage, { id: "window", maxWidth: props.isMobile ? "625px" : "1200px" },
         React.createElement("div", { id: "tabuttons", className: "tab-buttons" }, types.map(function (type) { return (React.createElement(Tab, { padding: props.isMobile ? "10 15" : "10 30", border: props.isMobile ? "solid" : "unset", key: type, activeTab: activeTab === type, onClick: function () {
-                hideTabPage((type === "Demo"));
+                var clickedDemo = type === "Demo";
+                activateControls(clickedDemo);
+                if (!clickedDemo && demoActive) {
+                    activateDemo(false);
+                }
                 setActiveTab(type);
             } }, type)); })),
+        React.createElement(ControlButtons, { isMobile: props.isMobile }),
         React.createElement("br", null),
         React.createElement(TabWindow, { traits: traitMap[activeTab], isMobile: props.isMobile })));
 }
 var types = ["About Me", "Work", "Art", "Demo"];
-var Window = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: 20px;\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n"], ["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: 20px;\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n"])));
-var FullWindow = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
-var ShaderContainer = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"], ["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"])));
+var Window = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n  transition: 5s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 85%;\n  margin: auto;\n  transition: 5s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; });
+var FullWindow = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
+var ShaderContainer = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"], ["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"])));
 function MovingShader(props) {
     var _a = react_1.useState(400.0), time = _a[0], setTime = _a[1];
     var _b = react_1.useState(0.0), activate = _b[0], setActivate = _b[1];
@@ -486,27 +672,6 @@ function MovingShader(props) {
         return function cleanup() {
             clearInterval(timerID);
         };
-    });
-    document.addEventListener("mousemove", function (event) {
-        setMouseX(2. * event.clientX / window.innerWidth);
-        setMouseY(2.0 - 2. * event.clientY / window.innerHeight);
-    });
-    document.addEventListener("mousedown", function (event) {
-        setHolding(true);
-        var target = event.target;
-        if (target instanceof HTMLButtonElement) {
-            if (target.innerText === "Demo") {
-                if (activate === 0.) {
-                    setActivate(0.01);
-                    window.scrollTo(0, 0);
-                }
-            }
-            else {
-                setActivate(0.0);
-            }
-        }
-        else {
-        }
     });
     document.addEventListener("mouseup", function (event) {
         setHolding(false);
@@ -559,7 +724,7 @@ var Website = /** @class */ (function (_super) {
     return Website;
 }(React.Component));
 exports.Website = Website;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;
 
 
 /***/ }),
@@ -3644,7 +3809,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "#slime {\n  margin-bottom: -25px; }\n\na {\n  text-decoration: none; }\n\na:link {\n  color: yellow; }\n\na:visited {\n  color: goldenrod; }\n\niframe {\n  display: block;\n  border: none;\n  height: 80vh;\n  width: 100%; }\n\n.tab-buttons {\n  position: fixed;\n  left: 50%;\n  right: 50%;\n  z-index: 1;\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center; }\n\n.WhiteSquare {\n  color: black;\n  padding: 20px;\n  display: inline-block;\n  background-color: red;\n  position: relative;\n  transition: all 2s ease; }\n\n.active-stretch {\n  background-color: yellow;\n  width: 800px; }\n\n.active-square {\n  animation-name: example;\n  animation-duration: 10s;\n  animation-iteration-count: infinite; }\n\n.window-translucent {\n  transition: all 10s ease;\n  opacity: 0.1;\n  min-height: 60px !important; }\n\n@keyframes example {\n  0% {\n    background-color: red;\n    left: 0px;\n    top: 0px; }\n  25% {\n    background-color: yellow;\n    left: 800px;\n    top: 0px; }\n  50% {\n    background-color: blue;\n    left: 800px;\n    top: 500px; }\n  75% {\n    background-color: green;\n    left: 0px;\n    top: 500px; }\n  100% {\n    background-color: red;\n    left: 0px;\n    top: 0px; } }\n", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAAA;EACI,oBAAoB,EAAA;;AAGxB;EACI,qBAAqB,EAAA;;AAGzB;EACI,aAAa,EAAA;;AAGjB;EACI,gBAAgB,EAAA;;AAGpB;EACI,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,WAAW,EAAA;;AAGf;EACI,eAAe;EACf,SAAS;EACT,UAAU;EACV,UAAU;EACV,kBAAkB;EAClB,aAAa;EACb,iBAAiB;EACjB,uBAAuB,EAAA;;AAG3B;EACI,YAAY;EACZ,aAAa;EACb,qBAAqB;EACrB,qBAAqB;EACrB,kBAAkB;EAClB,uBAAuB,EAAA;;AAG3B;EACI,wBAAwB;EACxB,YAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uBAAuB;EACvB,mCAAmC,EAAA;;AAGvC;EACI,wBAAwB;EACxB,YAAY;EACZ,2BAA2B,EAAA;;AAG/B;EACI;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA;EAGZ;IACI,wBAAwB;IACxB,WAAW;IACX,QAAQ,EAAA;EAGZ;IACI,sBAAsB;IACtB,WAAW;IACX,UAAU,EAAA;EAGd;IACI,uBAAuB;IACvB,SAAS;IACT,UAAU,EAAA;EAGd;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA,EAAA","sourcesContent":["#slime {\r\n    margin-bottom: -25px;\r\n}\r\n\r\na {\r\n    text-decoration: none;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.tab-buttons {\r\n    position: fixed;\r\n    left: 50%;\r\n    right: 50%;\r\n    z-index: 1;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    transition: all 10s ease;\r\n    opacity: 0.1;\r\n    min-height: 60px !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "a {\n  text-decoration: none; }\n\na:link {\n  color: yellow; }\n\na:visited {\n  color: goldenrod; }\n\niframe {\n  display: block;\n  border: none;\n  height: 80vh;\n  width: 100%; }\n\n.fractal-zoom {\n  transform: scale(6); }\n\n.fractal-mobile-zoom {\n  transform: scale(3); }\n\n.show-controls {\n  z-index: 2;\n  padding: 37px 0px 0px 0px !important;\n  transform: scale(0.75) !important; }\n\n.show-button {\n  padding: 5px; }\n\n.tab-buttons {\n  position: fixed;\n  left: 50%;\n  right: 50%;\n  z-index: 5;\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center; }\n\n.WhiteSquare {\n  color: black;\n  padding: 20px;\n  display: inline-block;\n  background-color: red;\n  position: relative;\n  transition: all 2s ease; }\n\n.active-stretch {\n  background-color: yellow;\n  width: 800px; }\n\n.active-square {\n  animation-name: example;\n  animation-duration: 10s;\n  animation-iteration-count: infinite; }\n\n.window-translucent {\n  opacity: 0 !important; }\n\n@keyframes example {\n  0% {\n    background-color: red;\n    left: 0px;\n    top: 0px; }\n  25% {\n    background-color: yellow;\n    left: 800px;\n    top: 0px; }\n  50% {\n    background-color: blue;\n    left: 800px;\n    top: 500px; }\n  75% {\n    background-color: green;\n    left: 0px;\n    top: 500px; }\n  100% {\n    background-color: red;\n    left: 0px;\n    top: 0px; } }\n", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAAA;EACI,qBAAqB,EAAA;;AAGzB;EACI,aAAa,EAAA;;AAGjB;EACI,gBAAgB,EAAA;;AAGpB;EACI,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,WAAW,EAAA;;AAGf;EACI,mBAAmB,EAAA;;AAGvB;EACI,mBAAmB,EAAA;;AAGvB;EACI,UAAU;EACV,oCAAoC;EACpC,iCAAiC,EAAA;;AAGrC;EACI,YAAY,EAAA;;AAGhB;EACI,eAAe;EACf,SAAS;EACT,UAAU;EACV,UAAU;EACV,kBAAkB;EAClB,aAAa;EACb,iBAAiB;EACjB,uBAAuB,EAAA;;AAG3B;EACI,YAAY;EACZ,aAAa;EACb,qBAAqB;EACrB,qBAAqB;EACrB,kBAAkB;EAClB,uBAAuB,EAAA;;AAG3B;EACI,wBAAwB;EACxB,YAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uBAAuB;EACvB,mCAAmC,EAAA;;AAGvC;EACI,qBAAqB,EAAA;;AAGzB;EACI;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA;EAGZ;IACI,wBAAwB;IACxB,WAAW;IACX,QAAQ,EAAA;EAGZ;IACI,sBAAsB;IACtB,WAAW;IACX,UAAU,EAAA;EAGd;IACI,uBAAuB;IACvB,SAAS;IACT,UAAU,EAAA;EAGd;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA,EAAA","sourcesContent":["a {\r\n    text-decoration: none;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.fractal-zoom {\r\n    transform: scale(6);\r\n}\r\n\r\n.fractal-mobile-zoom {\r\n    transform: scale(3);\r\n}\r\n\r\n.show-controls {\r\n    z-index: 2;\r\n    padding: 37px 0px 0px 0px !important;\r\n    transform: scale(0.75) !important;\r\n}\r\n\r\n.show-button {\r\n    padding: 5px;\r\n}\r\n\r\n.tab-buttons {\r\n    position: fixed;\r\n    left: 50%;\r\n    right: 50%;\r\n    z-index: 5;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    opacity: 0 !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

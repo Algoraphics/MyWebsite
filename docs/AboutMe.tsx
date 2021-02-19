@@ -55,7 +55,7 @@ function AboutPage(props) {var introText = (
         var aboutIntroMobile = (
             <MobileTextSection>
                 <MobileWrap>
-                    <MobileFace src="Headshot.jpg" title="It me" height="320"></MobileFace>
+                    <MobileFace src="Headshot.jpg" title="It me" height="270"></MobileFace>
                 </MobileWrap>
                 {introText}
             </MobileTextSection>
@@ -78,10 +78,9 @@ function AboutPage(props) {var introText = (
         <TopLevel>
                 {props.isMobile ? aboutIntroMobile : aboutIntroDesktop}
                 {additional}
-            </TopLevel>);
+        </TopLevel>);
 }
 
-//Pass state as parameter so we don't have to calculate mobile for every page?
 export class AboutMe extends React.Component {
     props: any;
     

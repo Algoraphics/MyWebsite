@@ -106,6 +106,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="Shine.png" />
+    <Content Include="SlimePreviewCropped.mp4" />
     <Content Include="SlimePreview.mp4" />
     <Content Include="styles.css">
       <SubType>Code</SubType>
@@ -116,6 +117,14 @@
     <Content Include="webpack-config.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="websiteIcons\FastForwardWhite.png" />
+    <Content Include="websiteIcons\MouseWhite.png" />
+    <Content Include="websiteIcons\PauseWhite.png" />
+    <Content Include="websiteIcons\PlayWhite.png" />
+    <Content Include="websiteIcons\PowerDownWhite.png" />
+    <Content Include="websiteIcons\PowerUpWhite.png" />
+    <Content Include="websiteIcons\RewindWhite.png" />
+    <Content Include="websiteIcons\VisibleWhite.png" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="AboutMe.tsx">
@@ -125,6 +134,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Art.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Demo.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Shader.tsx">
@@ -140,6 +152,7 @@
   <ItemGroup>
     <Folder Include="dist\" />
     <Folder Include="PsychoPics\" />
+    <Folder Include="websiteIcons\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
 </Project>

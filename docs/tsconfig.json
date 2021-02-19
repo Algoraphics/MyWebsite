@@ -17,6 +17,7 @@
     "AboutMe.tsx",
     "Work.tsx",
     "Art.tsx",
+    "Demo.tsx",
     "Shader.tsx"
   ]
 }

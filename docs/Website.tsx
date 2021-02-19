@@ -6,6 +6,7 @@ import './sassystyles.scss';
 import { AboutMe } from './AboutMe';
 import { Work } from './Work';
 import { Art } from './Art';
+import { Demo } from './Demo';
 import { Shader } from './Shader';
 
 declare var require: any
@@ -34,7 +35,7 @@ const theme = {
 const traitMap = {
     "About Me": ["black", "AboutMe"],
     "Work": ["black", "Work"],
-    "Demo": ["black", "Click and move to interact. Use the navigation buttons above to go back at any time."],
+    "Demo": ["black", "Demo"],
     "Art": ["black", "Art"]
 };
 
@@ -65,6 +66,9 @@ function getWindow(topic, isMobile) {
     else if (topic === "Art") {
         text = <Art isMobile={isMobile} />
     }
+    else if (topic === "Demo") {
+        text = <Demo isMobile={isMobile} />
+    }
     else {
         text = topic;
     }
@@ -73,7 +77,7 @@ function getWindow(topic, isMobile) {
 
 function TabWindow(props) {
     return (
-        <Window id="tabwindow">
+        <Window id="tabwindow" fontSize={props.isMobile ? "14px" : "18px"}>
             {getWindow(props.traits[1], props.isMobile)}
         </Window>
     );
@@ -95,8 +99,11 @@ const Tab = styled.button`
   background: #575757;
   color: white;
   white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: ease border-bottom 250ms;
+  border-bottom: 2px solid;
+  border-color: #575757;
+  &:hover {
+    border-color: yellow;
+  }
   ${({ activeTab }) =>
         activeTab &&
         `
@@ -106,22 +113,133 @@ const Tab = styled.button`
   `}
 `;
 
-function hideTabPage(doHide) {
+const ControlButton = styled.button`
+    outline: none;
+    font-size: 0;
+    border: 1px solid;
+    background-size: contain;
+    background-color: #454545;
+    border-color: black;
+    border-top-width: 2px;
+    border-top-color: #454545;
+    border-bottom-width: 2px;
+    border-bottom-color: #454545;
+    &:hover {
+        border-color: yellow;
+    }
+    &:active {
+        background-color: yellow;
+    }
+`
+
+const ControlButtonGroup = styled.div`
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    transition: all 2s ease;
+    transform: scale(0.25);
+`
+
+const ControlIcon = styled.img`
+    padding: 5px;
+`
+
+const controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mouse", "powerDown", "powerUp"];
+
+const controlMap = {
+    visible: {
+        path: "websiteIcons/visibleWhite.png",
+        hover: "Show/Hide Controls"
+    },
+    pause: {
+        path: "websiteIcons/PauseWhite.png",
+        hover: "Pause"
+    },
+    play: {
+        path: "websiteIcons/PlayWhite.png",
+        hover: "Play"
+    },
+    rewind: {
+        path: "websiteIcons/RewindWhite.png",
+        hover: "Rewind"
+    },
+    fastForward: {
+        path: "websiteIcons/FastForwardWhite.png",
+        hover: "Fast Forward"
+    },
+    mouse: {
+        path: "websiteIcons/MouseWhite.png",
+        hover: "Toggle Cursor Interactivity"
+    },
+    powerUp: {
+        path: "websiteIcons/PowerDownWhite.png",
+        hover: "Decrease Complexity"
+    },
+    powerDown: {
+        path: "websiteIcons/PowerUpWhite.png",
+        hover: "Increase Complexity"
+    },
+};
+
+function ControlButtons(props) {
+    return (
+        <ControlButtonGroup id="controlbuttons">
+            {controlTypes.map((type) => (
+                <ControlButton id="controlbutton" key={type}>{controlMap[type].hover}
+                    <ControlIcon src={controlMap[type].path} title={controlMap[type].hover} height={props.isMobile ? "25px" : "40px"} />
+                </ControlButton>
+            ))}
+        </ControlButtonGroup>
+    )
+}
+
+function activateControls(doHide) {
+    var window = document.getElementById("window");
+    var controlButtons = window.querySelector("#controlbuttons");
+    if (doHide) {
+        controlButtons.classList.add("show-controls");
+    }
+    else {
+        controlButtons.classList.remove("show-controls");
+    }
+}
+
+function activateDemo(demoActive) {
     var window = document.getElementById("window");
     var tabWindow = window.querySelector("#tabwindow");
-    var tabButtons = window.querySelector("#tabuttons");
-    if (doHide) { 
+    //var tabButtons = window.querySelector("#tabuttons");
+    if (demoActive) { 
         tabWindow.classList.add("window-translucent");
-        tabButtons.classList.add("nothing");
+        //tabButtons.classList.add("nothing");
     }
     else {
         tabWindow.classList.remove("window-translucent");
-        tabButtons.classList.remove("nothing");
+        //tabButtons.classList.remove("nothing");
     }
 }
 
 function TabGroup(props) {
     const [activeTab, setActiveTab] = useState(types[0]);
+    var demoActive = false;
+
+    document.addEventListener("mousedown", (event) => {
+        var target = event.target;
+        if (target instanceof HTMLButtonElement) {
+            if (target.innerText === "Show/Hide Controls") {
+                demoActive = !demoActive;
+                activateDemo(demoActive);
+            }
+        }
+        else if (target instanceof HTMLImageElement) {
+            if (target.title === "Show/Hide Controls") {
+                demoActive = !demoActive;
+                activateDemo(demoActive);
+            }
+        }
+    });
     
     return (
         <TabPage id="window" maxWidth={props.isMobile ? "625px" : "1200px"}>
@@ -133,7 +251,11 @@ function TabGroup(props) {
                         key={type}
                         activeTab={activeTab === type}
                         onClick={() => {
-                            hideTabPage((type === "Demo"));
+                            var clickedDemo = type === "Demo";
+                            activateControls(clickedDemo);
+                            if (!clickedDemo && demoActive) {
+                                activateDemo(false);
+                            }
                             setActiveTab(type);
                         }}
                     >
@@ -141,6 +263,7 @@ function TabGroup(props) {
                     </Tab>
                 ))}
             </div>
+            <ControlButtons isMobile={props.isMobile}/>
             <br />
             <TabWindow traits={traitMap[activeTab]} isMobile={props.isMobile}/>
         </TabPage>
@@ -153,10 +276,13 @@ const Window = styled.div`
   background-color: #212121;
   color: white;
   min-height: 500px;
-  font-size: 20px;
+  font-size: ${(props) => props.fontSize};
   padding: 30 10;
   max-width: 85%;
   margin: auto;
+  transition: 5s ease;
+  transition-property: opacity;
+  transform-origin: top;
 `;
 
 const FullWindow = styled.div`
@@ -189,29 +315,6 @@ function MovingShader(props) {
         return function cleanup() {
             clearInterval(timerID);
         };
-    });
-
-    document.addEventListener("mousemove", (event) => {
-        setMouseX(2.*event.clientX / window.innerWidth);
-        setMouseY(2.0-2.*event.clientY / window.innerHeight);
-    });
-
-    document.addEventListener("mousedown", (event) => {
-        setHolding(true);
-        var target = event.target;
-        if (target instanceof HTMLButtonElement) {
-            if (target.innerText === "Demo") {
-                if (activate === 0.) {
-                    setActivate(0.01);
-                    window.scrollTo(0, 0);
-                }
-            }
-            else {
-                setActivate(0.0);
-            }
-        }
-        else {
-        }
     });
 
     document.addEventListener("mouseup", (event) => {

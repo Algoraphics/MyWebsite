@@ -20,6 +20,14 @@ module.exports = {
             {
                 test: /\.(scss|css)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader'
+                    },
+                ],
             }
         ]
     }

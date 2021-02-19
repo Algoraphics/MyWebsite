@@ -1,7 +1,3 @@
-#slime {
-    margin-bottom: -25px;
-}
-
 a {
     text-decoration: none;
 }
@@ -21,11 +17,29 @@ iframe {
     width: 100%;
 }
 
+.fractal-zoom {
+    transform: scale(6);
+}
+
+.fractal-mobile-zoom {
+    transform: scale(3);
+}
+
+.show-controls {
+    z-index: 2;
+    padding: 37px 0px 0px 0px !important;
+    transform: scale(0.75) !important;
+}
+
+.show-button {
+    padding: 5px;
+}
+
 .tab-buttons {
     position: fixed;
     left: 50%;
     right: 50%;
-    z-index: 1;
+    z-index: 5;
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
@@ -53,9 +67,7 @@ iframe {
 }
 
 .window-translucent {
-    transition: all 10s ease;
-    opacity: 0.1;
-    min-height: 60px !important;
+    opacity: 0 !important;
 }
 
 @keyframes example {
