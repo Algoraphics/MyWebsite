@@ -42,7 +42,6 @@ const SlimeTextDesktop = styled.div`
 
 const FractalText = styled.div`
     display: inline-block;
-    padding: 10 10 10 10;
 `
 
 const FractalBox = styled.div`
