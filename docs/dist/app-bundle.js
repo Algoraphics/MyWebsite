@@ -127,7 +127,7 @@ function AboutPage(props) {
         React.createElement("br", null),
         React.createElement("br", null),
         "My name is Ethan Rabb. I'm a Software Engineer with 6+ years in industry and a passion for creative programming projects.",
-        React.createElement("h2", null, "What kind of work do you do?"),
+        React.createElement("h3", null, "What kind of work do you do?"),
         "I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics. I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.",
         React.createElement("br", null),
         React.createElement("br", null),
@@ -145,7 +145,7 @@ function AboutPage(props) {
             React.createElement(MobileFace, { src: "Headshot.jpg", title: "It me", height: "270" })),
         introText));
     var additional = (React.createElement(AboutTextSection, null,
-        React.createElement("h2", null, "What's this strange, trippy background?"),
+        React.createElement("h3", null, "Why is the background shifting?"),
         "In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! You can play around with it on the ",
         React.createElement("b", null, "Demo"),
         " tab, or find more examples and info on the ",
@@ -154,9 +154,17 @@ function AboutPage(props) {
         React.createElement("br", null),
         React.createElement("br", null),
         "I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer.",
-        React.createElement("h2", null, "Do you ever leave your computer?"),
-        "Definitely! I have plenty of non-programming hobbies and interests. Ask me about Climbing, Frisbee Golf, Cooking, Kayaking, Movies, Hiking, Biking, Writing, or Pickleball.",
-        React.createElement("h2", null, "What's the best way to reach you?"),
+        React.createElement("h3", null, "Do you have any other interests?"),
+        "Definitely! I have plenty of non-programming hobbies and interests.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        React.createElement("b", null, "Things I do outside:"),
+        " Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        React.createElement("b", null, "Topics I could talk about for hours:"),
+        " Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Robotics, Space",
+        React.createElement("h3", null, "What's the best way to reach you?"),
         "The best way to reach me is by email, at ",
         React.createElement("b", null, "ethanrabb@gmail.com."),
         " Let's chat!"));
@@ -211,17 +219,13 @@ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 var ArtSection = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"], ["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"])));
 var SlimePreview = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"], ["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"])));
-var SlimeBoxDesktop = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n"], ["\n    display: flex;\n"])));
-var SlimeBoxMobile = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n"], ["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n"])));
+var SlimeBoxDesktop = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n    padding: 0 0 15 0;\n"], ["\n    display: flex;\n    padding: 0 0 15 0;\n"])));
+var SlimeBoxMobile = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"], ["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"])));
 var SlimeTextMobile = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 5 0 0 0;\n"], ["\n    padding: 5 0 0 0;\n"])));
 var SlimeTextDesktop = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    display: inline-block;\n    padding: 10 10 10 30;\n    vertical-align: top;\n    width: 50%;\n"], ["\n    display: inline-block;\n    padding: 10 10 10 30;\n    vertical-align: top;\n    width: 50%;\n"])));
 var FractalText = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: inline-block;\n    padding: 10 10 10 10;\n"], ["\n    display: inline-block;\n    padding: 10 10 10 10;\n"])));
-var FractalBox = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"], ["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"
-    //TODO make scale size a prop that is different based on isMobile. No need to have the images expand past the screen edges.
-])));
-//TODO make scale size a prop that is different based on isMobile. No need to have the images expand past the screen edges.
+var FractalBox = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"], ["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"])));
 var FractalImg = styled_components_1.default.img(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 0.5s ease-in-out;\n"], ["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 0.5s ease-in-out;\n"])));
-var BufferBox = styled_components_1.default.div(templateObject_10 || (templateObject_10 = __makeTemplateObject(["\n    height: 100px;\n"], ["\n    height: 100px;\n"])));
 function FractalGallery(props) {
     var activeId = "none";
     var targetProp = props.isMobile ? "fractal-mobile-zoom" : "fractal-zoom";
@@ -242,13 +246,12 @@ function FractalGallery(props) {
         }
     });
     var images = [];
-    for (var i = 2; i < 56; ++i) {
+    for (var i = 1; i <= 30; ++i) {
         if (props.isMobile) {
             i++;
         }
         var path = "PsychoPics/Screenshot (" + i + ").png";
         var id = "fractalImg" + i;
-        //onClick={event => { this.props.isMobile ? event.target.classList.toggle("fractal-mobile-zoom") : event.target.classList.toggle("fractal-zoom") }}
         images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: props.isMobile ? "200" : "100" }));
     }
     return (React.createElement(FractalBox, null, images));
@@ -270,7 +273,6 @@ var Art = /** @class */ (function (_super) {
         return _super.call(this, props) || this;
     }
     Art.prototype.render = function () {
-        // height={this.props.isMobile ? "150px" : "275px"}
         var slimePreview = (React.createElement(SlimePreview, null,
             React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
                 React.createElement(VideoElement, { isMobile: this.props.isMobile }))));
@@ -291,15 +293,13 @@ var Art = /** @class */ (function (_super) {
             React.createElement(SlimeTextMobile, null, slimeText)));
         return (React.createElement(ArtSection, null,
             "My main creative work has been these audio-visual experiences using various WebXR technologies. I love that users can immerse themselves to their comfort level from anywhere.",
-            React.createElement("h1", null, "Slime Freighter"),
+            React.createElement("h2", null, "Slime Freighter"),
             this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop,
-            React.createElement("br", null),
-            React.createElement("br", null),
             "Assets in this video were handmade using GLSL shaders and WebGL geometry, and their placement is procedurally generated in Javascript, so each experience is a bit different.",
             React.createElement("br", null),
             React.createElement("br", null),
             "Nearly everything in the video is synchronized to the beat of the music, using a customized audio-reactivity component that I built for the project.",
-            React.createElement("h1", null, "Opal & Bismuth"),
+            React.createElement("h2", null, "Opal & Bismuth"),
             React.createElement(FractalText, null,
                 "A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.",
                 React.createElement("br", null),
@@ -315,13 +315,12 @@ var Art = /** @class */ (function (_super) {
                 React.createElement("b", null, " Click to Zoom! "),
                 React.createElement("br", null),
                 React.createElement("br", null)),
-            React.createElement(FractalGallery, { isMobile: this.props.isMobile }),
-            React.createElement(BufferBox, null)));
+            React.createElement(FractalGallery, { isMobile: this.props.isMobile })));
     };
     return Art;
 }(React.Component));
 exports.Art = Art;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9, templateObject_10;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;
 
 
 /***/ }),
@@ -556,7 +555,7 @@ function getWindow(topic, isMobile) {
     return text;
 }
 function TabWindow(props) {
-    return (React.createElement(Window, { id: "tabwindow", fontSize: props.isMobile ? "14px" : "18px" }, getWindow(props.traits[1], props.isMobile)));
+    return (React.createElement(Window, { id: "tabwindow", fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "0%" : "2%" }, getWindow(props.traits[1], props.isMobile)));
 }
 var TabPage = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  max-width: ", ";\n  min-height: 100vh;\n"], ["\n  max-width: ", ";\n  min-height: 100vh;\n"])), function (props) { return props.maxWidth; });
 var Tab = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ", "\n"], ["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ",
@@ -663,8 +662,8 @@ function TabGroup(props) {
         React.createElement(TabWindow, { traits: traitMap[activeTab], isMobile: props.isMobile })));
 }
 var types = ["About Me", "Work", "Art", "Demo"];
-var Window = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: 2%;\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  min-height: 500px;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: 2%;\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; });
-var FullWindow = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 100 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
+var Window = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; }, function (props) { return props.radius; });
+var FullWindow = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 0 0 250 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 250 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
 var ShaderContainer = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"], ["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"])));
 function MovingShader(props) {
     var _a = react_1.useState(400.0), time = _a[0], setTime = _a[1];
@@ -772,14 +771,14 @@ var Work = /** @class */ (function (_super) {
     Work.prototype.render = function () {
         return (React.createElement(React.Fragment, null,
             "The bulk of my industry work has been split between two jobs, each for about 3 years.",
-            React.createElement("h3", null, "ForeFlight (Boeing)"),
-            "In 2017, I moved to Austin, TX and began working at ForeFlight (acquired by Boeing in 2019). I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting. I also helped build and improve features for the Logbook web interface and created internal tools to help other teams manage data.",
-            React.createElement("h3", null, "Quantcast"),
+            React.createElement("h4", null, "ForeFlight (Boeing)"),
+            "In 2018, after I moved to Austin, I began working at ForeFlight (acquired by Boeing in 2019). I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting. I also helped build and improve features for the Logbook web interface and created internal tools to help other teams manage data.",
+            React.createElement("h4", null, "Quantcast"),
             "After graduating college, I moved to San Francisco to work at Quantcast. I worked on the Real-Time / Edge Services team. We owned the core back-end systems serving real-time ads to millions of users per day. My responsibilities focused on feature addition, testing, and cloud migration for always-on services with expectations of very high throughput and low response latency.",
-            React.createElement("h2", null, "Resume"),
+            React.createElement("h3", null, "Resume"),
             "This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.",
             React.createElement(WorkSection, null,
-                React.createElement("iframe", { height: "100%", src: "https://drive.google.com/file/d/1Ui8d3xw0N4LCAxKIVKSuZxftQmt9LD0k/preview" }))));
+                React.createElement("iframe", { height: "100%", src: "https://drive.google.com/file/d/1UyvxXlgMoTsYJgewymbfslwr240zbZkj/preview" }))));
     };
     return Work;
 }(React.Component));

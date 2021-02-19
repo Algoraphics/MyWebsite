@@ -19,12 +19,14 @@ const SlimePreview = styled.div`
 
 const SlimeBoxDesktop = styled.div`
     display: flex;
+    padding: 0 0 15 0;
 `
 
 const SlimeBoxMobile = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 0 10 0;
 `
 
 const SlimeTextMobile = styled.div`
@@ -50,15 +52,10 @@ const FractalBox = styled.div`
   justify-content: space-around;
 `
 
-//TODO make scale size a prop that is different based on isMobile. No need to have the images expand past the screen edges.
 const FractalImg = styled.img`
   flex: 0 9%;
   margin-bottom: 2%;
   transition: transform 0.5s ease-in-out;
-`
-
-const BufferBox = styled.div`
-    height: 100px;
 `
 
 function FractalGallery(props) {
@@ -82,13 +79,12 @@ function FractalGallery(props) {
     });
 
     const images = [];
-    for (var i = 2; i < 56; ++i) {
+    for (var i = 1; i <= 30; ++i) {
         if (props.isMobile) {
             i++;
         }
         var path = "PsychoPics/Screenshot (" + i + ").png";
         var id = "fractalImg" + i;
-        //onClick={event => { this.props.isMobile ? event.target.classList.toggle("fractal-mobile-zoom") : event.target.classList.toggle("fractal-zoom") }}
         images.push(<FractalImg key={i} id={id} src={path} height={props.isMobile ? "200" : "100"} />);
     }
     return (
@@ -126,8 +122,6 @@ export class Art extends React.Component {
     }
 
     render() {
-        
-        // height={this.props.isMobile ? "150px" : "275px"}
         var slimePreview = (
             <SlimePreview>
                 <a href="http://www.slime-freighter.glitch.me" target="_blank">
@@ -166,15 +160,14 @@ export class Art extends React.Component {
             <ArtSection>
                 My main creative work has been these audio-visual experiences using various WebXR technologies.
                 I love that users can immerse themselves to their comfort level from anywhere.
-                <h1>Slime Freighter</h1>
+                <h2>Slime Freighter</h2>
                 {this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop}
-                <br /><br />
                 Assets in this video were handmade using GLSL shaders and WebGL geometry,
                 and their placement is procedurally generated in Javascript, so each experience is a bit different.
                 <br /><br />
                 Nearly everything in the video is synchronized to the beat of the music, using a customized
                 audio-reactivity component that I built for the project.
-                <h1>Opal & Bismuth</h1>
+                <h2>Opal & Bismuth</h2>
                 <FractalText>
                     A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.
                     <br /><br />
@@ -187,7 +180,6 @@ export class Art extends React.Component {
                     <br /><br />
                 </FractalText>
                 <FractalGallery isMobile={this.props.isMobile}/>
-                <BufferBox/>
             </ArtSection>
         )
     }

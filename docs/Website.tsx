@@ -78,7 +78,8 @@ function getWindow(topic, isMobile) {
 function TabWindow(props) {
     return (
         <Window id="tabwindow"
-            fontSize={props.isMobile ? "14px" : "18px"}
+            fontSize={props.isMobile ? "14px" : "17px"}
+            radius={props.isMobile ? "0%" : "2%"}
         >
             {getWindow(props.traits[1], props.isMobile)}
         </Window>
@@ -277,19 +278,18 @@ const types = ["About Me", "Work", "Art", "Demo"];
 const Window = styled.div`
   background-color: #212121;
   color: white;
-  min-height: 500px;
   font-size: ${(props) => props.fontSize};
   padding: 30 10;
   max-width: 75%
   margin: auto;
-  border-radius: 2%;
+  border-radius: ${(props) => props.radius};
   transition: 1s ease;
   transition-property: opacity;
   transform-origin: top;
 `;
 
 const FullWindow = styled.div`
-  padding: 0 0 100 0;
+  padding: 0 0 250 0;
   position: relative;
   display: flex;
   justify-content: center;

@@ -36,7 +36,7 @@ function AboutPage(props) {var introText = (
                 Hi!
                 <br/><br/>
                 My name is Ethan Rabb. I'm a Software Engineer with 6+ years in industry and a passion for creative programming projects.
-                <h2>What kind of work do you do?</h2>
+                <h3>What kind of work do you do?</h3>
                         I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics.
                         I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.
                 <br /><br />
@@ -62,15 +62,16 @@ function AboutPage(props) {var introText = (
         );
         var additional = (
             <AboutTextSection>
-                <h2>What's this strange, trippy background?</h2>
+                <h3>Why is the background shifting?</h3>
                 In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! 
                 You can play around with it on the <b>Demo</b> tab, or find more examples and info on the <b>Art</b> tab.
                 <br /><br />
                 I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer. 
-                <h2>Do you ever leave your computer?</h2>
+                <h3>Do you have any other interests?</h3>
                 Definitely! I have plenty of non-programming hobbies and interests. 
-                Ask me about Climbing, Frisbee Golf, Cooking, Kayaking, Movies, Hiking, Biking, Writing, or Pickleball.
-                <h2>What's the best way to reach you?</h2>
+                <br/><br/><b>Things I do outside:</b> Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball
+                <br/><br/><b>Topics I could talk about for hours:</b> Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Robotics, Space
+                <h3>What's the best way to reach you?</h3>
                 The best way to reach me is by email, at <b>ethanrabb@gmail.com.</b> Let's chat!
             </AboutTextSection>
         );

@@ -38,6 +38,7 @@
     <Content Include="MyApp.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="PsychoPics\Screenshot %281%29.png" />
     <Content Include="PsychoPics\Screenshot %2810%29.png" />
     <Content Include="PsychoPics\Screenshot %2811%29.png" />
     <Content Include="PsychoPics\Screenshot %2812%29.png" />
@@ -61,37 +62,8 @@
     <Content Include="PsychoPics\Screenshot %2829%29.png" />
     <Content Include="PsychoPics\Screenshot %283%29.png" />
     <Content Include="PsychoPics\Screenshot %2830%29.png" />
-    <Content Include="PsychoPics\Screenshot %2831%29.png" />
-    <Content Include="PsychoPics\Screenshot %2832%29.png" />
-    <Content Include="PsychoPics\Screenshot %2833%29.png" />
-    <Content Include="PsychoPics\Screenshot %2834%29.png" />
-    <Content Include="PsychoPics\Screenshot %2835%29.png" />
-    <Content Include="PsychoPics\Screenshot %2836%29.png" />
-    <Content Include="PsychoPics\Screenshot %2837%29.png" />
-    <Content Include="PsychoPics\Screenshot %2838%29.png" />
-    <Content Include="PsychoPics\Screenshot %2839%29.png" />
     <Content Include="PsychoPics\Screenshot %284%29.png" />
-    <Content Include="PsychoPics\Screenshot %2840%29.png" />
-    <Content Include="PsychoPics\Screenshot %2841%29.png" />
-    <Content Include="PsychoPics\Screenshot %2842%29.png" />
-    <Content Include="PsychoPics\Screenshot %2843%29.png" />
-    <Content Include="PsychoPics\Screenshot %2844%29.png" />
-    <Content Include="PsychoPics\Screenshot %2845%29.png" />
-    <Content Include="PsychoPics\Screenshot %2846%29.png" />
-    <Content Include="PsychoPics\Screenshot %2847%29.png" />
-    <Content Include="PsychoPics\Screenshot %2848%29.png" />
-    <Content Include="PsychoPics\Screenshot %2849%29.png" />
     <Content Include="PsychoPics\Screenshot %285%29.png" />
-    <Content Include="PsychoPics\Screenshot %2850%29.png" />
-    <Content Include="PsychoPics\Screenshot %2851%29.png" />
-    <Content Include="PsychoPics\Screenshot %2852%29.png" />
-    <Content Include="PsychoPics\Screenshot %2853%29.png" />
-    <Content Include="PsychoPics\Screenshot %2854%29.png" />
-    <Content Include="PsychoPics\Screenshot %2855%29.png" />
-    <Content Include="PsychoPics\Screenshot %2856%29.png" />
-    <Content Include="PsychoPics\Screenshot %2857%29.png" />
-    <Content Include="PsychoPics\Screenshot %2858%29.png" />
-    <Content Include="PsychoPics\Screenshot %2859%29.png" />
     <Content Include="PsychoPics\Screenshot %286%29.png" />
     <Content Include="PsychoPics\Screenshot %287%29.png" />
     <Content Include="PsychoPics\Screenshot %288%29.png" />
