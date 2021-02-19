@@ -259,12 +259,12 @@ function FractalGallery(props) {
 function VideoElement(props) {
     if (props.isMobile) {
         return (React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: "180", width: "340", preload: "true" },
-            React.createElement("source", { src: "SlimePreviewCropped.mp4", type: "video/mp4" }),
+            React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }),
             "Your browser does not support this preview video.Click to see the full experience."));
     }
     else
-        return (React.createElement("video", { id: "slimeMobile", loop: true, height: "270", width: "500", preload: "true", onMouseOver: function (event) { return event.target.play(); }, onMouseOut: function (event) { return event.target.pause(); } },
-            React.createElement("source", { src: "SlimePreviewCropped.mp4", type: "video/mp4" }),
+        return (React.createElement("video", { id: "slimeDesktop", loop: true, height: "270", width: "500", preload: "true", onMouseOver: function (event) { return event.target.play(); }, onMouseOut: function (event) { return event.target.pause(); } },
+            React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }),
             "Your browser does not support this preview video. Click to see the full experience."));
 }
 var Art = /** @class */ (function (_super) {
@@ -620,14 +620,11 @@ function activateControls(doHide) {
 function activateDemo(demoActive) {
     var window = document.getElementById("window");
     var tabWindow = window.querySelector("#tabwindow");
-    //var tabButtons = window.querySelector("#tabuttons");
     if (demoActive) {
         tabWindow.classList.add("window-translucent");
-        //tabButtons.classList.add("nothing");
     }
     else {
         tabWindow.classList.remove("window-translucent");
-        //tabButtons.classList.remove("nothing");
     }
 }
 function TabGroup(props) {
@@ -712,7 +709,6 @@ function WebsiteContainer() {
         };
     });
     var isMobile = dimensions.width <= 1000;
-    //<MovingShader isMobile={isMobile} />
     return (React.createElement(React.Fragment, null,
         React.createElement(FullWindow, { id: "FullWindow" },
             React.createElement(TabGroup, { isMobile: isMobile }))));

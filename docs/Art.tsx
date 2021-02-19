@@ -98,16 +98,16 @@ function VideoElement(props) {
     if (props.isMobile) {
         return (
             <video id="slimeMobile" loop autoPlay height="180" width="340" preload="true">
-                <source src="SlimePreviewCropped.mp4" type="video/mp4" />
+                <source src="SlimePreviewCroppedCompress.mp4" type="video/mp4" />
                 Your browser does not support this preview video.Click to see the full experience.
             </video >    
         );
     }
     else return (
-        <video id="slimeMobile" loop height="270" width="500" preload="true"
+        <video id="slimeDesktop" loop height="270" width="500" preload="true"
             onMouseOver={event => event.target.play()}
             onMouseOut={event => event.target.pause()}>
-            <source src="SlimePreviewCropped.mp4" type="video/mp4" />
+            <source src="SlimePreviewCroppedCompress.mp4" type="video/mp4" />
             Your browser does not support this preview video. Click to see the full experience.
         </video>
     );

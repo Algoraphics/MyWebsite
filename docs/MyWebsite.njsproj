@@ -78,8 +78,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="Shine.png" />
-    <Content Include="SlimePreviewCropped.mp4" />
-    <Content Include="SlimePreview.mp4" />
+    <Content Include="SlimePreviewCroppedCompress.mp4" />
     <Content Include="styles.css">
       <SubType>Code</SubType>
     </Content>

@@ -213,14 +213,11 @@ function activateControls(doHide) {
 function activateDemo(demoActive) {
     var window = document.getElementById("window");
     var tabWindow = window.querySelector("#tabwindow");
-    //var tabButtons = window.querySelector("#tabuttons");
     if (demoActive) { 
         tabWindow.classList.add("window-translucent");
-        //tabButtons.classList.add("nothing");
     }
     else {
         tabWindow.classList.remove("window-translucent");
-        //tabButtons.classList.remove("nothing");
     }
 }
 
@@ -365,8 +362,8 @@ function WebsiteContainer() {
             window.removeEventListener('resize', handleResize)
         }
     })
+
     const isMobile = dimensions.width <= 1000;
-    //<MovingShader isMobile={isMobile} />
     return (
         <>
             <FullWindow id="FullWindow">
