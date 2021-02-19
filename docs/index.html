@@ -3,6 +3,7 @@
     <title>Ethan Rabb: The Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="Exbot.jpg" type="image/x-icon" />
     <script>
         // -- https://xemantic.github.io/shader-web-background/
         const shaderWebBackground = {}; (() => {
@@ -78,9 +79,9 @@
                             .5, s: () => g.cssWidth !== a.clientWidth || g.cssHeight !== a.clientHeight ? (g.resize(), !0) :
                                 !1, resize: () => {
                                     const e = window.devicePixelRatio || 1, m = a.clientWidth, n = a.clientHeight,
-                                    k = Math.floor(m * e), r = Math.floor(n * e); a.width = k; a.height = r; g.width = k; g.height = r; g.cssPixelRatio =
-                                        e; g.cssWidth = m; g.cssHeight = n; p.gl.viewport(0, 0, p.canvas.width, p.canvas.height); for (const q of w) q.g.l(k,
-                                            r)
+                                        k = Math.floor(m * e), r = Math.floor(n * e); a.width = k; a.height = r; g.width = k; g.height = r; g.cssPixelRatio =
+                                            e; g.cssWidth = m; g.cssHeight = n; p.gl.viewport(0, 0, p.canvas.width, p.canvas.height); for (const q of w) q.g.l(k,
+                                                r)
                                 }, texture: (e, m) => {
                                     {
                                         var n = p; const k = n.gl; m = m instanceof L ? m.g : m; k.activeTexture(k.TEXTURE0 +
@@ -141,15 +142,15 @@
             class W extends U {
                 constructor(a, b) { super(a, b); T(this, "EXT_color_buffer_float"); this.gl.getExtension("OES_texture_float_linear") } g(a,
                     b) {
-                        const c = this.gl; c.texImage2D(c.TEXTURE_2D, 0, c.RGBA16F, a, b, 0, c.RGBA, c.HALF_FLOAT,
-                            null)
+                    const c = this.gl; c.texImage2D(c.TEXTURE_2D, 0, c.RGBA16F, a, b, 0, c.RGBA, c.HALF_FLOAT,
+                        null)
                 }
             }
             function X(a) {
                 a = a.split(/\r?\n/); const b = a.length.toString().length; var c = []; a.forEach((d,
                     l) => {
-                        l = (l + 1).toString(); l = l.length >= b ? l : " ".repeat(b - l.length) + l; c.push(l + ": " + d +
-                            "\n")
+                    l = (l + 1).toString(); l = l.length >= b ? l : " ".repeat(b - l.length) + l; c.push(l + ": " + d +
+                        "\n")
                 }); return c.join("")
             } function M(a, b) { return new L(a.gl, () => { b(a.gl) }) }
             function N(a, b, c) {
@@ -201,7 +202,7 @@
                 }
             };
         })()
-//# sourceMappingURL=shader-web-background.min.js.map
+        //# sourceMappingURL=shader-web-background.min.js.map
     </script>
 
     <style>

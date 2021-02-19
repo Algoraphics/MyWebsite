@@ -34,6 +34,7 @@
   <ItemGroup>
     <Content Include="dist\app-bundle.js" />
     <Content Include="dist\app-bundle.js.map" />
+    <Content Include="Exbot.jpg" />
     <Content Include="Headshot.jpg" />
     <Content Include="MyApp.js">
       <SubType>Code</SubType>
