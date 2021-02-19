@@ -70,7 +70,7 @@ function AboutPage(props) {var introText = (
                 <h3>Do you have any other interests?</h3>
                 Definitely! I have plenty of non-programming hobbies and interests. 
                 <br/><br/><b>Things I do outside:</b> Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball
-                <br/><br/><b>Topics I could talk about for hours:</b> Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Robotics, Space
+                <br/><br/><b>Topics I could talk about for hours:</b> Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space
                 <h3>What's the best way to reach you?</h3>
                 The best way to reach me is by email, at <b>ethanrabb@gmail.com.</b> Let's chat!
             </AboutTextSection>
