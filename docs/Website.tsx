@@ -39,22 +39,6 @@ const traitMap = {
     "Art": ["black", "Art"]
 };
 
-const Button = styled.button`
-  background-color: ${(props) => theme[props.theme].default};
-  color: black;
-  outline: 0;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: ease background-color 250ms;
-  &:hover {
-    background-color: ${(props) => theme[props.theme].hover};
-  }
-  &:disabled {
-    cursor: default;
-    opacity: 0.7;
-  }
-`;
-
 function getWindow(topic, isMobile) {
     var text = "";
     if (topic === "AboutMe") {
@@ -277,7 +261,7 @@ const Window = styled.div`
   color: white;
   font-size: ${(props) => props.fontSize};
   padding: 30 10;
-  max-width: 75%
+  max-width: 75%;
   margin: auto;
   border-radius: ${(props) => props.radius};
   transition: 1s ease;

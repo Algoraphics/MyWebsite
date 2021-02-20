@@ -163,7 +163,7 @@ function AboutPage(props) {
         React.createElement("br", null),
         React.createElement("br", null),
         React.createElement("b", null, "Topics I could talk about for hours:"),
-        " Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Robotics, Space",
+        " Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space",
         React.createElement("h3", null, "What's the best way to reach you?"),
         "The best way to reach me is by email, at ",
         React.createElement("b", null, "ethanrabb@gmail.com."),
@@ -534,7 +534,6 @@ var traitMap = {
     "Demo": ["black", "Demo"],
     "Art": ["black", "Art"]
 };
-var Button = styled_components_1.default.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  background-color: ", ";\n  color: black;\n  outline: 0;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: ease background-color 250ms;\n  &:hover {\n    background-color: ", ";\n  }\n  &:disabled {\n    cursor: default;\n    opacity: 0.7;\n  }\n"], ["\n  background-color: ", ";\n  color: black;\n  outline: 0;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: ease background-color 250ms;\n  &:hover {\n    background-color: ", ";\n  }\n  &:disabled {\n    cursor: default;\n    opacity: 0.7;\n  }\n"])), function (props) { return theme[props.theme].default; }, function (props) { return theme[props.theme].hover; });
 function getWindow(topic, isMobile) {
     var text = "";
     if (topic === "AboutMe") {
@@ -557,16 +556,16 @@ function getWindow(topic, isMobile) {
 function TabWindow(props) {
     return (React.createElement(Window, { id: "tabwindow", fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "0%" : "2%" }, getWindow(props.traits[1], props.isMobile)));
 }
-var TabPage = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  max-width: ", ";\n  min-height: 100vh;\n"], ["\n  max-width: ", ";\n  min-height: 100vh;\n"])), function (props) { return props.maxWidth; });
-var Tab = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ", "\n"], ["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ",
+var TabPage = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  max-width: ", ";\n  min-height: 100vh;\n"], ["\n  max-width: ", ";\n  min-height: 100vh;\n"])), function (props) { return props.maxWidth; });
+var Tab = styled_components_1.default.button(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ", "\n"], ["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ",
     "\n"])), function (props) { return props.padding; }, function (props) { return props.border; }, function (_a) {
     var activeTab = _a.activeTab;
     return activeTab &&
         "\n    background: yellow;\n    color: black;\n    border: 0;\n  ";
 });
-var ControlButton = styled_components_1.default.button(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"], ["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"])));
-var ControlButtonGroup = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"], ["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"])));
-var ControlIcon = styled_components_1.default.img(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    padding: 5px;\n"], ["\n    padding: 5px;\n"])));
+var ControlButton = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"], ["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"])));
+var ControlButtonGroup = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"], ["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"])));
+var ControlIcon = styled_components_1.default.img(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 5px;\n"], ["\n    padding: 5px;\n"])));
 var controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mouse", "powerDown", "powerUp"];
 var controlMap = {
     visible: {
@@ -659,9 +658,9 @@ function TabGroup(props) {
         React.createElement(TabWindow, { traits: traitMap[activeTab], isMobile: props.isMobile })));
 }
 var types = ["About Me", "Work", "Art", "Demo"];
-var Window = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; }, function (props) { return props.radius; });
-var FullWindow = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 0 0 250 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 250 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
-var ShaderContainer = styled_components_1.default.div(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"], ["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"])));
+var Window = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%;\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%;\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; }, function (props) { return props.radius; });
+var FullWindow = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  padding: 0 0 250 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"], ["\n  padding: 0 0 250 0;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: 'Montserrat', sans-serif;\n  z-index: 1;\n"])));
+var ShaderContainer = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"], ["\n    width: 100vw;\n    height: 100vh;\n    position: fixed;\n    z-index: 0;\n"])));
 function MovingShader(props) {
     var _a = react_1.useState(400.0), time = _a[0], setTime = _a[1];
     var _b = react_1.useState(0.0), activate = _b[0], setActivate = _b[1];
@@ -724,7 +723,7 @@ var Website = /** @class */ (function (_super) {
     return Website;
 }(React.Component));
 exports.Website = Website;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8;
 
 
 /***/ }),
