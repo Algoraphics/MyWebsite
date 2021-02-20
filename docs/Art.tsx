@@ -15,6 +15,7 @@ const SlimePreview = styled.div`
     &:hover {
         border-color: yellow;
     }
+    height: fit-content;
 `
 
 const SlimeBoxDesktop = styled.div`
@@ -84,7 +85,7 @@ function FractalGallery(props) {
         }
         var path = "PsychoPics/Screenshot (" + i + ").png";
         var id = "fractalImg" + i;
-        images.push(<FractalImg key={i} id={id} src={path} height={props.isMobile ? "200" : "100"} />);
+        images.push(<FractalImg key={i} id={id} src={path} height={props.isMobile ? "160" : "100"} />);
     }
     return (
         <FractalBox>
@@ -96,7 +97,7 @@ function FractalGallery(props) {
 function VideoElement(props) {
     if (props.isMobile) {
         return (
-            <video id="slimeMobile" loop autoPlay height="180" width="340" preload="true">
+            <video id="slimeMobile" loop autoPlay height="150" width="285" preload="true">
                 <source src="SlimePreviewCroppedCompress.mp4" type="video/mp4" />
                 Your browser does not support this preview video.Click to see the full experience.
             </video >    

@@ -218,7 +218,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 var ArtSection = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"], ["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"])));
-var SlimePreview = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"], ["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n"])));
+var SlimePreview = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n    height: fit-content;\n"], ["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n    height: fit-content;\n"])));
 var SlimeBoxDesktop = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n    padding: 0 0 15 0;\n"], ["\n    display: flex;\n    padding: 0 0 15 0;\n"])));
 var SlimeBoxMobile = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"], ["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"])));
 var SlimeTextMobile = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 5 0 0 0;\n"], ["\n    padding: 5 0 0 0;\n"])));
@@ -252,13 +252,13 @@ function FractalGallery(props) {
         }
         var path = "PsychoPics/Screenshot (" + i + ").png";
         var id = "fractalImg" + i;
-        images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: props.isMobile ? "200" : "100" }));
+        images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: props.isMobile ? "160" : "100" }));
     }
     return (React.createElement(FractalBox, null, images));
 }
 function VideoElement(props) {
     if (props.isMobile) {
-        return (React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: "180", width: "340", preload: "true" },
+        return (React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: "150", width: "285", preload: "true" },
             React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }),
             "Your browser does not support this preview video.Click to see the full experience."));
     }
