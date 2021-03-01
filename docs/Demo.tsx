@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 const InfoIcon = styled.img`
-    height: 40px;
+    height: 25px;
     padding-bottom: 3px;
     vertical-align: middle;
 `
@@ -14,11 +14,9 @@ const DemoText = styled.div`
 function DemoPage(props) {
     return (
         <DemoText>
-            This is a little interactive demo of my "Bismuth" shader.
+            This is a little interactive demo of "Bismuth."
             <br />
             Hit the control panel buttons above to play around!
-            <br /><br/>
-            Hint: Try "Add complexity."
             <br /><br />
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
@@ -35,7 +33,7 @@ function DemoPage(props) {
             <br />
             <InfoIcon src="websiteIcons/PowerDownWhite.png" />&nbsp;&nbsp; Reduce complexity (if things get a bit slow)
             <br /><br />
-            See the "Art" tab to learn more about this visual.
+            See the <b>Art</b> tab to learn more about this visual.
         </DemoText>);
 }
 

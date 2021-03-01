@@ -36,9 +36,6 @@
     <Content Include="dist\app-bundle.js.map" />
     <Content Include="Exbot.jpg" />
     <Content Include="Headshot.jpg" />
-    <Content Include="MyApp.js">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="PsychoPics\Screenshot %281%29.png" />
     <Content Include="PsychoPics\Screenshot %2810%29.png" />
     <Content Include="PsychoPics\Screenshot %2811%29.png" />
@@ -69,16 +66,12 @@
     <Content Include="PsychoPics\Screenshot %287%29.png" />
     <Content Include="PsychoPics\Screenshot %288%29.png" />
     <Content Include="PsychoPics\Screenshot %289%29.png" />
-    <Content Include="sassystyles.scss">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="server.js" />
     <Content Include="index.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="Shine.png" />
     <Content Include="SlimePreviewCroppedCompress.mp4" />
     <Content Include="styles.css">
       <SubType>Code</SubType>
@@ -108,10 +101,10 @@
     <TypeScriptCompile Include="Art.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Demo.tsx">
+    <TypeScriptCompile Include="ControlPanel.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Shader.tsx">
+    <TypeScriptCompile Include="Demo.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Work.tsx">

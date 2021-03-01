@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="Exbot.jpg" type="image/x-icon" />
     <script>
+        // Hardcoded here because we need to set the z-index manually for github pages
         // -- https://xemantic.github.io/shader-web-background/
         const shaderWebBackground = {}; (() => {
             'use strict'; const t = (a, b) => {
@@ -350,7 +351,6 @@
         var minDimension;
         var time = performance.now() / 1000 + 50.;
 
-        // mouse coordinates taken from from the mousemove event
         var mouseX;
         var mouseY;
         var activate = 0.;
@@ -408,7 +408,6 @@
             }
         });
 
-        // mouse coordinates relative to the shader and normalized, see below
         var stMouseX;
         var stMouseY;
 
@@ -417,8 +416,6 @@
                 minDimension = Math.min(width, height);
             },
             onInit: (ctx) => {
-                // initially let's put mouse in the center of the screen
-                // as long as the shader covers the whole screen it will work
                 mouseX = ctx.cssWidth / 2.;
                 mouseY = ctx.cssHeight / 2.;
                 timeAdd = 0.5;
@@ -429,11 +426,8 @@
                 }
                 time = time + (timeAdd / 50);
 
-                // What would happen in "mouse" example per pixel in GLSL, here
-                // will happen once per frame
                 stMouseX = ctx.toShaderX(mouseX) / ctx.width;
                 stMouseY = (ctx.toShaderY(mouseY) / ctx.height);
-                //console.log("MouseX is " + mouseX + " and ctx.ToShaderX(mouseX) is " + ctx.toShaderX(mouseX) + " and ctx.width is " + ctx.width + " so stMouseX is " + stMouseX)
             },
             shaders: {
                 image: {

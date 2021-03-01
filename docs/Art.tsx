@@ -178,7 +178,7 @@ export class Art extends React.Component {
                     <br /><br />
                     Click the link in their name to see the full VR app with both visualizers and some other small works.
                     <br /><br />
-                    An interactive Bismuth preview is available on the "Demo" tab, or you can browse the gallery below to see samples of both visualizers. <b> Click to Zoom! </b>
+                    An interactive Bismuth preview is available on the <b>Demo</b> tab, or you can browse the gallery below to see samples of both visualizers. <b> Click to Zoom! </b>
                     <br /><br />
                 </FractalText>
                 <FractalGallery isMobile={this.props.isMobile}/>
