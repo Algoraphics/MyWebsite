@@ -217,7 +217,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var ArtSection = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"], ["\n    display: flex;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"])));
+var ArtSection = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: block;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"], ["\n    display: block;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"])));
 var SlimePreview = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n    height: fit-content;\n"], ["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n    height: fit-content;\n"])));
 var SlimeBoxDesktop = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n    padding: 0 0 15 0;\n"], ["\n    display: flex;\n    padding: 0 0 15 0;\n"])));
 var SlimeBoxMobile = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"], ["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"])));
@@ -277,10 +277,6 @@ var Art = /** @class */ (function (_super) {
             React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
                 React.createElement(VideoElement, { isMobile: this.props.isMobile }))));
         var slimeText = (React.createElement("div", null,
-            React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" }, "Slime Freighter"),
-            " is an immersive VR music video set to \"Side of the Road\" by Big Black Delta.",
-            React.createElement("br", null),
-            React.createElement("br", null),
             "I wanted to give viewers a sense of scale with this experience, beginning with a very grounded visual of \"traveling down the road\" which gradually increases in scope and becomes more surreal.",
             React.createElement("br", null),
             React.createElement("br", null),
@@ -293,7 +289,18 @@ var Art = /** @class */ (function (_super) {
             React.createElement(SlimeTextMobile, null, slimeText)));
         return (React.createElement(ArtSection, null,
             "My main creative work has been these audio-visual experiences using various WebXR technologies. I love that users can immerse themselves to their comfort level from anywhere.",
+            React.createElement("br", null),
+            React.createElement("br", null),
+            "If you have a VR headset, you can get them running in Firefox. See ",
+            React.createElement("a", { href: "https://aframe.io/", target: "_blank" },
+                React.createElement("u", null, "aframe.io")),
+            " for more details.",
             React.createElement("h2", null, "Slime Freighter"),
+            React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
+                React.createElement("u", null, "Slime Freighter")),
+            " is an immersive VR music video set to \"Side of the Road\" by Big Black Delta.",
+            React.createElement("br", null),
+            React.createElement("br", null),
             this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop,
             "Assets in this video were handmade using GLSL shaders and WebGL geometry, and their placement is procedurally generated in Javascript, so each experience is a bit different.",
             React.createElement("br", null),
@@ -304,7 +311,8 @@ var Art = /** @class */ (function (_super) {
                 "A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.",
                 React.createElement("br", null),
                 React.createElement("br", null),
-                React.createElement("a", { href: "http://www.psycho-bubbles.glitch.me", target: "_blank" }, "Opal & Bismuth"),
+                React.createElement("a", { href: "http://www.psycho-bubbles.glitch.me", target: "_blank" },
+                    React.createElement("u", null, "Opal & Bismuth")),
                 " are my attempt to create a visualizer that will always show something new. They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.",
                 React.createElement("br", null),
                 React.createElement("br", null),
@@ -358,6 +366,14 @@ var InfoIcon = styled_components_1.default.img(templateObject_1 || (templateObje
 var DemoText = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    padding: 50 0 0 0;\n"], ["\n    padding: 50 0 0 0;\n"])));
 function DemoPage(props) {
     return (React.createElement(DemoText, null,
+        "This is a little interactive demo of my \"Bismuth\" shader.",
+        React.createElement("br", null),
+        "Hit the control panel buttons above to play around!",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "Hint: Try \"Add complexity.\"",
+        React.createElement("br", null),
+        React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/VisibleWhite.png" }),
         "\u00A0\u00A0 ",
         React.createElement("b", null, "Show/Hide this information panel"),
@@ -379,7 +395,10 @@ function DemoPage(props) {
         "\u00A0\u00A0 Add complexity (the coolest button)",
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/PowerDownWhite.png" }),
-        "\u00A0\u00A0 Reduce complexity (helps with framerate)"));
+        "\u00A0\u00A0 Reduce complexity (if things get a bit slow)",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "See the \"Art\" tab to learn more about this visual."));
 }
 var Demo = /** @class */ (function (_super) {
     __extends(Demo, _super);
@@ -563,7 +582,7 @@ var Tab = styled_components_1.default.button(templateObject_2 || (templateObject
     return activeTab &&
         "\n    background: yellow;\n    color: black;\n    border: 0;\n  ";
 });
-var ControlButton = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"], ["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: black;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"])));
+var ControlButton = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: #454545;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"], ["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: #454545;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"])));
 var ControlButtonGroup = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"], ["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"])));
 var ControlIcon = styled_components_1.default.img(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 5px;\n"], ["\n    padding: 5px;\n"])));
 var controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mouse", "powerDown", "powerUp"];
@@ -3809,7 +3828,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "a {\n  text-decoration: none; }\n\na:link {\n  color: yellow; }\n\na:visited {\n  color: goldenrod; }\n\niframe {\n  display: block;\n  border: none;\n  height: 80vh;\n  width: 100%; }\n\n.fractal-zoom {\n  transform: scale(6); }\n\n.fractal-mobile-zoom {\n  transform: scale(3); }\n\n.show-controls {\n  z-index: 2;\n  padding: 37px 0px 0px 0px !important;\n  transform: scale(0.75) !important; }\n\n.show-button {\n  padding: 5px; }\n\n.tab-buttons {\n  position: fixed;\n  left: 50%;\n  right: 50%;\n  z-index: 5;\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center; }\n\n.WhiteSquare {\n  color: black;\n  padding: 20px;\n  display: inline-block;\n  background-color: red;\n  position: relative;\n  transition: all 2s ease; }\n\n.active-stretch {\n  background-color: yellow;\n  width: 800px; }\n\n.active-square {\n  animation-name: example;\n  animation-duration: 10s;\n  animation-iteration-count: infinite; }\n\n.window-translucent {\n  opacity: 0 !important; }\n\n@keyframes example {\n  0% {\n    background-color: red;\n    left: 0px;\n    top: 0px; }\n  25% {\n    background-color: yellow;\n    left: 800px;\n    top: 0px; }\n  50% {\n    background-color: blue;\n    left: 800px;\n    top: 500px; }\n  75% {\n    background-color: green;\n    left: 0px;\n    top: 500px; }\n  100% {\n    background-color: red;\n    left: 0px;\n    top: 0px; } }\n", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAAA;EACI,qBAAqB,EAAA;;AAGzB;EACI,aAAa,EAAA;;AAGjB;EACI,gBAAgB,EAAA;;AAGpB;EACI,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,WAAW,EAAA;;AAGf;EACI,mBAAmB,EAAA;;AAGvB;EACI,mBAAmB,EAAA;;AAGvB;EACI,UAAU;EACV,oCAAoC;EACpC,iCAAiC,EAAA;;AAGrC;EACI,YAAY,EAAA;;AAGhB;EACI,eAAe;EACf,SAAS;EACT,UAAU;EACV,UAAU;EACV,kBAAkB;EAClB,aAAa;EACb,iBAAiB;EACjB,uBAAuB,EAAA;;AAG3B;EACI,YAAY;EACZ,aAAa;EACb,qBAAqB;EACrB,qBAAqB;EACrB,kBAAkB;EAClB,uBAAuB,EAAA;;AAG3B;EACI,wBAAwB;EACxB,YAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uBAAuB;EACvB,mCAAmC,EAAA;;AAGvC;EACI,qBAAqB,EAAA;;AAGzB;EACI;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA;EAGZ;IACI,wBAAwB;IACxB,WAAW;IACX,QAAQ,EAAA;EAGZ;IACI,sBAAsB;IACtB,WAAW;IACX,UAAU,EAAA;EAGd;IACI,uBAAuB;IACvB,SAAS;IACT,UAAU,EAAA;EAGd;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA,EAAA","sourcesContent":["a {\r\n    text-decoration: none;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.fractal-zoom {\r\n    transform: scale(6);\r\n}\r\n\r\n.fractal-mobile-zoom {\r\n    transform: scale(3);\r\n}\r\n\r\n.show-controls {\r\n    z-index: 2;\r\n    padding: 37px 0px 0px 0px !important;\r\n    transform: scale(0.75) !important;\r\n}\r\n\r\n.show-button {\r\n    padding: 5px;\r\n}\r\n\r\n.tab-buttons {\r\n    position: fixed;\r\n    left: 50%;\r\n    right: 50%;\r\n    z-index: 5;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    opacity: 0 !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "a {\n  text-decoration: none; }\n\nu:hover {\n  font-weight: bold; }\n\na:link {\n  color: yellow; }\n\na:visited {\n  color: goldenrod; }\n\niframe {\n  display: block;\n  border: none;\n  height: 80vh;\n  width: 100%; }\n\n.fractal-zoom {\n  transform: scale(6); }\n\n.fractal-mobile-zoom {\n  transform: scale(3); }\n\n.show-controls {\n  z-index: 2;\n  padding: 37px 0px 0px 0px !important;\n  transform: scale(0.75) !important; }\n\n.show-button {\n  padding: 5px; }\n\n.tab-buttons {\n  position: fixed;\n  left: 50%;\n  right: 50%;\n  z-index: 5;\n  text-align: center;\n  display: flex;\n  flex-wrap: nowrap;\n  justify-content: center; }\n\n.WhiteSquare {\n  color: black;\n  padding: 20px;\n  display: inline-block;\n  background-color: red;\n  position: relative;\n  transition: all 2s ease; }\n\n.active-stretch {\n  background-color: yellow;\n  width: 800px; }\n\n.active-square {\n  animation-name: example;\n  animation-duration: 10s;\n  animation-iteration-count: infinite; }\n\n.window-translucent {\n  opacity: 0 !important; }\n\n@keyframes example {\n  0% {\n    background-color: red;\n    left: 0px;\n    top: 0px; }\n  25% {\n    background-color: yellow;\n    left: 800px;\n    top: 0px; }\n  50% {\n    background-color: blue;\n    left: 800px;\n    top: 500px; }\n  75% {\n    background-color: green;\n    left: 0px;\n    top: 500px; }\n  100% {\n    background-color: red;\n    left: 0px;\n    top: 0px; } }\n", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAAA;EACI,qBAAqB,EAAA;;AAGzB;EACI,iBAAiB,EAAA;;AAGrB;EACI,aAAa,EAAA;;AAGjB;EACI,gBAAgB,EAAA;;AAGpB;EACI,cAAc;EACd,YAAY;EACZ,YAAY;EACZ,WAAW,EAAA;;AAGf;EACI,mBAAmB,EAAA;;AAGvB;EACI,mBAAmB,EAAA;;AAGvB;EACI,UAAU;EACV,oCAAoC;EACpC,iCAAiC,EAAA;;AAGrC;EACI,YAAY,EAAA;;AAGhB;EACI,eAAe;EACf,SAAS;EACT,UAAU;EACV,UAAU;EACV,kBAAkB;EAClB,aAAa;EACb,iBAAiB;EACjB,uBAAuB,EAAA;;AAG3B;EACI,YAAY;EACZ,aAAa;EACb,qBAAqB;EACrB,qBAAqB;EACrB,kBAAkB;EAClB,uBAAuB,EAAA;;AAG3B;EACI,wBAAwB;EACxB,YAAY,EAAA;;AAGhB;EACI,uBAAuB;EACvB,uBAAuB;EACvB,mCAAmC,EAAA;;AAGvC;EACI,qBAAqB,EAAA;;AAGzB;EACI;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA;EAGZ;IACI,wBAAwB;IACxB,WAAW;IACX,QAAQ,EAAA;EAGZ;IACI,sBAAsB;IACtB,WAAW;IACX,UAAU,EAAA;EAGd;IACI,uBAAuB;IACvB,SAAS;IACT,UAAU,EAAA;EAGd;IACI,qBAAqB;IACrB,SAAS;IACT,QAAQ,EAAA,EAAA","sourcesContent":["a {\r\n    text-decoration: none;\r\n}\r\n\r\nu:hover {\r\n    font-weight: bold;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.fractal-zoom {\r\n    transform: scale(6);\r\n}\r\n\r\n.fractal-mobile-zoom {\r\n    transform: scale(3);\r\n}\r\n\r\n.show-controls {\r\n    z-index: 2;\r\n    padding: 37px 0px 0px 0px !important;\r\n    transform: scale(0.75) !important;\r\n}\r\n\r\n.show-button {\r\n    padding: 5px;\r\n}\r\n\r\n.tab-buttons {\r\n    position: fixed;\r\n    left: 50%;\r\n    right: 50%;\r\n    z-index: 5;\r\n    text-align: center;\r\n    display: flex;\r\n    flex-wrap: nowrap;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    opacity: 0 !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

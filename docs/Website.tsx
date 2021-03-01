@@ -106,7 +106,7 @@ const ControlButton = styled.button`
     border: 1px solid;
     background-size: contain;
     background-color: #454545;
-    border-color: black;
+    border-color: #454545;
     border-top-width: 2px;
     border-top-color: #454545;
     border-bottom-width: 2px;

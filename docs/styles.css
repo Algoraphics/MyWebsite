@@ -2,6 +2,10 @@ a {
     text-decoration: none;
 }
 
+u:hover {
+    font-weight: bold;
+}
+
 a:link {
     color: yellow;
 }

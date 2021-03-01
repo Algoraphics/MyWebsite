@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 const ArtSection = styled.div`
-    display: flex;
+    display: block;
     flex-justify: center;
     flex-direction: column;
     padding: 10px;
@@ -131,9 +131,6 @@ export class Art extends React.Component {
         );
         var slimeText = (
             <div>
-                <a href="http://www.slime-freighter.glitch.me" target="_blank">Slime Freighter</a> is
-                    an immersive VR music video set to "Side of the Road" by Big Black Delta.
-                <br /><br />
                     I wanted to give viewers a sense of scale with this experience, beginning with a very grounded
                     visual of "traveling down the road" which gradually increases in scope and becomes more surreal.
                 <br /><br />
@@ -160,7 +157,12 @@ export class Art extends React.Component {
             <ArtSection>
                 My main creative work has been these audio-visual experiences using various WebXR technologies.
                 I love that users can immerse themselves to their comfort level from anywhere.
+                <br /><br />
+                If you have a VR headset, you can get them running in Firefox. See <a href="https://aframe.io/" target="_blank"><u>aframe.io</u></a> for more details.
                 <h2>Slime Freighter</h2>
+                <a href="http://www.slime-freighter.glitch.me" target="_blank"><u>Slime Freighter</u></a> is
+                    an immersive VR music video set to "Side of the Road" by Big Black Delta.
+                <br /><br />
                 {this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop}
                 Assets in this video were handmade using GLSL shaders and WebGL geometry,
                 and their placement is procedurally generated in Javascript, so each experience is a bit different.
@@ -171,7 +173,7 @@ export class Art extends React.Component {
                 <FractalText>
                     A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.
                     <br /><br />
-                    <a href="http://www.psycho-bubbles.glitch.me" target="_blank">Opal & Bismuth</a> are my attempt to create a visualizer that will always show something new. 
+                    <a href="http://www.psycho-bubbles.glitch.me" target="_blank"><u>Opal & Bismuth</u></a> are my attempt to create a visualizer that will always show something new. 
                     They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.
                     <br /><br />
                     Click the link in their name to see the full VR app with both visualizers and some other small works.

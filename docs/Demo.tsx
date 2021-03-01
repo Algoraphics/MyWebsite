@@ -14,6 +14,12 @@ const DemoText = styled.div`
 function DemoPage(props) {
     return (
         <DemoText>
+            This is a little interactive demo of my "Bismuth" shader.
+            <br />
+            Hit the control panel buttons above to play around!
+            <br /><br/>
+            Hint: Try "Add complexity."
+            <br /><br />
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
             <InfoIcon src="websiteIcons/RewindWhite.png" />
@@ -27,7 +33,9 @@ function DemoPage(props) {
             <br />
             <InfoIcon src="websiteIcons/PowerUpWhite.png" />&nbsp;&nbsp; Add complexity (the coolest button)
             <br />
-            <InfoIcon src="websiteIcons/PowerDownWhite.png" />&nbsp;&nbsp; Reduce complexity (helps with framerate)
+            <InfoIcon src="websiteIcons/PowerDownWhite.png" />&nbsp;&nbsp; Reduce complexity (if things get a bit slow)
+            <br /><br />
+            See the "Art" tab to learn more about this visual.
         </DemoText>);
 }
 
