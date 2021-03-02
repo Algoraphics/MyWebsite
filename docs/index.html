@@ -424,7 +424,12 @@
                 if (activate > 0. && activate <= 1.) {
                     activate += 0.002;
                 }
-                time = time + (timeAdd / 50);
+                var totalAdd = timeAdd;
+                // Mobile doesn't seem to run as fast so we speed up the visual
+                if (window.innerWidth <= 1000) {
+                    totalAdd *= 2.;
+                }
+                time = time + (totalAdd / 50);
 
                 stMouseX = ctx.toShaderX(mouseX) / ctx.width;
                 stMouseY = (ctx.toShaderY(mouseY) / ctx.height);

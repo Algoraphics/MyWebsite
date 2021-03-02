@@ -40,7 +40,7 @@ function AboutPage(props) {var introText = (
                         I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics.
                         I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.
                 <br /><br />
-                        Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products,
+                        Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products and services,
                         especially if they help make the world a better place to live in.
                 <br /><br />
                         For a full Resume and more detail about my work, go to the <b>Work</b> tab.
