@@ -9,15 +9,16 @@ const InfoIcon = styled.img`
 
 const DemoText = styled.div`
     padding: 50 0 0 0;
+    max-width: 680px;
 `
 
 function DemoPage(props) {
     return (
         <DemoText>
-            This is a little interactive demo of "Bismuth."
-            <br />
-            Hit the control panel buttons above to play around!
+            This is a little interactive demo of "Bismuth." Hit the control buttons above to play around!
             <br /><br />
+            If you don't see anything, your device may not be able to run this visual. You can still hit <b>Add complexity</b> to see it, but the website may lag.
+            <br/><br/>
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
             <InfoIcon src="websiteIcons/RewindWhite.png" />

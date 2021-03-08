@@ -62,17 +62,17 @@ function AboutPage(props) {var introText = (
         );
         var additional = (
             <AboutTextSection>
-                <h2>Why is the background shifting?</h2>
+                <h2>What's going on with the background?</h2>
                 In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! 
                 You can play around with it on the <b>Demo</b> tab, or find more examples and info on the <b>Art</b> tab.
-                <br /><br />
+                <br/><br/>
                 I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer. 
                 <h2>Do you have any other interests?</h2>
                 Definitely! I have plenty of non-programming hobbies and interests. 
                 <br/><br/><b>Things I do outside:</b> Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball
                 <br/><br/><b>Topics I could talk about for hours:</b> Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space
                 <h2>What's the best way to reach you?</h2>
-                The best way to reach me is by email, at <b>ethanrabb@gmail.com.</b> Let's chat!
+                The best way to reach me is at <b>ethanrabb@gmail.com.</b> Let's chat!
             </AboutTextSection>
         );
     return (

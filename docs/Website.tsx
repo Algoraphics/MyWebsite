@@ -14,10 +14,6 @@ var React = require('react');
 const FullWindow = styled.div`
   padding: 0 0 250 0;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Montserrat', sans-serif;
   z-index: 1;
 `
 

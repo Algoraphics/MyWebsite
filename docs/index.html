@@ -353,6 +353,7 @@
         }
     </script>
     <script>
+
         var minDimension;
         var time = performance.now() / 1000 + 50.;
 
@@ -371,6 +372,9 @@
             if (target instanceof HTMLButtonElement || target instanceof HTMLImageElement) {
                 if (target.innerText === "Demo") {
                     if (activate === 0.) {
+                        if (powerLevel <= -1.1) {
+                            powerLevel = -1.
+                        }
                         activate = 0.01;
                     }
                 }
@@ -412,6 +416,42 @@
                 }
             }
         });
+
+        // FPS Checker (occasionally calculates FPS and lowers the power level if it's really bad)
+        var fpsCheck = false;
+        var times = [];
+        let fps = 60;
+        let checkCounter = 300;
+
+        function refreshLoop() {
+            window.requestAnimationFrame(() => {
+                checkCounter++;
+                if (checkCounter > 420) {
+                    fpsCheck = false;
+                }
+                else if (checkCounter > 300) {
+                    const now = performance.now();
+                    while (times.length > 0 && times[0] <= now - 1000) {
+                        fpsCheck = true;
+                        times.shift();
+                    }
+                    times.push(now);
+                    fps = times.length;
+                    if (fpsCheck && !activate && fps < 25 && fps > 3) {
+                        console.log("Low FPS of " + fps + ". Lowering power.");
+                        powerLevel -= 0.5;
+                        fpsCheck = false;
+                    }
+                }
+                if (!fpsCheck) {
+                    checkCounter = 0;
+                    times = [];
+                }
+                refreshLoop();
+            });
+        }
+
+        refreshLoop();
 
         var stMouseX;
         var stMouseY;

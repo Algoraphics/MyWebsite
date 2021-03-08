@@ -24,8 +24,8 @@ const ControlButtonGroup = styled.div`
     position: fixed;
     left: 50%;
     right: 50%;
+    opacity: 0;
     display: flex;
-    flex-wrap: nowrap;
     justify-content: center;
     transition: all 0.5s ease;
     transform: scale(0.25);
