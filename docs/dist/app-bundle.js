@@ -287,7 +287,6 @@ function FractalGallery(props) {
     return (React.createElement(FractalBox, null, images));
 }
 function setShow(doShow) {
-    console.log("Moused event is " + doShow);
     var previewImg = document.getElementById("previewImg");
     if (doShow) {
         previewImg.style.display = "block";
@@ -306,7 +305,7 @@ function VideoElement(props) {
             React.createElement(PreviewImgMobile, { id: "previewImg", src: "SlimePreviewImg.JPG", height: videoDimensions.mobile.height, width: "280", title: "Waiting for video to load" })));
     }
     else
-        return (React.createElement("div", { onMouseEnter: () => setShow(false), onMouseLeave: () => setShow(true) },
+        return (React.createElement("div", null,
             React.createElement("video", { id: "slimeDesktop", loop: true, height: videoDimensions.desktop.height, width: videoDimensions.desktop.width, preload: "true", onMouseOver: event => event.target.play(), onMouseOut: event => event.target.pause() },
                 React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" })),
             React.createElement(PreviewImg, { id: "previewImg", src: "SlimePreviewImg.JPG", height: "260", width: videoDimensions.desktop.width, title: "Waiting for video to load" })));

@@ -104,7 +104,6 @@ function FractalGallery(props) {
 }
 
 function setShow(doShow) {
-    console.log("Moused event is " + doShow);
     var previewImg = document.getElementById("previewImg");
     if (doShow) {
         previewImg.style.display = "block";
@@ -129,7 +128,7 @@ function VideoElement(props) {
         );
     }
     else return (
-        <div onMouseEnter={() => setShow(false)} onMouseLeave={() => setShow(true)} >
+        <div>
             <video id="slimeDesktop" loop height={videoDimensions.desktop.height} width={videoDimensions.desktop.width} preload="true"
                 onMouseOver={event => event.target.play()}
                 onMouseOut={event => event.target.pause()}>
