@@ -21,7 +21,7 @@ const Window = styled.div`
   background-color: #212121;
   color: white;
   font-size: ${(props) => props.fontSize};
-  padding: 30 10;
+  padding: 40 25;
   max-width: 75%;
   margin: auto;
   border-radius: ${(props) => props.radius};
@@ -37,6 +37,8 @@ const TabPage = styled.div`
 
 const Tab = styled.button`
   padding: ${(props) => props.padding};
+  font-size: 15px;
+  font-weight: bold;
   cursor: pointer;
   border-width: thin;
   border-style: ${(props) => props.border};
@@ -123,7 +125,7 @@ function TabGroup(props) {
             <div id="tabuttons" className="tab-buttons">
                 {tabs.map((type) => (
                     <Tab
-                        padding={props.isMobile ? "10 15" : "10 30"}
+                        padding={props.isMobile ? "8 12" : "8 20"}
                         border={props.isMobile ? "solid" : "unset"}
                         key={type}
                         activeTab={activeTab === type}

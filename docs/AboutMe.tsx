@@ -72,7 +72,9 @@ function AboutPage(props) {var introText = (
                 <br/><br/><b>Things I do outside:</b> Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball
                 <br/><br/><b>Topics I could talk about for hours:</b> Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space
                 <h2>What's the best way to reach you?</h2>
-                The best way to reach me is at <b>ethanrabb@gmail.com.</b> Let's chat!
+                The best way to reach me is at <b>ethanrabb@gmail.com.</b> 
+                <br /><br />
+                Let's chat!
             </AboutTextSection>
         );
     return (

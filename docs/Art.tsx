@@ -5,7 +5,6 @@ const ArtSection = styled.div`
     display: block;
     flex-justify: center;
     flex-direction: column;
-    padding: 10px;
 `
 
 const SlimePreview = styled.div`
@@ -16,6 +15,7 @@ const SlimePreview = styled.div`
         border-color: yellow;
     }
     height: fit-content;
+    width: ${(props) => props.width};
 `
 
 const SlimeBoxDesktop = styled.div`
@@ -58,6 +58,15 @@ const FractalImg = styled.img`
   transition: transform 0.5s ease-in-out;
 `
 
+const PreviewImg = styled.img`
+  margin-top: -270;
+  margin-right: -450;
+`
+
+const PreviewImgMobile = styled.img`
+  margin-top: -150;
+`
+
 function FractalGallery(props) {
     var activeId = "none";
     const targetProp = props.isMobile ? "fractal-mobile-zoom" : "fractal-zoom";
@@ -67,7 +76,7 @@ function FractalGallery(props) {
             var prevImg = document.getElementById(activeId);
             prevImg.classList.remove(targetProp);
         }
-        if (target instanceof HTMLImageElement && target.id.length > 0) {
+        if (target instanceof HTMLImageElement && target.id.includes("fractalImg")) {
             if (target.id === activeId) {
                 activeId = "none";
             }
@@ -94,22 +103,40 @@ function FractalGallery(props) {
     );
 }
 
+function setShow(doShow) {
+    console.log("Moused event is " + doShow);
+    var previewImg = document.getElementById("previewImg");
+    if (doShow) {
+        previewImg.style.display = "block";
+    }
+    else {
+        previewImg.style.display = "none";
+    }
+}
+
+const videoDimensions = { mobile: { width: "285", height: "150" }, desktop: {width : "500", height : "270"}}
+
 function VideoElement(props) {
     if (props.isMobile) {
         return (
-            <video id="slimeMobile" loop autoPlay height="150" width="285" preload="true">
-                <source src="SlimePreviewCroppedCompress.mp4" type="video/mp4" />
-                Your browser does not support this preview video.Click to see the full experience.
-            </video >    
+            <>
+                <video id="slimeMobile" loop autoPlay height={videoDimensions.mobile.height} width={videoDimensions.mobile.width} preload="true">
+                    <source src="SlimePreviewCroppedCompress.mp4" type="video/mp4" />
+                    Your browser does not support this preview video.Click to see the full experience.
+                </video >
+                <PreviewImgMobile id="previewImg" src="SlimePreviewImg.JPG" height={videoDimensions.mobile.height} width="280" title="Waiting for video to load" />
+            </>
         );
     }
     else return (
-        <video id="slimeDesktop" loop height="270" width="500" preload="true"
-            onMouseOver={event => event.target.play()}
-            onMouseOut={event => event.target.pause()}>
-            <source src="SlimePreviewCroppedCompress.mp4" type="video/mp4" />
-            Your browser does not support this preview video. Click to see the full experience.
-        </video>
+        <div onMouseEnter={() => setShow(false)} onMouseLeave={() => setShow(true)} >
+            <video id="slimeDesktop" loop height={videoDimensions.desktop.height} width={videoDimensions.desktop.width} preload="true"
+                onMouseOver={event => event.target.play()}
+                onMouseOut={event => event.target.pause()}>
+                <source src="SlimePreviewCroppedCompress.mp4" type="video/mp4" />
+            </video>
+            <PreviewImg id="previewImg" src="SlimePreviewImg.JPG" height="260" width={videoDimensions.desktop.width} title="Waiting for video to load" />
+        </div>
     );
         
 }
@@ -123,9 +150,9 @@ export class Art extends React.Component {
 
     render() {
         var slimePreview = (
-            <SlimePreview>
+            <SlimePreview width={this.props.isMobile ? "285" : "500"}>
                 <a href="http://www.slime-freighter.glitch.me" target="_blank">
-                    <VideoElement isMobile={this.props.isMobile}/>
+                    <VideoElement isMobile={this.props.isMobile} />
                 </a>
             </SlimePreview>
         );

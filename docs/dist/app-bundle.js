@@ -95,32 +95,34 @@
 
 "use strict";
 
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var DeskFace = styled_components_1.default.img(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    padding: 10px 20px 10px 10px;\n    border-radius: 50%;\n    float: left;\n"], ["\n    padding: 10px 20px 10px 10px;\n    border-radius: 50%;\n    float: left;\n"])));
-var MobileFace = styled_components_1.default.img(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    padding: 10px 20px 10px 10px;\n    border-radius: 50%;\n    margin: 0 auto;\n    display: block;\n"], ["\n    padding: 10px 20px 10px 10px;\n    border-radius: 50%;\n    margin: 0 auto;\n    display: block;\n"])));
-var AboutTextSection = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    padding: 5 5 0 5;\n"], ["\n    padding: 5 5 0 5;\n"])));
-var MobileTextSection = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    flex-direction: column;\n    justify-content: center;\n    flex-wrap: wrap;\n    flex: 1 1 auto;\n"], ["\n    flex-direction: column;\n    justify-content: center;\n    flex-wrap: wrap;\n    flex: 1 1 auto;\n"])));
-var MobileWrap = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n"], ["\n"])));
-var TopLevel = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    padding: 0 0 30 0;\n"], ["\n    padding: 0 0 30 0;\n"])));
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const DeskFace = styled_components_1.default.img `
+    padding: 10px 20px 10px 10px;
+    border-radius: 50%;
+    float: left;
+`;
+const MobileFace = styled_components_1.default.img `
+    padding: 10px 20px 10px 10px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+`;
+const AboutTextSection = styled_components_1.default.div `
+    padding: 5 5 0 5;
+`;
+const MobileTextSection = styled_components_1.default.div `
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+`;
+const MobileWrap = styled_components_1.default.div `
+`;
+const TopLevel = styled_components_1.default.div `
+    padding: 0 0 30 0;
+`;
 function AboutPage(props) {
     var introText = (React.createElement(AboutTextSection, null,
         "Hi!",
@@ -167,23 +169,22 @@ function AboutPage(props) {
         React.createElement("h2", null, "What's the best way to reach you?"),
         "The best way to reach me is at ",
         React.createElement("b", null, "ethanrabb@gmail.com."),
-        " Let's chat!"));
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "Let's chat!"));
     return (React.createElement(TopLevel, null,
         props.isMobile ? aboutIntroMobile : aboutIntroDesktop,
         additional));
 }
-var AboutMe = /** @class */ (function (_super) {
-    __extends(AboutMe, _super);
-    function AboutMe(props) {
-        return _super.call(this, props) || this;
+class AboutMe extends React.Component {
+    constructor(props) {
+        super(props);
     }
-    AboutMe.prototype.render = function () {
+    render() {
         return (React.createElement(AboutPage, { isMobile: this.props.isMobile }));
-    };
-    return AboutMe;
-}(React.Component));
+    }
+}
 exports.AboutMe = AboutMe;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
 
 
 /***/ }),
@@ -197,45 +198,74 @@ var templateObject_1, templateObject_2, templateObject_3, templateObject_4, temp
 
 "use strict";
 
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var ArtSection = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: block;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"], ["\n    display: block;\n    flex-justify: center;\n    flex-direction: column;\n    padding: 10px;\n"])));
-var SlimePreview = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n    height: fit-content;\n"], ["\n    display: inline-block;\n    border-style: solid;\n    border-color: #212121;\n    &:hover {\n        border-color: yellow;\n    }\n    height: fit-content;\n"])));
-var SlimeBoxDesktop = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    display: flex;\n    padding: 0 0 15 0;\n"], ["\n    display: flex;\n    padding: 0 0 15 0;\n"])));
-var SlimeBoxMobile = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"], ["\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 0 0 10 0;\n"])));
-var SlimeTextMobile = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    padding: 5 0 0 0;\n"], ["\n    padding: 5 0 0 0;\n"])));
-var SlimeTextDesktop = styled_components_1.default.div(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n    display: inline-block;\n    padding: 10 10 10 30;\n    vertical-align: top;\n    width: 50%;\n"], ["\n    display: inline-block;\n    padding: 10 10 10 30;\n    vertical-align: top;\n    width: 50%;\n"])));
-var FractalText = styled_components_1.default.div(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n    display: inline-block;\n"], ["\n    display: inline-block;\n"])));
-var FractalBox = styled_components_1.default.div(templateObject_8 || (templateObject_8 = __makeTemplateObject(["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"], ["\n  padding: 10px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n"])));
-var FractalImg = styled_components_1.default.img(templateObject_9 || (templateObject_9 = __makeTemplateObject(["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 0.5s ease-in-out;\n"], ["\n  flex: 0 9%;\n  margin-bottom: 2%;\n  transition: transform 0.5s ease-in-out;\n"])));
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const ArtSection = styled_components_1.default.div `
+    display: block;
+    flex-justify: center;
+    flex-direction: column;
+`;
+const SlimePreview = styled_components_1.default.div `
+    display: inline-block;
+    border-style: solid;
+    border-color: #212121;
+    &:hover {
+        border-color: yellow;
+    }
+    height: fit-content;
+    width: ${(props) => props.width};
+`;
+const SlimeBoxDesktop = styled_components_1.default.div `
+    display: flex;
+    padding: 0 0 15 0;
+`;
+const SlimeBoxMobile = styled_components_1.default.div `
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 0 10 0;
+`;
+const SlimeTextMobile = styled_components_1.default.div `
+    padding: 5 0 0 0;
+`;
+const SlimeTextDesktop = styled_components_1.default.div `
+    display: inline-block;
+    padding: 10 10 10 30;
+    vertical-align: top;
+    width: 50%;
+`;
+const FractalText = styled_components_1.default.div `
+    display: inline-block;
+`;
+const FractalBox = styled_components_1.default.div `
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+const FractalImg = styled_components_1.default.img `
+  flex: 0 9%;
+  margin-bottom: 2%;
+  transition: transform 0.5s ease-in-out;
+`;
+const PreviewImg = styled_components_1.default.img `
+  margin-top: -270;
+  margin-right: -450;
+`;
+const PreviewImgMobile = styled_components_1.default.img `
+  margin-top: -150;
+`;
 function FractalGallery(props) {
     var activeId = "none";
-    var targetProp = props.isMobile ? "fractal-mobile-zoom" : "fractal-zoom";
-    document.addEventListener("mousedown", function (event) {
+    const targetProp = props.isMobile ? "fractal-mobile-zoom" : "fractal-zoom";
+    document.addEventListener("mousedown", (event) => {
         var target = event.target;
         if (activeId !== "none") {
             var prevImg = document.getElementById(activeId);
             prevImg.classList.remove(targetProp);
         }
-        if (target instanceof HTMLImageElement && target.id.length > 0) {
+        if (target instanceof HTMLImageElement && target.id.includes("fractalImg")) {
             if (target.id === activeId) {
                 activeId = "none";
             }
@@ -245,7 +275,7 @@ function FractalGallery(props) {
             }
         }
     });
-    var images = [];
+    const images = [];
     for (var i = 1; i <= 30; ++i) {
         if (props.isMobile) {
             i++;
@@ -256,24 +286,37 @@ function FractalGallery(props) {
     }
     return (React.createElement(FractalBox, null, images));
 }
+function setShow(doShow) {
+    console.log("Moused event is " + doShow);
+    var previewImg = document.getElementById("previewImg");
+    if (doShow) {
+        previewImg.style.display = "block";
+    }
+    else {
+        previewImg.style.display = "none";
+    }
+}
+const videoDimensions = { mobile: { width: "285", height: "150" }, desktop: { width: "500", height: "270" } };
 function VideoElement(props) {
     if (props.isMobile) {
-        return (React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: "150", width: "285", preload: "true" },
-            React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }),
-            "Your browser does not support this preview video.Click to see the full experience."));
+        return (React.createElement(React.Fragment, null,
+            React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: videoDimensions.mobile.height, width: videoDimensions.mobile.width, preload: "true" },
+                React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }),
+                "Your browser does not support this preview video.Click to see the full experience."),
+            React.createElement(PreviewImgMobile, { id: "previewImg", src: "SlimePreviewImg.JPG", height: videoDimensions.mobile.height, width: "280", title: "Waiting for video to load" })));
     }
     else
-        return (React.createElement("video", { id: "slimeDesktop", loop: true, height: "270", width: "500", preload: "true", onMouseOver: function (event) { return event.target.play(); }, onMouseOut: function (event) { return event.target.pause(); } },
-            React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }),
-            "Your browser does not support this preview video. Click to see the full experience."));
+        return (React.createElement("div", { onMouseEnter: () => setShow(false), onMouseLeave: () => setShow(true) },
+            React.createElement("video", { id: "slimeDesktop", loop: true, height: videoDimensions.desktop.height, width: videoDimensions.desktop.width, preload: "true", onMouseOver: event => event.target.play(), onMouseOut: event => event.target.pause() },
+                React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" })),
+            React.createElement(PreviewImg, { id: "previewImg", src: "SlimePreviewImg.JPG", height: "260", width: videoDimensions.desktop.width, title: "Waiting for video to load" })));
 }
-var Art = /** @class */ (function (_super) {
-    __extends(Art, _super);
-    function Art(props) {
-        return _super.call(this, props) || this;
+class Art extends React.Component {
+    constructor(props) {
+        super(props);
     }
-    Art.prototype.render = function () {
-        var slimePreview = (React.createElement(SlimePreview, null,
+    render() {
+        var slimePreview = (React.createElement(SlimePreview, { width: this.props.isMobile ? "285" : "500" },
             React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
                 React.createElement(VideoElement, { isMobile: this.props.isMobile }))));
         var slimeText = (React.createElement("div", null,
@@ -326,11 +369,9 @@ var Art = /** @class */ (function (_super) {
                 React.createElement("br", null),
                 React.createElement("br", null)),
             React.createElement(FractalGallery, { isMobile: this.props.isMobile })));
-    };
-    return Art;
-}(React.Component));
+    }
+}
 exports.Art = Art;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7, templateObject_8, templateObject_9;
 
 
 /***/ }),
@@ -344,31 +385,42 @@ var templateObject_1, templateObject_2, templateObject_3, templateObject_4, temp
 
 "use strict";
 
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var ControlButton = styled_components_1.default.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: #454545;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"], ["\n    outline: none;\n    font-size: 0;\n    border: 1px solid;\n    background-size: contain;\n    background-color: #454545;\n    border-color: #454545;\n    border-top-width: 2px;\n    border-top-color: #454545;\n    border-bottom-width: 2px;\n    border-bottom-color: #454545;\n    &:hover {\n        border-color: yellow;\n    }\n    &:active {\n        background-color: yellow;\n    }\n"])));
-var ControlButtonGroup = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    opacity: 0;\n    display: flex;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"], ["\n    position: fixed;\n    left: 50%;\n    right: 50%;\n    opacity: 0;\n    display: flex;\n    justify-content: center;\n    transition: all 0.5s ease;\n    transform: scale(0.25);\n"])));
-var ControlIcon = styled_components_1.default.img(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    padding: 5px;\n"], ["\n    padding: 5px;\n"])));
-var controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mouse", "powerDown", "powerUp"];
-var controlMap = {
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const ControlButton = styled_components_1.default.button `
+    outline: none;
+    font-size: 0;
+    border: 1px solid;
+    background-size: contain;
+    background-color: #454545;
+    border-color: #454545;
+    border-top-width: 2px;
+    border-top-color: #454545;
+    border-bottom-width: 2px;
+    border-bottom-color: #454545;
+    &:hover {
+        border-color: yellow;
+    }
+    &:active {
+        background-color: yellow;
+    }
+`;
+const ControlButtonGroup = styled_components_1.default.div `
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    transition: all 0.5s ease;
+    transform: scale(0.25);
+`;
+const ControlIcon = styled_components_1.default.img `
+    padding: 5px;
+`;
+const controlTypes = ["visible", "rewind", "pause", "play", "fastForward", "mouse", "powerDown", "powerUp"];
+const controlMap = {
     visible: {
         path: "websiteIcons/VisibleWhite.png",
         hover: "Show/Hide Controls"
@@ -403,22 +455,19 @@ var controlMap = {
     },
 };
 function ControlButtons(props) {
-    return (React.createElement(ControlButtonGroup, { id: "controlbuttons" }, controlTypes.map(function (type) { return (React.createElement(ControlButton, { id: "controlbutton", key: type },
+    return (React.createElement(ControlButtonGroup, { id: "controlbuttons" }, controlTypes.map((type) => (React.createElement(ControlButton, { id: "controlbutton", key: type },
         controlMap[type].hover,
-        React.createElement(ControlIcon, { src: controlMap[type].path, title: controlMap[type].hover, height: props.isMobile ? "25px" : "40px" }))); })));
+        React.createElement(ControlIcon, { src: controlMap[type].path, title: controlMap[type].hover, height: props.isMobile ? "25px" : "40px" }))))));
 }
-var ControlPanel = /** @class */ (function (_super) {
-    __extends(ControlPanel, _super);
-    function ControlPanel(props) {
-        return _super.call(this, props) || this;
+class ControlPanel extends React.Component {
+    constructor(props) {
+        super(props);
     }
-    ControlPanel.prototype.render = function () {
+    render() {
         return (React.createElement(ControlButtons, { isMobile: this.props.isMobile }));
-    };
-    return ControlPanel;
-}(React.Component));
+    }
+}
 exports.ControlPanel = ControlPanel;
-var templateObject_1, templateObject_2, templateObject_3;
 
 
 /***/ }),
@@ -432,28 +481,18 @@ var templateObject_1, templateObject_2, templateObject_3;
 
 "use strict";
 
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var InfoIcon = styled_components_1.default.img(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    height: 25px;\n    padding-bottom: 3px;\n    vertical-align: middle;\n"], ["\n    height: 25px;\n    padding-bottom: 3px;\n    vertical-align: middle;\n"])));
-var DemoText = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    padding: 50 0 0 0;\n    max-width: 680px;\n"], ["\n    padding: 50 0 0 0;\n    max-width: 680px;\n"])));
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const InfoIcon = styled_components_1.default.img `
+    height: 25px;
+    padding-bottom: 3px;
+    vertical-align: middle;
+`;
+const DemoText = styled_components_1.default.div `
+    padding: 40 0 0 0;
+    max-width: 680px;
+`;
 function DemoPage(props) {
     return (React.createElement(DemoText, null,
         "This is a little interactive demo of \"Bismuth.\" Hit the control buttons above to play around!",
@@ -492,21 +531,18 @@ function DemoPage(props) {
         React.createElement("b", null, "Art"),
         " tab to learn more about this visual."));
 }
-var Demo = /** @class */ (function (_super) {
-    __extends(Demo, _super);
-    function Demo(props) {
-        return _super.call(this, props) || this;
+class Demo extends React.Component {
+    constructor(props) {
+        super(props);
     }
-    Demo.prototype.componentDidMount = function () {
+    componentDidMount() {
         window.scrollTo(0, 0);
-    };
-    Demo.prototype.render = function () {
+    }
+    render() {
         return (React.createElement(DemoPage, { isMobile: this.props.isMobile }));
-    };
-    return Demo;
-}(React.Component));
+    }
+}
 exports.Demo = Demo;
-var templateObject_1, templateObject_2;
 
 
 /***/ }),
@@ -520,42 +556,60 @@ var templateObject_1, templateObject_2;
 
 "use strict";
 
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 __webpack_require__(/*! ./styles.css */ "./styles.css");
-var AboutMe_1 = __webpack_require__(/*! ./AboutMe */ "./AboutMe.tsx");
-var Work_1 = __webpack_require__(/*! ./Work */ "./Work.tsx");
-var Art_1 = __webpack_require__(/*! ./Art */ "./Art.tsx");
-var Demo_1 = __webpack_require__(/*! ./Demo */ "./Demo.tsx");
-var ControlPanel_1 = __webpack_require__(/*! ./ControlPanel */ "./ControlPanel.tsx");
+const AboutMe_1 = __webpack_require__(/*! ./AboutMe */ "./AboutMe.tsx");
+const Work_1 = __webpack_require__(/*! ./Work */ "./Work.tsx");
+const Art_1 = __webpack_require__(/*! ./Art */ "./Art.tsx");
+const Demo_1 = __webpack_require__(/*! ./Demo */ "./Demo.tsx");
+const ControlPanel_1 = __webpack_require__(/*! ./ControlPanel */ "./ControlPanel.tsx");
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var FullWindow = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  padding: 0 0 250 0;\n  position: relative;\n  z-index: 1;\n"], ["\n  padding: 0 0 250 0;\n  position: relative;\n  z-index: 1;\n"])));
-var Window = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%;\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"], ["\n  background-color: #212121;\n  color: white;\n  font-size: ", ";\n  padding: 30 10;\n  max-width: 75%;\n  margin: auto;\n  border-radius: ", ";\n  transition: 1s ease;\n  transition-property: opacity;\n  transform-origin: top;\n"])), function (props) { return props.fontSize; }, function (props) { return props.radius; });
-var TabPage = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  max-width: ", ";\n  min-height: 100vh;\n"], ["\n  max-width: ", ";\n  min-height: 100vh;\n"])), function (props) { return props.maxWidth; });
-var Tab = styled_components_1.default.button(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ", "\n"], ["\n  padding: ", ";\n  cursor: pointer;\n  border-width: thin;\n  border-style: ", ";\n  outline: 0;\n  background: #575757;\n  color: white;\n  white-space: nowrap;\n  border-bottom: 2px solid;\n  border-color: #575757;\n  &:hover {\n    border-color: yellow;\n  }\n  ",
-    "\n"])), function (props) { return props.padding; }, function (props) { return props.border; }, function (_a) {
-    var activeTab = _a.activeTab;
-    return activeTab &&
-        "\n    background: yellow;\n    color: black;\n    border: 0;\n  ";
-});
+const FullWindow = styled_components_1.default.div `
+  padding: 0 0 250 0;
+  position: relative;
+  z-index: 1;
+`;
+const Window = styled_components_1.default.div `
+  background-color: #212121;
+  color: white;
+  font-size: ${(props) => props.fontSize};
+  padding: 40 25;
+  max-width: 75%;
+  margin: auto;
+  border-radius: ${(props) => props.radius};
+  transition: 1s ease;
+  transition-property: opacity;
+  transform-origin: top;
+`;
+const TabPage = styled_components_1.default.div `
+  max-width: ${(props) => props.maxWidth};
+  min-height: 100vh;
+`;
+const Tab = styled_components_1.default.button `
+  padding: ${(props) => props.padding};
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-width: thin;
+  border-style: ${(props) => props.border};
+  outline: 0;
+  background: #575757;
+  color: white;
+  white-space: nowrap;
+  border-bottom: 2px solid;
+  border-color: #575757;
+  &:hover {
+    border-color: yellow;
+  }
+  ${({ activeTab }) => activeTab &&
+    `
+    background: yellow;
+    color: black;
+    border: 0;
+  `}
+`;
 /* Get matching react component based on clicked tab */
 function getWindow(topic, isMobile) {
     var text = "";
@@ -596,12 +650,12 @@ function activateDemo(demoActive) {
         tabWindow.classList.remove("window-translucent");
     }
 }
-var tabs = ["About Me", "Work", "Art", "Demo"];
+const tabs = ["About Me", "Work", "Art", "Demo"];
 /* Manage current tab and control panel display */
 function TabGroup(props) {
-    var _a = react_1.useState(tabs[0]), activeTab = _a[0], setActiveTab = _a[1];
+    const [activeTab, setActiveTab] = react_1.useState(tabs[0]);
     var demoActive = false;
-    document.addEventListener("mousedown", function (event) {
+    document.addEventListener("mousedown", (event) => {
         var target = event.target;
         if (target instanceof HTMLButtonElement || target instanceof HTMLImageElement) {
             if (target.innerText === "Show/Hide Controls" || target.title === "Show/Hide Controls") {
@@ -611,25 +665,25 @@ function TabGroup(props) {
         }
     });
     return (React.createElement(TabPage, { id: "window", maxWidth: props.isMobile ? "625px" : "1200px" },
-        React.createElement("div", { id: "tabuttons", className: "tab-buttons" }, tabs.map(function (type) { return (React.createElement(Tab, { padding: props.isMobile ? "10 15" : "10 30", border: props.isMobile ? "solid" : "unset", key: type, activeTab: activeTab === type, onClick: function () {
+        React.createElement("div", { id: "tabuttons", className: "tab-buttons" }, tabs.map((type) => (React.createElement(Tab, { padding: props.isMobile ? "8 12" : "8 20", border: props.isMobile ? "solid" : "unset", key: type, activeTab: activeTab === type, onClick: () => {
                 var clickedDemo = type === "Demo";
                 activateControls(clickedDemo);
                 if (!clickedDemo && demoActive) {
                     activateDemo(false);
                 }
                 setActiveTab(type);
-            } }, type)); })),
+            } }, type)))),
         React.createElement(ControlPanel_1.ControlPanel, { isMobile: props.isMobile }),
         React.createElement("br", null),
         React.createElement(Window, { id: "tabwindow", fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "0%" : "2%" }, getWindow(activeTab, props.isMobile))));
 }
 /* Track full page width to determine if we should resize for mobile */
 function WebsiteContainer() {
-    var _a = React.useState({
+    const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
         width: window.innerWidth
-    }), dimensions = _a[0], setDimensions = _a[1];
-    React.useEffect(function () {
+    });
+    React.useEffect(() => {
         function handleResize() {
             setDimensions({
                 height: window.innerHeight,
@@ -637,27 +691,21 @@ function WebsiteContainer() {
             });
         }
         window.addEventListener('resize', handleResize);
-        return function (_) {
+        return _ => {
             window.removeEventListener('resize', handleResize);
         };
     });
-    var isMobile = dimensions.width <= 1000;
+    const isMobile = dimensions.width <= 1000;
     return (React.createElement(React.Fragment, null,
         React.createElement(FullWindow, { id: "FullWindow" },
             React.createElement(TabGroup, { isMobile: isMobile }))));
 }
-var Website = /** @class */ (function (_super) {
-    __extends(Website, _super);
-    function Website() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Website.prototype.render = function () {
+class Website extends React.Component {
+    render() {
         return React.createElement(WebsiteContainer, null);
-    };
-    return Website;
-}(React.Component));
+    }
+}
 exports.Website = Website;
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
 
 
 /***/ }),
@@ -671,48 +719,29 @@ var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
 
 "use strict";
 
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var WorkSection = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    display: flex;\n    flex-justify: center;\n    padding: 10px;\n"], ["\n    display: flex;\n    flex-justify: center;\n    padding: 10px;\n"])));
-var Work = /** @class */ (function (_super) {
-    __extends(Work, _super);
-    function Work() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Work.prototype.render = function () {
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const WorkSection = styled_components_1.default.div `
+    display: flex;
+    flex-justify: center;
+    padding: 10px;
+`;
+class Work extends React.Component {
+    render() {
         return (React.createElement(React.Fragment, null,
             "The bulk of my industry work has been split between two jobs, each for about 3 years.",
-            React.createElement("h4", null, "ForeFlight (Boeing)"),
+            React.createElement("h2", null, "ForeFlight (Boeing)"),
             "In 2018, after I moved to Austin, I began working at ForeFlight (acquired by Boeing in 2019). I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting. I also helped build and improve features for the Logbook web interface and created internal tools to help other teams manage data.",
-            React.createElement("h4", null, "Quantcast"),
+            React.createElement("h2", null, "Quantcast"),
             "After graduating college, I moved to San Francisco to work at Quantcast. I worked on the Real-Time / Edge Services team. We owned the core back-end systems serving real-time ads to millions of users per day. My responsibilities focused on feature addition, testing, and cloud migration for always-on services with expectations of very high throughput and low response latency.",
-            React.createElement("h3", null, "Resume"),
+            React.createElement("h2", null, "Resume"),
             "This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.",
             React.createElement(WorkSection, null,
                 React.createElement("iframe", { height: "100%", src: "https://drive.google.com/file/d/1UyvxXlgMoTsYJgewymbfslwr240zbZkj/preview" }))));
-    };
-    return Work;
-}(React.Component));
+    }
+}
 exports.Work = Work;
-var templateObject_1;
 
 
 /***/ }),
@@ -727,7 +756,7 @@ var templateObject_1;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Website_1 = __webpack_require__(/*! ./Website */ "./Website.tsx");
+const Website_1 = __webpack_require__(/*! ./Website */ "./Website.tsx");
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 document.body.style.margin = '0 0 0 0';

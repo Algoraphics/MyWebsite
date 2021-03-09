@@ -8,7 +8,7 @@ const InfoIcon = styled.img`
 `
 
 const DemoText = styled.div`
-    padding: 50 0 0 0;
+    padding: 40 0 0 0;
     max-width: 680px;
 `
 

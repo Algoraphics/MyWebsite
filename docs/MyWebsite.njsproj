@@ -73,6 +73,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="SlimePreviewCroppedCompress.mp4" />
+    <Content Include="SlimePreviewImg.JPG" />
     <Content Include="styles.css">
       <SubType>Code</SubType>
     </Content>
