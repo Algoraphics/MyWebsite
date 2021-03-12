@@ -123,68 +123,61 @@ const MobileWrap = styled_components_1.default.div `
 const TopLevel = styled_components_1.default.div `
     padding: 0 0 30 0;
 `;
-function AboutPage(props) {
-    var introText = (React.createElement(AboutTextSection, null,
-        "Hi!",
-        React.createElement("br", null),
-        React.createElement("br", null),
-        "My name is Ethan Rabb. I'm a Software Engineer with 6+ years in industry and a passion for creative programming projects.",
-        React.createElement("h2", null, "What kind of work do you do?"),
-        "I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics. I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.",
-        React.createElement("br", null),
-        React.createElement("br", null),
-        "Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products and services, especially if they help make the world a better place to live in.",
-        React.createElement("br", null),
-        React.createElement("br", null),
-        "For a full Resume and more detail about my work, go to the ",
-        React.createElement("b", null, "Work"),
-        " tab."));
-    var aboutIntroDesktop = (React.createElement(AboutTextSection, null,
-        React.createElement(DeskFace, { src: "Headshot.jpg", title: "It me", height: "320" }),
-        introText));
-    var aboutIntroMobile = (React.createElement(MobileTextSection, null,
-        React.createElement(MobileWrap, null,
-            React.createElement(MobileFace, { src: "Headshot.jpg", title: "It me", height: "270" })),
-        introText));
-    var additional = (React.createElement(AboutTextSection, null,
-        React.createElement("h2", null, "What's going on with the background?"),
-        "In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! You can play around with it on the ",
-        React.createElement("b", null, "Demo"),
-        " tab, or find more examples and info on the ",
-        React.createElement("b", null, "Art"),
-        " tab.",
-        React.createElement("br", null),
-        React.createElement("br", null),
-        "I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer.",
-        React.createElement("h2", null, "Do you have any other interests?"),
-        "Definitely! I have plenty of non-programming hobbies and interests.",
-        React.createElement("br", null),
-        React.createElement("br", null),
-        React.createElement("b", null, "Things I do outside:"),
-        " Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball",
-        React.createElement("br", null),
-        React.createElement("br", null),
-        React.createElement("b", null, "Topics I could talk about for hours:"),
-        " Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space",
-        React.createElement("h2", null, "What's the best way to reach you?"),
-        "The best way to reach me is at ",
-        React.createElement("b", null, "ethanrabb@gmail.com."),
-        React.createElement("br", null),
-        React.createElement("br", null),
-        "Let's chat!"));
+var IntroText = () => (React.createElement(AboutTextSection, null,
+    "Hi!",
+    React.createElement("br", null),
+    React.createElement("br", null),
+    "My name is Ethan Rabb. I'm a Software Engineer with 6+ years in industry and a passion for creative programming projects.",
+    React.createElement("h2", null, "What kind of work do you do?"),
+    "I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics. I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.",
+    React.createElement("br", null),
+    React.createElement("br", null),
+    "Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products and services, especially if they help make the world a better place to live in.",
+    React.createElement("br", null),
+    React.createElement("br", null),
+    "For a full Resume and more detail about my work, go to the ",
+    React.createElement("b", null, "Work"),
+    " tab."));
+var AboutIntroDesktop = () => (React.createElement(AboutTextSection, null,
+    React.createElement(DeskFace, { src: "Headshot.jpg", title: "It me", height: "320" }),
+    React.createElement(IntroText, null)));
+var AboutIntroMobile = () => (React.createElement(MobileTextSection, null,
+    React.createElement(MobileWrap, null,
+        React.createElement(MobileFace, { src: "Headshot.jpg", title: "It me", height: "270" })),
+    React.createElement(IntroText, null)));
+var Additional = () => (React.createElement(AboutTextSection, null,
+    React.createElement("h2", null, "What's going on with the background?"),
+    "In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! You can play around with it on the ",
+    React.createElement("b", null, "Demo"),
+    " tab, or find more examples and info on the ",
+    React.createElement("b", null, "Art"),
+    " tab.",
+    React.createElement("br", null),
+    React.createElement("br", null),
+    "I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer.",
+    React.createElement("h2", null, "Do you have any other interests?"),
+    "Definitely! I have plenty of non-programming hobbies and interests.",
+    React.createElement("br", null),
+    React.createElement("br", null),
+    React.createElement("b", null, "Things I do outside:"),
+    " Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball",
+    React.createElement("br", null),
+    React.createElement("br", null),
+    React.createElement("b", null, "Topics I could talk about for hours:"),
+    " Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space",
+    React.createElement("h2", null, "What's the best way to reach you?"),
+    "The best way to reach me is at ",
+    React.createElement("b", null, "ethanrabb@gmail.com."),
+    React.createElement("br", null),
+    React.createElement("br", null),
+    "Let's chat!"));
+const AboutMe = (props) => {
+    let { isMobile } = props;
     return (React.createElement(TopLevel, null,
-        props.isMobile ? aboutIntroMobile : aboutIntroDesktop,
-        additional));
-}
-class AboutMe extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (React.createElement(AboutPage, { isMobile: this.props.isMobile }));
-    }
-}
-exports.AboutMe = AboutMe;
+        isMobile ? React.createElement(AboutIntroMobile, null) : React.createElement(AboutIntroDesktop, null),
+        React.createElement(Additional, null)));
+};
+exports.default = AboutMe;
 
 
 /***/ }),
@@ -205,6 +198,18 @@ const ArtSection = styled_components_1.default.div `
     display: block;
     flex-justify: center;
     flex-direction: column;
+`;
+const ArtLink = styled_components_1.default.a `
+    text-decoration: none;
+    &:visited {
+        color: goldenrod;
+    }
+    &:link {
+        color: yellow;
+    }
+    &:hover {
+        font-weight: bold;
+    }
 `;
 const SlimePreview = styled_components_1.default.div `
     display: inline-block;
@@ -248,6 +253,7 @@ const FractalImg = styled_components_1.default.img `
   flex: 0 9%;
   margin-bottom: 2%;
   transition: transform 0.5s ease-in-out;
+  ${(props) => props.isZoom && props.zoomType};
 `;
 const PreviewImg = styled_components_1.default.img `
   margin-top: -270;
@@ -256,47 +262,22 @@ const PreviewImg = styled_components_1.default.img `
 const PreviewImgMobile = styled_components_1.default.img `
   margin-top: -150;
 `;
-function FractalGallery(props) {
-    var activeId = "none";
-    const targetProp = props.isMobile ? "fractal-mobile-zoom" : "fractal-zoom";
-    document.addEventListener("mousedown", (event) => {
-        var target = event.target;
-        if (activeId !== "none") {
-            var prevImg = document.getElementById(activeId);
-            prevImg.classList.remove(targetProp);
-        }
-        if (target instanceof HTMLImageElement && target.id.includes("fractalImg")) {
-            if (target.id === activeId) {
-                activeId = "none";
-            }
-            else {
-                target.classList.add(targetProp);
-                activeId = target.id;
-            }
-        }
-    });
+const FractalGallery = (props) => {
+    const [zoomImg, setZoomImg] = React.useState("none");
+    const targetProp = props.isMobile ? "transform: scale(3);" : "transform: scale(6);";
     const images = [];
-    for (var i = 1; i <= 30; ++i) {
+    for (let i = 1; i <= 30; ++i) {
         if (props.isMobile) {
             i++;
         }
-        var path = "PsychoPics/Screenshot (" + i + ").png";
-        var id = "fractalImg" + i;
-        images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: props.isMobile ? "160" : "100" }));
+        let path = "PsychoPics/Screenshot (" + i + ").png";
+        let id = "fractalImg" + i;
+        images.push(React.createElement(FractalImg, { key: i, id: id, src: path, height: props.isMobile ? "160" : "100", zoomType: targetProp, onClick: () => { (zoomImg === id) ? setZoomImg("none") : setZoomImg(id); }, isZoom: zoomImg === id }));
     }
     return (React.createElement(FractalBox, null, images));
-}
-function setShow(doShow) {
-    var previewImg = document.getElementById("previewImg");
-    if (doShow) {
-        previewImg.style.display = "block";
-    }
-    else {
-        previewImg.style.display = "none";
-    }
-}
+};
 const videoDimensions = { mobile: { width: "285", height: "150" }, desktop: { width: "500", height: "270" } };
-function VideoElement(props) {
+const VideoElement = (props) => {
     if (props.isMobile) {
         return (React.createElement(React.Fragment, null,
             React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: videoDimensions.mobile.height, width: videoDimensions.mobile.width, preload: "true" },
@@ -309,68 +290,64 @@ function VideoElement(props) {
             React.createElement("video", { id: "slimeDesktop", loop: true, height: videoDimensions.desktop.height, width: videoDimensions.desktop.width, preload: "true", onMouseOver: event => event.target.play(), onMouseOut: event => event.target.pause() },
                 React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" })),
             React.createElement(PreviewImg, { id: "previewImg", src: "SlimePreviewImg.JPG", height: "260", width: videoDimensions.desktop.width, title: "Waiting for video to load" })));
-}
-class Art extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        var slimePreview = (React.createElement(SlimePreview, { width: this.props.isMobile ? "285" : "500" },
-            React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
-                React.createElement(VideoElement, { isMobile: this.props.isMobile }))));
-        var slimeText = (React.createElement("div", null,
-            "I wanted to give viewers a sense of scale with this experience, beginning with a very grounded visual of \"traveling down the road\" which gradually increases in scope and becomes more surreal.",
+};
+const Art = (props) => {
+    let { isMobile } = props;
+    var slimePreview = (React.createElement(SlimePreview, { width: isMobile ? "285" : "500" },
+        React.createElement(ArtLink, { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
+            React.createElement(VideoElement, { isMobile: isMobile }))));
+    var slimeText = (React.createElement("div", null,
+        "I wanted to give viewers a sense of scale with this experience, beginning with a very grounded visual of \"traveling down the road\" which gradually increases in scope and becomes more surreal.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "It shows the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them."));
+    var slimeBoxDesktop = (React.createElement(SlimeBoxDesktop, { id: "deskbox" },
+        slimePreview,
+        React.createElement(SlimeTextDesktop, null, slimeText)));
+    var slimeBoxMobile = (React.createElement(SlimeBoxMobile, { id: "mobilebox" },
+        slimePreview,
+        React.createElement(SlimeTextMobile, null, slimeText)));
+    return (React.createElement(ArtSection, null,
+        "My main creative work has been these audio-visual experiences using various WebXR technologies. I love that users can immerse themselves to their comfort level from anywhere.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "If you have a VR headset, you can get them running in Firefox. See ",
+        React.createElement(ArtLink, { href: "https://aframe.io/", target: "_blank" },
+            React.createElement("u", null, "aframe.io")),
+        " for more details.",
+        React.createElement("h2", null, "Slime Freighter"),
+        React.createElement(ArtLink, { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
+            React.createElement("u", null, "Slime Freighter")),
+        " is an immersive VR music video set to \"Side of the Road\" by Big Black Delta.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        isMobile ? slimeBoxMobile : slimeBoxDesktop,
+        "Assets in this video were handmade using GLSL shaders and WebGL geometry, and their placement is procedurally generated in Javascript, so each experience is a bit different.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "Nearly everything in the video is synchronized to the beat of the music, using a customized audio-reactivity component that I built for the project.",
+        React.createElement("h2", null, "Opal & Bismuth"),
+        React.createElement(FractalText, null,
+            "A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.",
             React.createElement("br", null),
             React.createElement("br", null),
-            "It shows the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them."));
-        var slimeBoxDesktop = (React.createElement(SlimeBoxDesktop, { id: "deskbox" },
-            slimePreview,
-            React.createElement(SlimeTextDesktop, null, slimeText)));
-        var slimeBoxMobile = (React.createElement(SlimeBoxMobile, { id: "mobilebox" },
-            slimePreview,
-            React.createElement(SlimeTextMobile, null, slimeText)));
-        return (React.createElement(ArtSection, null,
-            "My main creative work has been these audio-visual experiences using various WebXR technologies. I love that users can immerse themselves to their comfort level from anywhere.",
+            React.createElement(ArtLink, { href: "http://www.psycho-bubbles.glitch.me", target: "_blank" },
+                React.createElement("u", null, "Opal & Bismuth")),
+            " are my attempt to create a visualizer that will always show something new. They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.",
             React.createElement("br", null),
             React.createElement("br", null),
-            "If you have a VR headset, you can get them running in Firefox. See ",
-            React.createElement("a", { href: "https://aframe.io/", target: "_blank" },
-                React.createElement("u", null, "aframe.io")),
-            " for more details.",
-            React.createElement("h2", null, "Slime Freighter"),
-            React.createElement("a", { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
-                React.createElement("u", null, "Slime Freighter")),
-            " is an immersive VR music video set to \"Side of the Road\" by Big Black Delta.",
+            "Click the link in their name to see the full VR app with both visualizers and some other small works.",
             React.createElement("br", null),
             React.createElement("br", null),
-            this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop,
-            "Assets in this video were handmade using GLSL shaders and WebGL geometry, and their placement is procedurally generated in Javascript, so each experience is a bit different.",
+            "An interactive Bismuth preview is available on the ",
+            React.createElement("b", null, "Demo"),
+            " tab, or you can browse the gallery below to see samples of both visualizers. ",
+            React.createElement("b", null, " Click to Zoom! "),
             React.createElement("br", null),
-            React.createElement("br", null),
-            "Nearly everything in the video is synchronized to the beat of the music, using a customized audio-reactivity component that I built for the project.",
-            React.createElement("h2", null, "Opal & Bismuth"),
-            React.createElement(FractalText, null,
-                "A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.",
-                React.createElement("br", null),
-                React.createElement("br", null),
-                React.createElement("a", { href: "http://www.psycho-bubbles.glitch.me", target: "_blank" },
-                    React.createElement("u", null, "Opal & Bismuth")),
-                " are my attempt to create a visualizer that will always show something new. They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.",
-                React.createElement("br", null),
-                React.createElement("br", null),
-                "Click the link in their name to see the full VR app with both visualizers and some other small works.",
-                React.createElement("br", null),
-                React.createElement("br", null),
-                "An interactive Bismuth preview is available on the ",
-                React.createElement("b", null, "Demo"),
-                " tab, or you can browse the gallery below to see samples of both visualizers. ",
-                React.createElement("b", null, " Click to Zoom! "),
-                React.createElement("br", null),
-                React.createElement("br", null)),
-            React.createElement(FractalGallery, { isMobile: this.props.isMobile })));
-    }
-}
-exports.Art = Art;
+            React.createElement("br", null)),
+        React.createElement(FractalGallery, { isMobile: isMobile })));
+};
+exports.default = Art;
 
 
 /***/ }),
@@ -406,14 +383,19 @@ const ControlButton = styled_components_1.default.button `
     }
 `;
 const ControlButtonGroup = styled_components_1.default.div `
-    position: fixed;
-    left: 50%;
-    right: 50%;
     opacity: 0;
+    top: 40;
+    position: fixed;
     display: flex;
     justify-content: center;
     transition: all 0.5s ease;
     transform: scale(0.25);
+    transform-origin: top;
+    ${(props) => props.isActive && `
+        z-index: 2;
+        opacity: 1 !important;
+        transform: scale(0.75) !important;
+    `};
 `;
 const ControlIcon = styled_components_1.default.img `
     padding: 5px;
@@ -453,20 +435,16 @@ const controlMap = {
         hover: "Increase Complexity"
     },
 };
-function ControlButtons(props) {
-    return (React.createElement(ControlButtonGroup, { id: "controlbuttons" }, controlTypes.map((type) => (React.createElement(ControlButton, { id: "controlbutton", key: type },
+const ControlButtons = (props) => {
+    return (React.createElement(ControlButtonGroup, { id: "controlbuttons", isActive: props.isActive }, controlTypes.map((type) => (React.createElement(ControlButton, { id: "controlbutton", key: type },
         controlMap[type].hover,
         React.createElement(ControlIcon, { src: controlMap[type].path, title: controlMap[type].hover, height: props.isMobile ? "25px" : "40px" }))))));
-}
-class ControlPanel extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (React.createElement(ControlButtons, { isMobile: this.props.isMobile }));
-    }
-}
-exports.ControlPanel = ControlPanel;
+};
+const ControlPanel = (props) => {
+    let { isMobile, isActive } = props;
+    return (React.createElement(ControlButtons, { isMobile: isMobile, isActive: isActive }));
+};
+exports.default = ControlPanel;
 
 
 /***/ }),
@@ -492,14 +470,12 @@ const DemoText = styled_components_1.default.div `
     padding: 40 0 0 0;
     max-width: 680px;
 `;
-function DemoPage(props) {
+const DemoPage = (props) => {
     return (React.createElement(DemoText, null,
         "This is a little interactive demo of \"Bismuth.\" Hit the control buttons above to play around!",
         React.createElement("br", null),
         React.createElement("br", null),
-        "If you don't see anything, your device may not be able to run this visual. You can still hit ",
-        React.createElement("b", null, "Add complexity"),
-        " to see it, but the website may lag.",
+        "If you don't see anything, your device may not be able to run this visual. For Mac, try using Safari!",
         React.createElement("br", null),
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/VisibleWhite.png" }),
@@ -508,10 +484,10 @@ function DemoPage(props) {
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/RewindWhite.png" }),
         React.createElement(InfoIcon, { src: "websiteIcons/FastForwardWhite.png" }),
-        "\u00A0\u00A0 Rewind / Fast Forward. Click multiple times to increase speed",
+        "\u00A0\u00A0 Rewind / Fast Forward (Try clicking multiple times)",
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/PauseWhite.png" }),
-        "\u00A0\u00A0 Pause. Mouse interaction still works while paused",
+        "\u00A0\u00A0 Pause (Mouse interaction still works while paused)",
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/PlayWhite.png" }),
         "\u00A0\u00A0 Resume movement at default speed",
@@ -529,7 +505,7 @@ function DemoPage(props) {
         "See the ",
         React.createElement("b", null, "Art"),
         " tab to learn more about this visual."));
-}
+};
 class Demo extends React.Component {
     constructor(props) {
         super(props);
@@ -562,8 +538,8 @@ __webpack_require__(/*! ./styles.css */ "./styles.css");
 const AboutMe_1 = __webpack_require__(/*! ./AboutMe */ "./AboutMe.tsx");
 const Work_1 = __webpack_require__(/*! ./Work */ "./Work.tsx");
 const Art_1 = __webpack_require__(/*! ./Art */ "./Art.tsx");
-const Demo_1 = __webpack_require__(/*! ./Demo */ "./Demo.tsx");
 const ControlPanel_1 = __webpack_require__(/*! ./ControlPanel */ "./ControlPanel.tsx");
+const Demo_1 = __webpack_require__(/*! ./Demo */ "./Demo.tsx");
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const FullWindow = styled_components_1.default.div `
   padding: 0 0 250 0;
@@ -581,6 +557,9 @@ const Window = styled_components_1.default.div `
   transition: 1s ease;
   transition-property: opacity;
   transform-origin: top;
+  ${(props) => props.demoActive && `    
+    opacity: 0 !important;
+  `};
 `;
 const TabPage = styled_components_1.default.div `
   max-width: ${(props) => props.maxWidth};
@@ -609,17 +588,25 @@ const Tab = styled_components_1.default.button `
     border: 0;
   `}
 `;
+const TabButtons = styled_components_1.default.div `
+    display: flex;
+    justify-content: center;
+`;
+const FixedButtons = styled_components_1.default.div `
+    z-index: 5;
+    position: fixed;
+`;
 /* Get matching react component based on clicked tab */
-function getWindow(topic, isMobile) {
+const getWindow = (topic, isMobile) => {
     var text = "";
     if (topic === "About Me") {
-        text = React.createElement(AboutMe_1.AboutMe, { isMobile: isMobile });
+        text = React.createElement(AboutMe_1.default, { isMobile: isMobile });
     }
     else if (topic === "Work") {
-        text = React.createElement(Work_1.Work, { isMobile: isMobile });
+        text = React.createElement(Work_1.default, { isMobile: isMobile });
     }
     else if (topic === "Art") {
-        text = React.createElement(Art_1.Art, { isMobile: isMobile });
+        text = React.createElement(Art_1.default, { isMobile: isMobile });
     }
     else if (topic === "Demo") {
         text = React.createElement(Demo_1.Demo, { isMobile: isMobile });
@@ -628,56 +615,34 @@ function getWindow(topic, isMobile) {
         text = topic;
     }
     return text;
-}
-function activateControls(showControls) {
-    var window = document.getElementById("window");
-    var controlButtons = window.querySelector("#controlbuttons");
-    if (showControls) {
-        controlButtons.classList.add("show-controls");
-    }
-    else {
-        controlButtons.classList.remove("show-controls");
-    }
-}
-function activateDemo(demoActive) {
-    var window = document.getElementById("window");
-    var tabWindow = window.querySelector("#tabwindow");
-    if (demoActive) {
-        tabWindow.classList.add("window-translucent");
-    }
-    else {
-        tabWindow.classList.remove("window-translucent");
-    }
-}
+};
 const tabs = ["About Me", "Work", "Art", "Demo"];
 /* Manage current tab and control panel display */
-function TabGroup(props) {
+const TabGroup = (props) => {
     const [activeTab, setActiveTab] = react_1.useState(tabs[0]);
-    var demoActive = false;
+    const [activeDemo, setActiveDemo] = react_1.useState(false);
     document.addEventListener("mousedown", (event) => {
         var target = event.target;
         if (target instanceof HTMLButtonElement || target instanceof HTMLImageElement) {
             if (target.innerText === "Show/Hide Controls" || target.title === "Show/Hide Controls") {
-                demoActive = !demoActive;
-                activateDemo(demoActive);
+                setActiveDemo(!activeDemo);
             }
         }
     });
     return (React.createElement(TabPage, { id: "window", maxWidth: props.isMobile ? "625px" : "1200px" },
-        React.createElement("div", { id: "tabuttons", className: "tab-buttons" }, tabs.map((type) => (React.createElement(Tab, { padding: props.isMobile ? "8 12" : "8 20", border: props.isMobile ? "solid" : "unset", key: type, activeTab: activeTab === type, onClick: () => {
-                var clickedDemo = type === "Demo";
-                activateControls(clickedDemo);
-                if (!clickedDemo && demoActive) {
-                    activateDemo(false);
-                }
-                setActiveTab(type);
-            } }, type)))),
-        React.createElement(ControlPanel_1.ControlPanel, { isMobile: props.isMobile }),
+        React.createElement(TabButtons, { className: "tab-buttons" },
+            React.createElement(FixedButtons, null, tabs.map((type) => (React.createElement(Tab, { padding: props.isMobile ? "8 12" : "8 20", border: props.isMobile ? "solid" : "none", key: type, activeTab: activeTab === type, onClick: () => {
+                    setActiveTab(type);
+                    if (type !== "Demo") {
+                        setActiveDemo(false);
+                    }
+                } }, type)))),
+            React.createElement(ControlPanel_1.default, { isMobile: props.isMobile, isActive: activeTab === "Demo" })),
         React.createElement("br", null),
-        React.createElement(Window, { id: "tabwindow", fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "0%" : "2%" }, getWindow(activeTab, props.isMobile))));
-}
+        React.createElement(Window, { id: "tabwindow", demoActive: activeDemo, fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "0%" : "2%" }, getWindow(activeTab, props.isMobile))));
+};
 /* Track full page width to determine if we should resize for mobile */
-function WebsiteContainer() {
+const WebsiteContainer = () => {
     const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
         width: window.innerWidth
@@ -698,7 +663,7 @@ function WebsiteContainer() {
     return (React.createElement(React.Fragment, null,
         React.createElement(FullWindow, { id: "FullWindow" },
             React.createElement(TabGroup, { isMobile: isMobile }))));
-}
+};
 class Website extends React.Component {
     render() {
         return React.createElement(WebsiteContainer, null);
@@ -726,21 +691,25 @@ const WorkSection = styled_components_1.default.div `
     flex-justify: center;
     padding: 10px;
 `;
-class Work extends React.Component {
-    render() {
-        return (React.createElement(React.Fragment, null,
-            "The bulk of my industry work has been split between two jobs, each for about 3 years.",
-            React.createElement("h2", null, "ForeFlight (Boeing)"),
-            "In 2018, after I moved to Austin, I began working at ForeFlight (acquired by Boeing in 2019). I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting. I also helped build and improve features for the Logbook web interface and created internal tools to help other teams manage data.",
-            React.createElement("h2", null, "Quantcast"),
-            "After graduating college, I moved to San Francisco to work at Quantcast. I worked on the Real-Time / Edge Services team. We owned the core back-end systems serving real-time ads to millions of users per day. My responsibilities focused on feature addition, testing, and cloud migration for always-on services with expectations of very high throughput and low response latency.",
-            React.createElement("h2", null, "Resume"),
-            "This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.",
-            React.createElement(WorkSection, null,
-                React.createElement("iframe", { height: "100%", src: "https://drive.google.com/file/d/1UyvxXlgMoTsYJgewymbfslwr240zbZkj/preview" }))));
-    }
-}
-exports.Work = Work;
+const ResumeFrame = styled_components_1.default.iframe `
+    display: block;
+    border: none;
+    height: 80vh;
+    width: 100%;
+`;
+const Work = () => {
+    return (React.createElement(React.Fragment, null,
+        "The bulk of my industry work has been split between two jobs, each for about 3 years.",
+        React.createElement("h2", null, "ForeFlight (Boeing)"),
+        "In 2018, after I moved to Austin, I began working at ForeFlight (acquired by Boeing in 2019). I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting. I also helped build and improve features for the Logbook web interface and created internal tools to help other teams manage data.",
+        React.createElement("h2", null, "Quantcast"),
+        "After graduating college, I moved to San Francisco to work at Quantcast. I worked on the Real-Time / Edge Services team. We owned the core back-end systems serving real-time ads to millions of users per day. My responsibilities focused on feature addition, testing, and cloud migration for always-on services with expectations of very high throughput and low response latency.",
+        React.createElement("h2", null, "Resume"),
+        "This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.",
+        React.createElement(WorkSection, null,
+            React.createElement(ResumeFrame, { height: "100%", src: "https://drive.google.com/file/d/1UyvxXlgMoTsYJgewymbfslwr240zbZkj/preview" }))));
+};
+exports.default = Work;
 
 
 /***/ }),
@@ -1525,7 +1494,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 ___CSS_LOADER_EXPORT___.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "a {\r\n    text-decoration: none;\r\n}\r\n\r\n\r\nbody {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: #212121;\r\n    font-family: 'Montserrat', sans-serif;\r\n}\r\n\r\nu:hover {\r\n    font-weight: bold;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.fractal-zoom {\r\n    transform: scale(6);\r\n}\r\n\r\n.fractal-mobile-zoom {\r\n    transform: scale(3);\r\n}\r\n\r\n.show-controls {\r\n    z-index: 2;\r\n    opacity: 1 !important;\r\n    padding: 37px 0px 0px 0px !important;\r\n    transform: scale(0.75) !important;\r\n}\r\n\r\n.show-button {\r\n    padding: 5px;\r\n}\r\n\r\n.tab-buttons {\r\n    position: fixed;\r\n    left: 50%;\r\n    right: 50%;\r\n    z-index: 5;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    opacity: 0 !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAEA;IACI,qBAAqB;AACzB;;;AAGA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,mBAAmB;IACnB,qCAAqC;AACzC;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,cAAc;IACd,YAAY;IACZ,YAAY;IACZ,WAAW;AACf;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,UAAU;IACV,qBAAqB;IACrB,oCAAoC;IACpC,iCAAiC;AACrC;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,eAAe;IACf,SAAS;IACT,UAAU;IACV,UAAU;IACV,aAAa;IACb,uBAAuB;AAC3B;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,qBAAqB;IACrB,kBAAkB;IAClB,uBAAuB;AAC3B;;AAEA;IACI,wBAAwB;IACxB,YAAY;AAChB;;AAEA;IACI,uBAAuB;IACvB,uBAAuB;IACvB,mCAAmC;AACvC;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI;QACI,qBAAqB;QACrB,SAAS;QACT,QAAQ;IACZ;;IAEA;QACI,wBAAwB;QACxB,WAAW;QACX,QAAQ;IACZ;;IAEA;QACI,sBAAsB;QACtB,WAAW;QACX,UAAU;IACd;;IAEA;QACI,uBAAuB;QACvB,SAAS;QACT,UAAU;IACd;;IAEA;QACI,qBAAqB;QACrB,SAAS;QACT,QAAQ;IACZ;AACJ","sourcesContent":["@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);\r\n\r\na {\r\n    text-decoration: none;\r\n}\r\n\r\n\r\nbody {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: #212121;\r\n    font-family: 'Montserrat', sans-serif;\r\n}\r\n\r\nu:hover {\r\n    font-weight: bold;\r\n}\r\n\r\na:link {\r\n    color: yellow;\r\n}\r\n\r\na:visited {\r\n    color: goldenrod;\r\n}\r\n\r\niframe {\r\n    display: block;\r\n    border: none;\r\n    height: 80vh;\r\n    width: 100%;\r\n}\r\n\r\n.fractal-zoom {\r\n    transform: scale(6);\r\n}\r\n\r\n.fractal-mobile-zoom {\r\n    transform: scale(3);\r\n}\r\n\r\n.show-controls {\r\n    z-index: 2;\r\n    opacity: 1 !important;\r\n    padding: 37px 0px 0px 0px !important;\r\n    transform: scale(0.75) !important;\r\n}\r\n\r\n.show-button {\r\n    padding: 5px;\r\n}\r\n\r\n.tab-buttons {\r\n    position: fixed;\r\n    left: 50%;\r\n    right: 50%;\r\n    z-index: 5;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n.WhiteSquare {\r\n    color: black;\r\n    padding: 20px;\r\n    display: inline-block;\r\n    background-color: red;\r\n    position: relative;\r\n    transition: all 2s ease;\r\n}\r\n\r\n.active-stretch {\r\n    background-color: yellow;\r\n    width: 800px;\r\n}\r\n\r\n.active-square {\r\n    animation-name: example;\r\n    animation-duration: 10s;\r\n    animation-iteration-count: infinite;\r\n}\r\n\r\n.window-translucent {\r\n    opacity: 0 !important;\r\n}\r\n\r\n@keyframes example {\r\n    0% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n\r\n    25% {\r\n        background-color: yellow;\r\n        left: 800px;\r\n        top: 0px;\r\n    }\r\n\r\n    50% {\r\n        background-color: blue;\r\n        left: 800px;\r\n        top: 500px;\r\n    }\r\n\r\n    75% {\r\n        background-color: green;\r\n        left: 0px;\r\n        top: 500px;\r\n    }\r\n\r\n    100% {\r\n        background-color: red;\r\n        left: 0px;\r\n        top: 0px;\r\n    }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "body {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: #212121;\r\n    font-family: 'Montserrat', sans-serif;\r\n}", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,mBAAmB;IACnB,qCAAqC;AACzC","sourcesContent":["@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);\r\n\r\nbody {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: #212121;\r\n    font-family: 'Montserrat', sans-serif;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

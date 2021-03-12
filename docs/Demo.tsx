@@ -12,19 +12,19 @@ const DemoText = styled.div`
     max-width: 680px;
 `
 
-function DemoPage(props) {
+const DemoPage = (props) => {
     return (
         <DemoText>
             This is a little interactive demo of "Bismuth." Hit the control buttons above to play around!
             <br /><br />
-            If you don't see anything, your device may not be able to run this visual. You can still hit <b>Add complexity</b> to see it, but the website may lag.
+            If you don't see anything, your device may not be able to run this visual. For Mac, try using Safari!
             <br/><br/>
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
             <InfoIcon src="websiteIcons/RewindWhite.png" />
-            <InfoIcon src="websiteIcons/FastForwardWhite.png" />&nbsp;&nbsp; Rewind / Fast Forward. Click multiple times to increase speed
+            <InfoIcon src="websiteIcons/FastForwardWhite.png" />&nbsp;&nbsp; Rewind / Fast Forward (Try clicking multiple times)
             <br />
-            <InfoIcon src="websiteIcons/PauseWhite.png" />&nbsp;&nbsp; Pause. Mouse interaction still works while paused
+            <InfoIcon src="websiteIcons/PauseWhite.png" />&nbsp;&nbsp; Pause (Mouse interaction still works while paused)
             <br />
             <InfoIcon src="websiteIcons/PlayWhite.png" />&nbsp;&nbsp; Resume movement at default speed
             <br />

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import './styles.css';
-import { AboutMe } from './AboutMe';
-import { Work } from './Work';
-import { Art } from './Art';
+import AboutMe from './AboutMe';
+import Work from './Work';
+import Art from './Art';
+import ControlPanel from './ControlPanel';
 import { Demo } from './Demo';
-import { ControlPanel } from './ControlPanel';
 
 declare var require: any
-
 var React = require('react');
 
 const FullWindow = styled.div`
@@ -28,6 +27,9 @@ const Window = styled.div`
   transition: 1s ease;
   transition-property: opacity;
   transform-origin: top;
+  ${(props) => props.demoActive && `    
+    opacity: 0 !important;
+  `};
 `;
 
 const TabPage = styled.div`
@@ -60,8 +62,18 @@ const Tab = styled.button`
   `}
 `;
 
+const TabButtons = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
+const FixedButtons = styled.div`
+    z-index: 5;
+    position: fixed;
+`
+
 /* Get matching react component based on clicked tab */
-function getWindow(topic, isMobile) {
+const getWindow = (topic, isMobile) => {
     var text = "";
     if (topic === "About Me") {
         text = <AboutMe isMobile={isMobile} />
@@ -81,70 +93,47 @@ function getWindow(topic, isMobile) {
     return text;
 }
 
-function activateControls(showControls) {
-    var window = document.getElementById("window");
-    var controlButtons = window.querySelector("#controlbuttons");
-    if (showControls) {
-        controlButtons.classList.add("show-controls");
-    }
-    else {
-        controlButtons.classList.remove("show-controls");
-    }
-}
-
-function activateDemo(demoActive) {
-    var window = document.getElementById("window");
-    var tabWindow = window.querySelector("#tabwindow");
-    if (demoActive) { 
-        tabWindow.classList.add("window-translucent");
-    }
-    else {
-        tabWindow.classList.remove("window-translucent");
-    }
-}
-
 const tabs = ["About Me", "Work", "Art", "Demo"];
 
 /* Manage current tab and control panel display */
-function TabGroup(props) {
+const TabGroup = (props) => {
     const [activeTab, setActiveTab] = useState(tabs[0]);
-    var demoActive = false;
+    const [activeDemo, setActiveDemo] = useState(false);
 
     document.addEventListener("mousedown", (event) => {
         var target = event.target;
         if (target instanceof HTMLButtonElement || target instanceof HTMLImageElement) {
             if (target.innerText === "Show/Hide Controls" || target.title === "Show/Hide Controls") {
-                demoActive = !demoActive;
-                activateDemo(demoActive);
+                setActiveDemo(!activeDemo);
             }
         }
     });
     
     return (
         <TabPage id="window" maxWidth={props.isMobile ? "625px" : "1200px"}>
-            <div id="tabuttons" className="tab-buttons">
-                {tabs.map((type) => (
-                    <Tab
-                        padding={props.isMobile ? "8 12" : "8 20"}
-                        border={props.isMobile ? "solid" : "unset"}
-                        key={type}
-                        activeTab={activeTab === type}
-                        onClick={() => {
-                            var clickedDemo = type === "Demo";
-                            activateControls(clickedDemo);
-                            if (!clickedDemo && demoActive) {
-                                activateDemo(false);
-                            }
-                            setActiveTab(type);
-                        }}
-                    >
-                        {type}
-                    </Tab>
-                ))}
-            </div>
-            <ControlPanel isMobile={props.isMobile}/>
+            <TabButtons className="tab-buttons">
+                <FixedButtons>
+                    {tabs.map((type) => (
+                        <Tab
+                            padding={props.isMobile ? "8 12" : "8 20"}
+                            border={props.isMobile ? "solid" : "none"}
+                            key={type}
+                            activeTab={activeTab === type}
+                            onClick={() => {
+                                setActiveTab(type);
+                                if (type !== "Demo") {
+                                    setActiveDemo(false);
+                                }
+                            }}
+                        >
+                            {type}
+                        </Tab>
+                    ))}
+                </FixedButtons>
+                <ControlPanel isMobile={props.isMobile} isActive={activeTab === "Demo"}/>
+            </TabButtons>
             <br />
-            <Window id="tabwindow"
+            <Window id="tabwindow" demoActive={activeDemo}
                 fontSize={props.isMobile ? "14px" : "17px"}
                 radius={props.isMobile ? "0%" : "2%"}
             >
@@ -155,7 +144,7 @@ function TabGroup(props) {
 }
 
 /* Track full page width to determine if we should resize for mobile */
-function WebsiteContainer() {
+const WebsiteContainer = () => {
     const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
         width: window.innerWidth

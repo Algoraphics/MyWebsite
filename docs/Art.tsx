@@ -7,6 +7,19 @@ const ArtSection = styled.div`
     flex-direction: column;
 `
 
+const ArtLink = styled.a`
+    text-decoration: none;
+    &:visited {
+        color: goldenrod;
+    }
+    &:link {
+        color: yellow;
+    }
+    &:hover {
+        font-weight: bold;
+    }
+`
+
 const SlimePreview = styled.div`
     display: inline-block;
     border-style: solid;
@@ -56,6 +69,7 @@ const FractalImg = styled.img`
   flex: 0 9%;
   margin-bottom: 2%;
   transition: transform 0.5s ease-in-out;
+  ${(props) => props.isZoom && props.zoomType};
 `
 
 const PreviewImg = styled.img`
@@ -67,34 +81,19 @@ const PreviewImgMobile = styled.img`
   margin-top: -150;
 `
 
-function FractalGallery(props) {
-    var activeId = "none";
-    const targetProp = props.isMobile ? "fractal-mobile-zoom" : "fractal-zoom";
-    document.addEventListener("mousedown", (event) => {
-        var target = event.target;
-        if (activeId !== "none") {
-            var prevImg = document.getElementById(activeId);
-            prevImg.classList.remove(targetProp);
-        }
-        if (target instanceof HTMLImageElement && target.id.includes("fractalImg")) {
-            if (target.id === activeId) {
-                activeId = "none";
-            }
-            else {
-                target.classList.add(targetProp);
-                activeId = target.id;
-            }
-        }
-    });
+const FractalGallery = (props) => {
+    const [zoomImg, setZoomImg] = React.useState("none");
+    const targetProp = props.isMobile ? "transform: scale(3);" : "transform: scale(6);";
 
     const images = [];
-    for (var i = 1; i <= 30; ++i) {
+    for (let i = 1; i <= 30; ++i) {
         if (props.isMobile) {
             i++;
         }
-        var path = "PsychoPics/Screenshot (" + i + ").png";
-        var id = "fractalImg" + i;
-        images.push(<FractalImg key={i} id={id} src={path} height={props.isMobile ? "160" : "100"} />);
+        let path = "PsychoPics/Screenshot (" + i + ").png";
+        let id = "fractalImg" + i;
+        images.push(<FractalImg key={i} id={id} src={path} height={props.isMobile ? "160" : "100"} zoomType={targetProp}
+            onClick={() => { (zoomImg === id) ? setZoomImg("none") : setZoomImg(id) }} isZoom={zoomImg === id} />);
     }
     return (
         <FractalBox>
@@ -103,19 +102,9 @@ function FractalGallery(props) {
     );
 }
 
-function setShow(doShow) {
-    var previewImg = document.getElementById("previewImg");
-    if (doShow) {
-        previewImg.style.display = "block";
-    }
-    else {
-        previewImg.style.display = "none";
-    }
-}
-
 const videoDimensions = { mobile: { width: "285", height: "150" }, desktop: {width : "500", height : "270"}}
 
-function VideoElement(props) {
+const VideoElement = (props) => {
     if (props.isMobile) {
         return (
             <>
@@ -140,75 +129,75 @@ function VideoElement(props) {
         
 }
 
-export class Art extends React.Component {
-    props: any;
+const Art = (props) => {
+    let { isMobile } = props;
 
-    constructor(props) {
-        super(props);
-    }
+    var slimePreview = (
+        <SlimePreview width={isMobile ? "285" : "500"}>
+            <ArtLink href="http://www.slime-freighter.glitch.me" target="_blank">
+                <VideoElement isMobile={isMobile} />
+            </ArtLink>
+        </SlimePreview>
+    );
 
-    render() {
-        var slimePreview = (
-            <SlimePreview width={this.props.isMobile ? "285" : "500"}>
-                <a href="http://www.slime-freighter.glitch.me" target="_blank">
-                    <VideoElement isMobile={this.props.isMobile} />
-                </a>
-            </SlimePreview>
-        );
-        var slimeText = (
-            <div>
-                    I wanted to give viewers a sense of scale with this experience, beginning with a very grounded
-                    visual of "traveling down the road" which gradually increases in scope and becomes more surreal.
-                <br /><br />
+    var slimeText = (
+        <div>
+            I wanted to give viewers a sense of scale with this experience, beginning with a very grounded
+            visual of "traveling down the road" which gradually increases in scope and becomes more surreal.
+            <br /><br />
                     It shows the ways in which Virtual Reality can bend your expectations of what is visually possible, and then break them.
-            </div>
-        );
-        var slimeBoxDesktop = (
-            <SlimeBoxDesktop id="deskbox">
-                {slimePreview}
-                <SlimeTextDesktop>
-                    {slimeText}
-                </SlimeTextDesktop>
-            </SlimeBoxDesktop>
-        );
-        var slimeBoxMobile = (
-            <SlimeBoxMobile id="mobilebox">
-                {slimePreview}
-                <SlimeTextMobile>
-                    {slimeText}
-                </SlimeTextMobile>
-            </SlimeBoxMobile>
-        );
-        return (
-            <ArtSection>
-                My main creative work has been these audio-visual experiences using various WebXR technologies.
-                I love that users can immerse themselves to their comfort level from anywhere.
-                <br /><br />
-                If you have a VR headset, you can get them running in Firefox. See <a href="https://aframe.io/" target="_blank"><u>aframe.io</u></a> for more details.
-                <h2>Slime Freighter</h2>
-                <a href="http://www.slime-freighter.glitch.me" target="_blank"><u>Slime Freighter</u></a> is
+        </div>
+    );
+
+    var slimeBoxDesktop = (
+        <SlimeBoxDesktop id="deskbox">
+            {slimePreview}
+            <SlimeTextDesktop>
+                {slimeText}
+            </SlimeTextDesktop>
+        </SlimeBoxDesktop>
+    );
+
+    var slimeBoxMobile = (
+        <SlimeBoxMobile id="mobilebox">
+            {slimePreview}
+            <SlimeTextMobile>
+                {slimeText}
+            </SlimeTextMobile>
+        </SlimeBoxMobile>
+    );
+
+    return (
+        <ArtSection>
+            My main creative work has been these audio-visual experiences using various WebXR technologies.
+            I love that users can immerse themselves to their comfort level from anywhere.
+            <br /><br />
+                If you have a VR headset, you can get them running in Firefox. See <ArtLink href="https://aframe.io/" target="_blank"><u>aframe.io</u></ArtLink> for more details.
+            <h2>Slime Freighter</h2>
+            <ArtLink href="http://www.slime-freighter.glitch.me" target="_blank"><u>Slime Freighter</u></ArtLink> is
                     an immersive VR music video set to "Side of the Road" by Big Black Delta.
-                <br /><br />
-                {this.props.isMobile ? slimeBoxMobile : slimeBoxDesktop}
+            <br /><br />
+            {isMobile ? slimeBoxMobile : slimeBoxDesktop}
                 Assets in this video were handmade using GLSL shaders and WebGL geometry,
                 and their placement is procedurally generated in Javascript, so each experience is a bit different.
-                <br /><br />
+            <br /><br />
                 Nearly everything in the video is synchronized to the beat of the music, using a customized
                 audio-reactivity component that I built for the project.
-                <h2>Opal & Bismuth</h2>
-                <FractalText>
-                    A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.
+            <h2>Opal & Bismuth</h2>
+            <FractalText>
+                A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.
                     <br /><br />
-                    <a href="http://www.psycho-bubbles.glitch.me" target="_blank"><u>Opal & Bismuth</u></a> are my attempt to create a visualizer that will always show something new. 
+                <ArtLink href="http://www.psycho-bubbles.glitch.me" target="_blank"><u>Opal & Bismuth</u></ArtLink> are my attempt to create a visualizer that will always show something new.
                     They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.
                     <br /><br />
                     Click the link in their name to see the full VR app with both visualizers and some other small works.
                     <br /><br />
                     An interactive Bismuth preview is available on the <b>Demo</b> tab, or you can browse the gallery below to see samples of both visualizers. <b> Click to Zoom! </b>
-                    <br /><br />
-                </FractalText>
-                <FractalGallery isMobile={this.props.isMobile}/>
-            </ArtSection>
-        )
-    }
+                <br /><br />
+            </FractalText>
+            <FractalGallery isMobile={isMobile} />
+        </ArtSection>
+    );
 }
+
+export default Art;

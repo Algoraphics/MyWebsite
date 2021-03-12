@@ -21,14 +21,19 @@ const ControlButton = styled.button`
 `
 
 const ControlButtonGroup = styled.div`
-    position: fixed;
-    left: 50%;
-    right: 50%;
     opacity: 0;
+    top: 40;
+    position: fixed;
     display: flex;
     justify-content: center;
     transition: all 0.5s ease;
     transform: scale(0.25);
+    transform-origin: top;
+    ${(props) => props.isActive &&`
+        z-index: 2;
+        opacity: 1 !important;
+        transform: scale(0.75) !important;
+    `};
 `
 
 const ControlIcon = styled.img`
@@ -72,9 +77,9 @@ const controlMap = {
     },
 };
 
-function ControlButtons(props) {
+const ControlButtons = (props) => {
     return (
-        <ControlButtonGroup id="controlbuttons">
+        <ControlButtonGroup id="controlbuttons" isActive={props.isActive}>
             {controlTypes.map((type) => (
                 <ControlButton id="controlbutton" key={type}>{controlMap[type].hover}
                     <ControlIcon src={controlMap[type].path} title={controlMap[type].hover} height={props.isMobile ? "25px" : "40px"} />
@@ -85,16 +90,11 @@ function ControlButtons(props) {
 }
 
 
-export class ControlPanel extends React.Component {
-    props: any;
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <ControlButtons isMobile={this.props.isMobile}/>
-        );
-    }
+const ControlPanel = (props) => {
+    let { isMobile, isActive } = props;
+    return (
+        <ControlButtons isMobile={isMobile} isActive={isActive} />
+    );
 }
+
+export default ControlPanel;
