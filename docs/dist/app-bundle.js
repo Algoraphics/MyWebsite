@@ -250,6 +250,7 @@ const FractalBox = styled_components_1.default.div `
   justify-content: space-around;
 `;
 const FractalImg = styled_components_1.default.img `
+  user-select: none;
   flex: 0 9%;
   margin-bottom: 2%;
   transition: transform 0.5s ease-in-out;

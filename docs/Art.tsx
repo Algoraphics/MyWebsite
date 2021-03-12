@@ -66,6 +66,7 @@ const FractalBox = styled.div`
 `
 
 const FractalImg = styled.img`
+  user-select: none;
   flex: 0 9%;
   margin-bottom: 2%;
   transition: transform 0.5s ease-in-out;
