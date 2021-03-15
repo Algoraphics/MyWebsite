@@ -253,15 +253,8 @@ const FractalImg = styled_components_1.default.img `
   user-select: none;
   flex: 0 9%;
   margin-bottom: 2%;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   ${(props) => props.isZoom && props.zoomType};
-`;
-const PreviewImg = styled_components_1.default.img `
-  margin-top: -270;
-  margin-right: -450;
-`;
-const PreviewImgMobile = styled_components_1.default.img `
-  margin-top: -150;
 `;
 const FractalGallery = (props) => {
     const [zoomImg, setZoomImg] = React.useState("none");
@@ -281,16 +274,14 @@ const videoDimensions = { mobile: { width: "285", height: "150" }, desktop: { wi
 const VideoElement = (props) => {
     if (props.isMobile) {
         return (React.createElement(React.Fragment, null,
-            React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: videoDimensions.mobile.height, width: videoDimensions.mobile.width, preload: "true" },
+            React.createElement("video", { id: "slimeMobile", loop: true, autoPlay: true, height: videoDimensions.mobile.height, width: videoDimensions.mobile.width, preload: "true", poster: "SlimePreviewImg.JPG" },
                 React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }),
-                "Your browser does not support this preview video.Click to see the full experience."),
-            React.createElement(PreviewImgMobile, { id: "previewImg", src: "SlimePreviewImg.JPG", height: videoDimensions.mobile.height, width: "280", title: "Waiting for video to load" })));
+                "Your browser does not support this preview video.Click to see the full experience.")));
     }
     else
         return (React.createElement("div", null,
-            React.createElement("video", { id: "slimeDesktop", loop: true, height: videoDimensions.desktop.height, width: videoDimensions.desktop.width, preload: "true", onMouseOver: event => event.target.play(), onMouseOut: event => event.target.pause() },
-                React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" })),
-            React.createElement(PreviewImg, { id: "previewImg", src: "SlimePreviewImg.JPG", height: "260", width: videoDimensions.desktop.width, title: "Waiting for video to load" })));
+            React.createElement("video", { id: "slimeDesktop", loop: true, height: videoDimensions.desktop.height, width: videoDimensions.desktop.width, preload: "true", poster: "SlimePreviewImg.JPG", onMouseOver: event => event.target.play(), onMouseOut: event => event.target.pause() },
+                React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }))));
 };
 const Art = (props) => {
     let { isMobile } = props;
