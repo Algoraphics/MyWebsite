@@ -208,7 +208,7 @@
 
     <style>
         .shader-web-background-fallback {
-            background-color: #212121;
+            background-color: black;
             background-position: center;
             background-size: cover;
             background-attachment: fixed;
@@ -403,6 +403,11 @@
                 }
                 else if (target.innerText === "Increase Complexity" || target.title === "Increase Complexity") {
                     if (powerLevel < 2.) {
+                        // Re-enable shader if it's been disabled by FPS checker
+                        if (powerLevel <= -1.) {
+                            const shaderBackground = document.getElementById("shader-web-background");
+                            shaderBackground.style.display = "flex";
+                        }
                         powerLevel += 0.1;
                     }
                 }
@@ -424,15 +429,18 @@
 
         // FPS Checker (occasionally calculates FPS and lowers the power level if it's really bad)
         var fpsCheck = false;
+        var reset = false;
         var times = [];
-        let fps = 60;
-        let checkCounter = 300;
+        var fps = 60;
+        var checkCounter = 300;
+
 
         function refreshLoop() {
             window.requestAnimationFrame(() => {
                 checkCounter++;
                 if (checkCounter > 420) {
                     fpsCheck = false;
+                    reset = true;
                 }
                 else if (checkCounter > 300) {
                     const now = performance.now();
@@ -442,15 +450,23 @@
                     }
                     times.push(now);
                     fps = times.length;
-                    if (fpsCheck && !activate && fps < 45) {
+                    console.log("fps is " + fps)
+                    if (fpsCheck && !activate && fps < 61) {
                         console.log("Low FPS of " + fps + ". Lowering power.");
                         powerLevel -= 0.5;
                         fpsCheck = false;
+                        reset = true;
+                        if (powerLevel < -1.0) {
+                            const shaderBackground = document.getElementById("shader-web-background");
+                            shaderBackground.style.display = "none";
+                            console.log("Removing shader, fps too low");
+                        }
                     }
                 }
-                if (!fpsCheck) {
+                if (reset) {
                     checkCounter = 0;
                     times = [];
+                    reset = false;
                 }
                 refreshLoop();
             });
