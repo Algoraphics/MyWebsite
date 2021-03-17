@@ -12,7 +12,7 @@ const DemoText = styled.div`
     max-width: 680px;
 `
 
-const DemoPage = (props) => {
+const Demo = (props) => {
     return (
         <DemoText>
             This is a little interactive demo of "Bismuth." Hit the control buttons above to play around!
@@ -38,20 +38,4 @@ const DemoPage = (props) => {
         </DemoText>);
 }
 
-export class Demo extends React.Component {
-    props: any;
-
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-        window.scrollTo(0, 0)
-    }
-
-    render() {
-        return (
-            <DemoPage isMobile={this.props.isMobile} />
-        );
-    }
-}
+export default Demo;

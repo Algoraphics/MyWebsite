@@ -5,7 +5,7 @@ import AboutMe from './AboutMe';
 import Work from './Work';
 import Art from './Art';
 import ControlPanel from './ControlPanel';
-import { Demo } from './Demo';
+import Demo from './Demo';
 
 declare var require: any
 var React = require('react');
@@ -20,8 +20,8 @@ const Window = styled.div`
   background-color: #212121;
   color: white;
   font-size: ${(props) => props.fontSize};
-  padding: 40 25;
-  max-width: 75%;
+  padding: 30 15;
+  max-width: 70%;
   margin: auto;
   border-radius: ${(props) => props.radius};
   transition: 1s ease;
@@ -52,6 +52,9 @@ const Tab = styled.button`
   border-color: #575757;
   &:hover {
     border-color: yellow;
+    transition: 1s ease;
+    transition-property: width;
+    transform-origin: center;
   }
   ${({ activeTab }) =>
         activeTab &&
@@ -121,6 +124,7 @@ const TabGroup = (props) => {
                             activeTab={activeTab === type}
                             onClick={() => {
                                 setActiveTab(type);
+                                window.scrollTo(0, 0);
                                 if (type !== "Demo") {
                                     setActiveDemo(false);
                                 }

@@ -462,7 +462,7 @@ const DemoText = styled_components_1.default.div `
     padding: 40 0 0 0;
     max-width: 680px;
 `;
-const DemoPage = (props) => {
+const Demo = (props) => {
     return (React.createElement(DemoText, null,
         "This is a little interactive demo of \"Bismuth.\" Hit the control buttons above to play around!",
         React.createElement("br", null),
@@ -498,18 +498,7 @@ const DemoPage = (props) => {
         React.createElement("b", null, "Art"),
         " tab to learn more about this visual."));
 };
-class Demo extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    componentDidMount() {
-        window.scrollTo(0, 0);
-    }
-    render() {
-        return (React.createElement(DemoPage, { isMobile: this.props.isMobile }));
-    }
-}
-exports.Demo = Demo;
+exports.default = Demo;
 
 
 /***/ }),
@@ -542,8 +531,8 @@ const Window = styled_components_1.default.div `
   background-color: #212121;
   color: white;
   font-size: ${(props) => props.fontSize};
-  padding: 40 25;
-  max-width: 75%;
+  padding: 30 15;
+  max-width: 70%;
   margin: auto;
   border-radius: ${(props) => props.radius};
   transition: 1s ease;
@@ -572,6 +561,9 @@ const Tab = styled_components_1.default.button `
   border-color: #575757;
   &:hover {
     border-color: yellow;
+    transition: 1s ease;
+    transition-property: width;
+    transform-origin: center;
   }
   ${({ activeTab }) => activeTab &&
     `
@@ -601,7 +593,7 @@ const getWindow = (topic, isMobile) => {
         text = React.createElement(Art_1.default, { isMobile: isMobile });
     }
     else if (topic === "Demo") {
-        text = React.createElement(Demo_1.Demo, { isMobile: isMobile });
+        text = React.createElement(Demo_1.default, { isMobile: isMobile });
     }
     else {
         text = topic;
@@ -625,6 +617,7 @@ const TabGroup = (props) => {
         React.createElement(TabButtons, { className: "tab-buttons" },
             React.createElement(FixedButtons, null, tabs.map((type) => (React.createElement(Tab, { padding: props.isMobile ? "8 12" : "8 20", border: props.isMobile ? "solid" : "none", key: type, activeTab: activeTab === type, onClick: () => {
                     setActiveTab(type);
+                    window.scrollTo(0, 0);
                     if (type !== "Demo") {
                         setActiveDemo(false);
                     }
