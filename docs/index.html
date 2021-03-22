@@ -355,15 +355,18 @@
         }
     </script>
     <script>
-
         var minDimension;
-        var time = performance.now() / 1000 + 50.;
+        var time = performance.now() / 1000 + 50;
 
         var mouseX;
         var mouseY;
-        var activate = 0.;
+        var activate = 0;
         var powerLevel = -0.2;
         var mouse = 1.0;
+        var disabled = false;
+        // Set whenever we want to reset the FPS checker and check immediately
+        var fpsReset = false;
+
         document.addEventListener("mousemove", (event) => {
             mouseX = event.clientX;
             mouseY = event.clientY;
@@ -373,100 +376,109 @@
             if (event.buttons !== 1) {
                 return;
             }
+
             var target = event.target;
             if (target instanceof HTMLButtonElement || target instanceof HTMLImageElement) {
                 if (target.innerText === "Demo") {
-                    if (activate === 0.) {
+                    if (activate === 0) {
                         if (powerLevel <= -1.1) {
-                            powerLevel = -1.
+                            powerLevel = -1;
                         }
                         activate = 0.01;
                     }
-                }
-                else if (target.innerText === "Pause" || target.title === "Pause") {
-                    timeAdd = 0.;
-                }
-                else if (target.innerText === "Play" || target.title === "Play") {
+
+                } else if (target.innerText === "Pause" || target.title === "Pause") {
+                    timeAdd = 0;
+                } else if (target.innerText === "Play" || target.title === "Play") {
                     timeAdd = 0.5;
-                }
-                else if (target.innerText === "Rewind" || target.title === "Rewind") {
-                    if (timeAdd > 0.) {
-                        timeAdd = 0.;
+                } else if (target.innerText === "Rewind" || target.title === "Rewind") {
+                    if (timeAdd > 0) {
+                        timeAdd = 0;
                     }
                     timeAdd -= 2.5;
-                }
-                else if (target.innerText === "Fast Forward" || target.title === "Fast Forward") {
-                    if (timeAdd < 0.) {
-                        timeAdd = 0.;
+                } else if (target.innerText === "Fast Forward" || target.title === "Fast Forward") {
+                    if (timeAdd < 0) {
+                        timeAdd = 0;
                     }
                     timeAdd += 2.5;
-                }
-                else if (target.innerText === "Increase Complexity" || target.title === "Increase Complexity") {
-                    if (powerLevel < 2.) {
+                } else if (target.innerText === "Increase Complexity" || target.title === "Increase Complexity") {
+                    if (powerLevel < 2) {
+                        powerLevel += 0.1;
+
                         // Re-enable shader if it's been disabled by FPS checker
-                        if (powerLevel <= -1.) {
+                        if (disabled) {
                             const shaderBackground = document.getElementById("shader-web-background");
                             shaderBackground.style.display = "flex";
+                            const warningBox = document.getElementById("WarningBox");
+                            warningBox.style.display = "none";
+                            disabled = false;
                         }
-                        powerLevel += 0.1;
                     }
-                }
-                else if (target.innerText === "Decrease Complexity" || target.title === "Decrease Complexity") {
+                } else if (target.innerText === "Decrease Complexity" || target.title === "Decrease Complexity") {
                     if (powerLevel >= -1.1) {
                         powerLevel -= 0.1;
                     }
-                }
-                else if (target.innerText === "Toggle Cursor Interactivity" || target.title === "Toggle Cursor Interactivity") {
+                } else if (target.innerText === "Toggle Cursor Interactivity" || target.title === "Toggle Cursor Interactivity") {
                     mouse = 1 - mouse;
-                }
-                else if (target.innerText === "About Me" || target.innerText === "Work" || target.innerText === "Art") {
-                    activate = 0.;
-                    powerLevel = 0.;
-                    timeAdd = 1.;
+                } else if (
+                    target.innerText === "About Me" ||
+                    target.innerText === "Work" ||
+                    target.innerText === "Art"
+                ) {
+                    fpsReset = true;
+                    activate = 0;
+                    powerLevel = -0.2;
+                    timeAdd = 1;
                 }
             }
         });
 
-        // FPS Checker (occasionally calculates FPS and lowers the power level if it's really bad)
+        // Set once we've gathered enough FPS values to actually check times
         var fpsCheck = false;
-        var reset = false;
+        // Set if we've lowered power, and want to wait until the next cycle to take action
+        var waitCycle = false;
         var times = [];
         var fps = 60;
-        var checkCounter = 300;
+        var checkTime = 0;
 
-
+        // FPS Checker (occasionally calculates FPS and lowers the power level if it's really bad)
         function refreshLoop() {
             window.requestAnimationFrame(() => {
-                checkCounter++;
-                if (checkCounter > 420) {
+                if (fpsReset) {
+                    checkTime = performance.now();
+                    times = [];
+                    fpsReset = false;
                     fpsCheck = false;
-                    reset = true;
+                    waitCycle = false;
                 }
-                else if (checkCounter > 300) {
-                    const now = performance.now();
+
+                const now = performance.now();
+                const diff = now - checkTime;
+                if (diff >= 10000) {
+                    fpsReset = true;
+                } else if (diff < 2000 && !waitCycle && !activate && !disabled) {
                     while (times.length > 0 && times[0] <= now - 1000) {
                         fpsCheck = true;
                         times.shift();
                     }
                     times.push(now);
                     fps = times.length;
-                    console.log("fps is " + fps)
                     if (fpsCheck && !activate && fps < 29) {
+                        waitCycle = true;
                         console.log("Low FPS of " + fps + ". Lowering power.");
                         powerLevel -= 0.5;
                         fpsCheck = false;
-                        reset = true;
-                        if (powerLevel < -1.0) {
-                            const shaderBackground = document.getElementById("shader-web-background");
-                            shaderBackground.style.display = "none";
-                            console.log("Removing shader, fps too low");
+                        if (powerLevel < -1.0 || fps < 10) {
+                            if (!disabled) {
+                                const shaderBackground = document.getElementById("shader-web-background");
+                                shaderBackground.style.display = "none";
+                                const warningBox = document.getElementById("WarningBox");
+                                warningBox.style.display = "block";
+                                console.log("Removing shader, fps too low");
+                                disabled = true;
+                            }
                         }
                     }
-                }
-                if (reset) {
-                    checkCounter = 0;
-                    times = [];
-                    reset = false;
                 }
                 refreshLoop();
             });

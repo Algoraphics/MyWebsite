@@ -467,7 +467,9 @@ const Demo = (props) => {
         "This is a little interactive demo of \"Bismuth.\" Hit the control buttons above to play around!",
         React.createElement("br", null),
         React.createElement("br", null),
-        "If you don't see anything, your device may not be able to run this visual. For Mac, try using Safari!",
+        "If you got the red warning, your device may not be able to run this demo. For Mac, try using Safari! Hit ",
+        React.createElement("b", null, "Add Complexity"),
+        " to run it anyway.",
         React.createElement("br", null),
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/VisibleWhite.png" }),
@@ -580,6 +582,17 @@ const FixedButtons = styled_components_1.default.div `
     z-index: 5;
     position: fixed;
 `;
+const WarningBox = styled_components_1.default.div `
+    padding: 5px;
+    position: fixed;
+    background-color: red;
+    bottom: 0;
+    right: 20;
+    height: 55;
+    width: 400;
+    font-size: 23;
+    display: none;
+`;
 /* Get matching react component based on clicked tab */
 const getWindow = (topic, isMobile) => {
     var text = "";
@@ -647,7 +660,8 @@ const WebsiteContainer = () => {
     const isMobile = dimensions.width <= 1000;
     return (React.createElement(React.Fragment, null,
         React.createElement(FullWindow, { id: "FullWindow" },
-            React.createElement(TabGroup, { isMobile: isMobile }))));
+            React.createElement(TabGroup, { isMobile: isMobile }),
+            React.createElement(WarningBox, { id: "WarningBox" }, "Background disabled! Framerate was too low. See Demo for details."))));
 };
 class Website extends React.Component {
     render() {

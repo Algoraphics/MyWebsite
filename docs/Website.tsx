@@ -75,6 +75,18 @@ const FixedButtons = styled.div`
     position: fixed;
 `
 
+const WarningBox = styled.div`
+    padding: 5px;
+    position: fixed;
+    background-color: red;
+    bottom: 0;
+    right: 20;
+    height: 55;
+    width: 400;
+    font-size: 23;
+    display: none;
+`
+
 /* Get matching react component based on clicked tab */
 const getWindow = (topic, isMobile) => {
     var text = "";
@@ -174,6 +186,7 @@ const WebsiteContainer = () => {
         <>
             <FullWindow id="FullWindow">
                 <TabGroup isMobile={isMobile} />
+                <WarningBox id="WarningBox">Background disabled! Framerate was too low. See Demo for details.</WarningBox>
             </FullWindow>
         </>
     );

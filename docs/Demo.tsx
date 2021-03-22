@@ -17,7 +17,7 @@ const Demo = (props) => {
         <DemoText>
             This is a little interactive demo of "Bismuth." Hit the control buttons above to play around!
             <br /><br />
-            If you don't see anything, your device may not be able to run this visual. For Mac, try using Safari!
+            If you got the red warning, your device may not be able to run this demo. For Mac, try using Safari! Hit <b>Add Complexity</b> to run it anyway.
             <br/><br/>
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
