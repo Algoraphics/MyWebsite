@@ -358,6 +358,7 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 const ControlButton = styled_components_1.default.button `
     outline: none;
+    cursor: pointer;
     font-size: 0;
     border: 1px solid;
     background-size: contain;
@@ -464,12 +465,12 @@ const DemoText = styled_components_1.default.div `
 `;
 const Demo = (props) => {
     return (React.createElement(DemoText, null,
-        "This is a little interactive demo of \"Bismuth.\" Hit the control buttons above to play around!",
+        "This is a little interactive demo of \"Bismuth.\" Use the control buttons above to play around!",
         React.createElement("br", null),
         React.createElement("br", null),
-        "If you got the red warning, your device may not be able to run this demo. For Mac, try using Safari! Hit ",
-        React.createElement("b", null, "Add Complexity"),
-        " to run it anyway.",
+        "If it's been disabled, your device may not be able to run this demo. For Mac, try using Safari! Click ",
+        React.createElement(InfoIcon, { src: "websiteIcons/PowerUpWhite.png" }),
+        " a few times to run it anyway.",
         React.createElement("br", null),
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/VisibleWhite.png" }),
@@ -490,7 +491,7 @@ const Demo = (props) => {
         "\u00A0\u00A0 Toggle mouse interaction (enabled by default)",
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/PowerUpWhite.png" }),
-        "\u00A0\u00A0 Add complexity (the coolest button)",
+        "\u00A0\u00A0 Add complexity (the more you click, the cooler it gets)",
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/PowerDownWhite.png" }),
         "\u00A0\u00A0 Reduce complexity (if things get a bit slow)",
@@ -583,14 +584,17 @@ const FixedButtons = styled_components_1.default.div `
     position: fixed;
 `;
 const WarningBox = styled_components_1.default.div `
-    padding: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 15;
     position: fixed;
-    background-color: red;
+    color: white;
+    background-color: #401515;
     bottom: 0;
     right: 20;
-    height: 55;
-    width: 400;
-    font-size: 23;
+    width: 300;
+    font-size: 16;
+    cursor: pointer;
     display: none;
 `;
 /* Get matching react component based on clicked tab */
@@ -635,9 +639,10 @@ const TabGroup = (props) => {
                         setActiveDemo(false);
                     }
                 } }, type)))),
-            React.createElement(ControlPanel_1.default, { isMobile: props.isMobile, isActive: activeTab === "Demo" })),
+            React.createElement(ControlPanel_1.default, { isMobile: props.isMobile, isActive: activeTab === "Demo" }),
+            React.createElement(WarningBox, { id: "WarningBox", onClick: () => { setActiveTab("Demo"); window.scrollTo(0, 0); } }, "Background disabled! Framerate was too low. See Demo for details.")),
         React.createElement("br", null),
-        React.createElement(Window, { id: "tabwindow", demoActive: activeDemo, fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "0%" : "2%" }, getWindow(activeTab, props.isMobile))));
+        React.createElement(Window, { id: "tabwindow", demoActive: activeDemo, fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "10px" : "2%" }, getWindow(activeTab, props.isMobile))));
 };
 /* Track full page width to determine if we should resize for mobile */
 const WebsiteContainer = () => {
@@ -660,8 +665,7 @@ const WebsiteContainer = () => {
     const isMobile = dimensions.width <= 1000;
     return (React.createElement(React.Fragment, null,
         React.createElement(FullWindow, { id: "FullWindow" },
-            React.createElement(TabGroup, { isMobile: isMobile }),
-            React.createElement(WarningBox, { id: "WarningBox" }, "Background disabled! Framerate was too low. See Demo for details."))));
+            React.createElement(TabGroup, { isMobile: isMobile }))));
 };
 class Website extends React.Component {
     render() {

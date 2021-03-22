@@ -76,14 +76,17 @@ const FixedButtons = styled.div`
 `
 
 const WarningBox = styled.div`
-    padding: 5px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 15;
     position: fixed;
-    background-color: red;
+    color: white;
+    background-color: #401515;
     bottom: 0;
     right: 20;
-    height: 55;
-    width: 400;
-    font-size: 23;
+    width: 300;
+    font-size: 16;
+    cursor: pointer;
     display: none;
 `
 
@@ -146,12 +149,14 @@ const TabGroup = (props) => {
                         </Tab>
                     ))}
                 </FixedButtons>
-                <ControlPanel isMobile={props.isMobile} isActive={activeTab === "Demo"}/>
+                <ControlPanel isMobile={props.isMobile} isActive={activeTab === "Demo"} />
+                <WarningBox id="WarningBox" onClick={() => {setActiveTab("Demo"); window.scrollTo(0, 0);}}>
+                    Background disabled! Framerate was too low. See Demo for details.</WarningBox>
             </TabButtons>
             <br />
             <Window id="tabwindow" demoActive={activeDemo}
                 fontSize={props.isMobile ? "14px" : "17px"}
-                radius={props.isMobile ? "0%" : "2%"}
+                radius={props.isMobile ? "10px" : "2%"}
             >
                 {getWindow(activeTab, props.isMobile)}
             </Window>
@@ -186,7 +191,6 @@ const WebsiteContainer = () => {
         <>
             <FullWindow id="FullWindow">
                 <TabGroup isMobile={isMobile} />
-                <WarningBox id="WarningBox">Background disabled! Framerate was too low. See Demo for details.</WarningBox>
             </FullWindow>
         </>
     );

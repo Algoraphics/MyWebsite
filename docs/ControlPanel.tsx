@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const ControlButton = styled.button`
     outline: none;
+    cursor: pointer;
     font-size: 0;
     border: 1px solid;
     background-size: contain;

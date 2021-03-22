@@ -15,9 +15,9 @@ const DemoText = styled.div`
 const Demo = (props) => {
     return (
         <DemoText>
-            This is a little interactive demo of "Bismuth." Hit the control buttons above to play around!
+            This is a little interactive demo of "Bismuth." Use the control buttons above to play around!
             <br /><br />
-            If you got the red warning, your device may not be able to run this demo. For Mac, try using Safari! Hit <b>Add Complexity</b> to run it anyway.
+            If it's been disabled, your device may not be able to run this demo. For Mac, try using Safari! Click <InfoIcon src="websiteIcons/PowerUpWhite.png" /> a few times to run it at your own risk.
             <br/><br/>
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
@@ -30,7 +30,7 @@ const Demo = (props) => {
             <br />
             <InfoIcon src="websiteIcons/MouseWhite.png" />&nbsp;&nbsp; Toggle mouse interaction (enabled by default)
             <br />
-            <InfoIcon src="websiteIcons/PowerUpWhite.png" />&nbsp;&nbsp; Add complexity (the coolest button)
+            <InfoIcon src="websiteIcons/PowerUpWhite.png" />&nbsp;&nbsp; Add complexity (the more you click, the cooler it gets)
             <br />
             <InfoIcon src="websiteIcons/PowerDownWhite.png" />&nbsp;&nbsp; Reduce complexity (if things get a bit slow)
             <br /><br />
