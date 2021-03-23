@@ -427,7 +427,9 @@
                 ) {
                     fpsReset = true;
                     activate = 0;
-                    powerLevel = -0.2;
+                    if (powerLevel > 0.3) {
+                        powerLevel = 0.3;
+                    }
                     timeAdd = 1;
                 }
             }
