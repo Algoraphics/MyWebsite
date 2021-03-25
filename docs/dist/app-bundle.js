@@ -470,7 +470,7 @@ const Demo = (props) => {
         React.createElement("br", null),
         "If it's been disabled, your device may not be able to run this demo. For Mac, try using Safari! Click ",
         React.createElement(InfoIcon, { src: "websiteIcons/PowerUpWhite.png" }),
-        " a few times to run it anyway.",
+        " a few times to run it at your own risk.",
         React.createElement("br", null),
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/VisibleWhite.png" }),
