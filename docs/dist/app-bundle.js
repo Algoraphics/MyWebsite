@@ -127,7 +127,7 @@ var IntroText = () => (React.createElement(AboutTextSection, null,
     "Hi!",
     React.createElement("br", null),
     React.createElement("br", null),
-    "My name is Ethan Rabb. I'm a Software Engineer with 6+ years in industry and a passion for creative programming projects.",
+    "My name is Ethan Rabb. I'm a Software Engineer with 7+ years in industry and a passion for creative programming projects.",
     React.createElement("h2", null, "What kind of work do you do?"),
     "I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics. I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.",
     React.createElement("br", null),
@@ -1497,7 +1497,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 ___CSS_LOADER_EXPORT___.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "body {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: black;\r\n    font-family: 'Montserrat', sans-serif;\r\n}", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,iBAAiB;IACjB,qCAAqC;AACzC","sourcesContent":["@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);\r\n\r\nbody {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: black;\r\n    font-family: 'Montserrat', sans-serif;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "body {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: black;\n    font-family: 'Montserrat', sans-serif;\n}", "",{"version":3,"sources":["webpack://./styles.css"],"names":[],"mappings":"AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,iBAAiB;IACjB,qCAAqC;AACzC","sourcesContent":["@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);\n\nbody {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    background: black;\n    font-family: 'Montserrat', sans-serif;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
