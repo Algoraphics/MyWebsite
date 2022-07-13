@@ -35,7 +35,7 @@ var IntroText = () => (
     <AboutTextSection>
         Hi!
         <br /><br />
-                My name is Ethan Rabb. I'm a Software Engineer with 6+ years in industry and a passion for creative programming projects.
+                My name is Ethan Rabb. I'm a Software Engineer with 7+ years in industry and a passion for creative programming projects.
         <h2>What kind of work do you do?</h2>
                         I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics.
                         I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.
