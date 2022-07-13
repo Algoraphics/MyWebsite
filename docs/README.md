@@ -1,3 +1,11 @@
 # It's my Website!
 
-test
+Updating from anywhere:
+
+Pull down repo
+Make sure npm is installed
+npm install webpack-cli
+npm run build
+Push
+
+Done!
