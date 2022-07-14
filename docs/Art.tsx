@@ -9,12 +9,27 @@ const ArtSection = styled.div`
 
 const ArtLink = styled.a`
     text-decoration: none;
+    color: yellow;
     &:visited {
         color: goldenrod;
     }
     &:link {
         color: yellow;
     }
+    &:hover {
+        font-weight: bold;
+    }
+`
+
+const ArtTextButton = styled.button`
+    font-size: ${(props) => props.fontSize};
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    text-decoration: underline;
+    color: yellow;
     &:hover {
         font-weight: bold;
     }
@@ -120,7 +135,7 @@ const VideoElement = (props) => {
 }
 
 const Art = (props) => {
-    let { isMobile } = props;
+    let { isMobile, setTab } = props;
 
     var slimePreview = (
         <SlimePreview width={isMobile ? "285" : "500"}>
@@ -177,12 +192,14 @@ const Art = (props) => {
             <FractalText>
                 A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.
                     <br /><br />
-                <ArtLink href="http://www.psycho-bubbles.glitch.me" target="_blank"><u>Opal & Bismuth</u></ArtLink> are my attempt to create a visualizer that will always show something new.
-                    They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.
+                    Opal & Bismuth are my attempt to create a visualizer that will always show something new.
+                    Their patterns will continue to shift and change endlessly, and can respond to user input as well. Both use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.
                     <br /><br />
-                    Click the link in their name to see the full VR app with both visualizers and some other small works.
+                    Check out <ArtLink href="http://www.psycho-bubbles.glitch.me" target="_blank"><u>their dedicated website</u></ArtLink> to see them both in VR, as well as some other small works.
                     <br /><br />
-                    An interactive Bismuth preview is available on the <b>Demo</b> tab, or you can browse the gallery below to see samples of both visualizers. <b> Click to Zoom! </b>
+                    An interactive Bismuth preview is available on the <ArtTextButton fontSize={isMobile ? '14px' : '17px'} onClick={() => setTab("Demo")}>Demo</ArtTextButton> tab,
+                    or you can browse the gallery below to see samples of both visualizers.
+                    <b> Click to Zoom! </b>
                 <br /><br />
             </FractalText>
             <FractalGallery isMobile={isMobile} />

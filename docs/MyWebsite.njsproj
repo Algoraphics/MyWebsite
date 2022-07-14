@@ -36,6 +36,7 @@
     <Content Include="dist\app-bundle.js.map" />
     <Content Include="Exbot.jpg" />
     <Content Include="Headshot.jpg" />
+    <Content Include="RabbEthanFullResume.pdf" />
     <Content Include="PsychoPics\Screenshot %281%29.png" />
     <Content Include="PsychoPics\Screenshot %2810%29.png" />
     <Content Include="PsychoPics\Screenshot %2811%29.png" />

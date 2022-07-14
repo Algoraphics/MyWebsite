@@ -17,7 +17,11 @@ const ResumeFrame = styled.iframe`
 const Work = () => {
     return (
         <>
-            The bulk of my industry work has been split between two jobs, each for about 3 years.
+            I have about 7 years of industry work experience, split between three jobs, each in a different industry.
+            <h2>Maize Analytics (SecureLink (Imprivata))</h2>
+                In 2020, I started remote work at Maize Analytics (acquired by SecureLink in 2020 (acquired by Imprivata in 2021)).
+                As a senior full-stack developer, I distribute my time between front-end, back-end, and database implementation needs.
+                I also mentor junior developers, and work with product and design team members to architect new features.
             <h2>ForeFlight (Boeing)</h2>
                 In 2018, after I moved to Austin, I began working at ForeFlight (acquired by Boeing in 2019).
                 I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting.
@@ -29,7 +33,7 @@ const Work = () => {
             <h2>Resume</h2>
                 This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.
             <WorkSection>
-                <ResumeFrame height="100%" src="https://drive.google.com/file/d/1UyvxXlgMoTsYJgewymbfslwr240zbZkj/preview" />
+                <ResumeFrame height="100%" src="RabbEthanFullResume.pdf" />
             </WorkSection>
         </>
     );

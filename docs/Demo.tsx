@@ -12,12 +12,28 @@ const DemoText = styled.div`
     max-width: 680px;
 `
 
+const DemoLink = styled.button`
+    font-size: ${(props) => props.fontSize};
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    text-decoration: underline;
+    color: yellow;
+    &:hover {
+        font-weight: bold;
+    }
+`
+
 const Demo = (props) => {
+    let { setTab, isMobile } = props;
     return (
         <DemoText>
-            This is a little interactive demo of "Bismuth." Use the control buttons above to play around!
+            This is a little interactive demo of "Bismuth." Use the control buttons to play around!
+            Try starting with <InfoIcon src="websiteIcons/PowerUpWhite.png" />
             <br /><br />
-            If it's been disabled, your device may not be able to run this demo. For Mac, try using Safari! Click <InfoIcon src="websiteIcons/PowerUpWhite.png" /> a few times to run it at your own risk.
+            If it's been disabled, your device may not be able to run this demo. For Mac, try using Safari!
             <br/><br/>
             <InfoIcon src="websiteIcons/VisibleWhite.png" />&nbsp;&nbsp; <b>Show/Hide this information panel</b>
             <br />
@@ -34,7 +50,7 @@ const Demo = (props) => {
             <br />
             <InfoIcon src="websiteIcons/PowerDownWhite.png" />&nbsp;&nbsp; Reduce complexity (if things get a bit slow)
             <br /><br />
-            See the <b>Art</b> tab to learn more about this visual.
+            See <DemoLink fontSize={isMobile ? '14px' : '17px'} onClick={() => setTab("Art")}>Art</DemoLink> to learn more about this visual.
         </DemoText>);
 }
 

@@ -109,6 +109,19 @@ const MobileFace = styled_components_1.default.img `
     margin: 0 auto;
     display: block;
 `;
+const AboutMeLink = styled_components_1.default.button `
+    font-size: ${(props) => props.fontSize};
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    text-decoration: underline;
+    color: yellow;
+    &:hover {
+        font-weight: bold;
+    }
+`;
 const AboutTextSection = styled_components_1.default.div `
     padding: 5 5 0 5;
 `;
@@ -123,59 +136,74 @@ const MobileWrap = styled_components_1.default.div `
 const TopLevel = styled_components_1.default.div `
     padding: 0 0 30 0;
 `;
-var IntroText = () => (React.createElement(AboutTextSection, null,
-    "Hi!",
-    React.createElement("br", null),
-    React.createElement("br", null),
-    "My name is Ethan Rabb. I'm a Software Engineer with 7+ years in industry and a passion for creative programming projects.",
-    React.createElement("h2", null, "What kind of work do you do?"),
-    "I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics. I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.",
-    React.createElement("br", null),
-    React.createElement("br", null),
-    "Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products and services, especially if they help make the world a better place to live in.",
-    React.createElement("br", null),
-    React.createElement("br", null),
-    "For a full Resume and more detail about my work, go to the ",
-    React.createElement("b", null, "Work"),
-    " tab."));
-var AboutIntroDesktop = () => (React.createElement(AboutTextSection, null,
-    React.createElement(DeskFace, { src: "Headshot.jpg", title: "It me", height: "320" }),
-    React.createElement(IntroText, null)));
-var AboutIntroMobile = () => (React.createElement(MobileTextSection, null,
-    React.createElement(MobileWrap, null,
-        React.createElement(MobileFace, { src: "Headshot.jpg", title: "It me", height: "270" })),
-    React.createElement(IntroText, null)));
-var Additional = () => (React.createElement(AboutTextSection, null,
-    React.createElement("h2", null, "What's going on with the background?"),
-    "In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! You can play around with it on the ",
-    React.createElement("b", null, "Demo"),
-    " tab, or find more examples and info on the ",
-    React.createElement("b", null, "Art"),
-    " tab.",
-    React.createElement("br", null),
-    React.createElement("br", null),
-    "I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer.",
-    React.createElement("h2", null, "Do you have any other interests?"),
-    "Definitely! I have plenty of non-programming hobbies and interests.",
-    React.createElement("br", null),
-    React.createElement("br", null),
-    React.createElement("b", null, "Things I do outside:"),
-    " Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball",
-    React.createElement("br", null),
-    React.createElement("br", null),
-    React.createElement("b", null, "Topics I could talk about for hours:"),
-    " Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space",
-    React.createElement("h2", null, "What's the best way to reach you?"),
-    "The best way to reach me is at ",
-    React.createElement("b", null, "ethanrabb@gmail.com."),
-    React.createElement("br", null),
-    React.createElement("br", null),
-    "Let's chat!"));
+var IntroText = (props) => {
+    let { setTab, fontSize } = props;
+    return (React.createElement(AboutTextSection, null,
+        "Hi!",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "My name is Ethan Rabb. I'm a Software Engineer with 7+ years in industry and a passion for creative programming projects.",
+        React.createElement("h2", null, "What kind of work do you do?"),
+        "I've done primarily Back-end, but also Front-end and DevOps work in AdTech, Aviation, and Robotics. I love novelty, and I'm always looking for new fields and technologies where I can use my programming skills.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "Currently I'm most interested in Full Stack development, but open to any opportunity that catches my eye. I'm excited by innovative products and services, especially if they help make the world a better place to live in.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "For a full Resume and more detail about my industry experience, see ",
+        React.createElement(AboutMeLink, { fontSize: fontSize, onClick: () => setTab("Work") }, " Work"),
+        "."));
+};
+var AboutIntroDesktop = (props) => {
+    let { setTab } = props;
+    return (React.createElement(AboutTextSection, null,
+        React.createElement(DeskFace, { src: "Headshot.jpg", title: "It me", height: "320" }),
+        React.createElement(IntroText, { setTab: setTab, fontSize: '17px' })));
+};
+var AboutIntroMobile = (props) => {
+    let { setTab } = props;
+    return (React.createElement(MobileTextSection, null,
+        React.createElement(MobileWrap, null,
+            React.createElement(MobileFace, { src: "Headshot.jpg", title: "It me", height: "270" })),
+        React.createElement(IntroText, { setTab: setTab, fontSize: '14px' })));
+};
+var Additional = (props) => {
+    let { isMobile, setTab } = props;
+    return (React.createElement(AboutTextSection, null,
+        React.createElement("h2", null, "What's going on with the background?"),
+        "In my free time, I like to explore the limits of code as an art form. The background to this website is one of my creations! See ",
+        React.createElement(AboutMeLink, { fontSize: isMobile ? '14px' : '17px', onClick: () => setTab("Demo") }, "Demo"),
+        " to try it out.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "For more examples and info, see ",
+        React.createElement(AboutMeLink, { fontSize: isMobile ? '14px' : '17px', onClick: () => setTab("Art") }, "Art"),
+        ".",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "I'm interested in ideas like procedural generation, immersion, artificial intelligence, and emergent interaction, and how these concepts engage a viewer.",
+        React.createElement("h2", null, "Do you have any other interests?"),
+        "Definitely! I have plenty of non-programming hobbies and interests.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        React.createElement("b", null, "Things I do outside:"),
+        " Climbing, Frisbee Golf, Kayaking, Camping, Swimming, Hiking, Spikeball, Biking, Tennis, Pickleball",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        React.createElement("b", null, "Topics I could talk about for hours:"),
+        " Cooking, Movies/TV, Local Restaurants & Bars, Writing, Basketball, Meteorology, Investing, Gaming, Nature, Robotics, Space",
+        React.createElement("h2", null, "What's the best way to reach you?"),
+        "The best way to reach me is at ",
+        React.createElement("b", null, "ethanrabb@gmail.com."),
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "Let's chat!"));
+};
 const AboutMe = (props) => {
-    let { isMobile } = props;
+    let { isMobile, setTab } = props;
     return (React.createElement(TopLevel, null,
-        isMobile ? React.createElement(AboutIntroMobile, null) : React.createElement(AboutIntroDesktop, null),
-        React.createElement(Additional, null)));
+        isMobile ? React.createElement(AboutIntroMobile, { setTab: setTab }) : React.createElement(AboutIntroDesktop, { setTab: setTab }),
+        React.createElement(Additional, { isMobile: isMobile, setTab: setTab })));
 };
 exports.default = AboutMe;
 
@@ -201,12 +229,26 @@ const ArtSection = styled_components_1.default.div `
 `;
 const ArtLink = styled_components_1.default.a `
     text-decoration: none;
+    color: yellow;
     &:visited {
         color: goldenrod;
     }
     &:link {
         color: yellow;
     }
+    &:hover {
+        font-weight: bold;
+    }
+`;
+const ArtTextButton = styled_components_1.default.button `
+    font-size: ${(props) => props.fontSize};
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    text-decoration: underline;
+    color: yellow;
     &:hover {
         font-weight: bold;
     }
@@ -284,7 +326,7 @@ const VideoElement = (props) => {
                 React.createElement("source", { src: "SlimePreviewCroppedCompress.mp4", type: "video/mp4" }))));
 };
 const Art = (props) => {
-    let { isMobile } = props;
+    let { isMobile, setTab } = props;
     var slimePreview = (React.createElement(SlimePreview, { width: isMobile ? "285" : "500" },
         React.createElement(ArtLink, { href: "http://www.slime-freighter.glitch.me", target: "_blank" },
             React.createElement(VideoElement, { isMobile: isMobile }))));
@@ -323,17 +365,18 @@ const Art = (props) => {
             "A fun side-effect of the Slime Freighter video was discovering the potential of fractal visualizations using GLSL shaders.",
             React.createElement("br", null),
             React.createElement("br", null),
+            "Opal & Bismuth are my attempt to create a visualizer that will always show something new. Their patterns will continue to shift and change endlessly, and can respond to user input as well. Both use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.",
+            React.createElement("br", null),
+            React.createElement("br", null),
+            "Check out ",
             React.createElement(ArtLink, { href: "http://www.psycho-bubbles.glitch.me", target: "_blank" },
-                React.createElement("u", null, "Opal & Bismuth")),
-            " are my attempt to create a visualizer that will always show something new. They use the same basic algorithms, but Opal is based on circular geometry while Bismuth is rectangular.",
-            React.createElement("br", null),
-            React.createElement("br", null),
-            "Click the link in their name to see the full VR app with both visualizers and some other small works.",
+                React.createElement("u", null, "their dedicated website")),
+            " to see them both in VR, as well as some other small works.",
             React.createElement("br", null),
             React.createElement("br", null),
             "An interactive Bismuth preview is available on the ",
-            React.createElement("b", null, "Demo"),
-            " tab, or you can browse the gallery below to see samples of both visualizers. ",
+            React.createElement(ArtTextButton, { fontSize: isMobile ? '14px' : '17px', onClick: () => setTab("Demo") }, "Demo"),
+            " tab, or you can browse the gallery below to see samples of both visualizers.",
             React.createElement("b", null, " Click to Zoom! "),
             React.createElement("br", null),
             React.createElement("br", null)),
@@ -463,14 +506,27 @@ const DemoText = styled_components_1.default.div `
     padding: 40 0 0 0;
     max-width: 680px;
 `;
+const DemoLink = styled_components_1.default.button `
+    font-size: ${(props) => props.fontSize};
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    text-decoration: underline;
+    color: yellow;
+    &:hover {
+        font-weight: bold;
+    }
+`;
 const Demo = (props) => {
+    let { setTab, isMobile } = props;
     return (React.createElement(DemoText, null,
-        "This is a little interactive demo of \"Bismuth.\" Use the control buttons above to play around!",
-        React.createElement("br", null),
-        React.createElement("br", null),
-        "If it's been disabled, your device may not be able to run this demo. For Mac, try using Safari! Click ",
+        "This is a little interactive demo of \"Bismuth.\" Use the control buttons to play around! Try starting with ",
         React.createElement(InfoIcon, { src: "websiteIcons/PowerUpWhite.png" }),
-        " a few times to run it at your own risk.",
+        React.createElement("br", null),
+        React.createElement("br", null),
+        "If it's been disabled, your device may not be able to run this demo. For Mac, try using Safari!",
         React.createElement("br", null),
         React.createElement("br", null),
         React.createElement(InfoIcon, { src: "websiteIcons/VisibleWhite.png" }),
@@ -497,9 +553,9 @@ const Demo = (props) => {
         "\u00A0\u00A0 Reduce complexity (if things get a bit slow)",
         React.createElement("br", null),
         React.createElement("br", null),
-        "See the ",
-        React.createElement("b", null, "Art"),
-        " tab to learn more about this visual."));
+        "See ",
+        React.createElement(DemoLink, { fontSize: isMobile ? '14px' : '17px', onClick: () => setTab("Art") }, "Art"),
+        " to learn more about this visual."));
 };
 exports.default = Demo;
 
@@ -598,22 +654,22 @@ const WarningBox = styled_components_1.default.div `
     display: none;
 `;
 /* Get matching react component based on clicked tab */
-const getWindow = (topic, isMobile) => {
+const getWindow = (activeTab, setTab, isMobile) => {
     var text = "";
-    if (topic === "About Me") {
-        text = React.createElement(AboutMe_1.default, { isMobile: isMobile });
+    if (activeTab === "About Me") {
+        text = React.createElement(AboutMe_1.default, { isMobile: isMobile, setTab: setTab });
     }
-    else if (topic === "Work") {
-        text = React.createElement(Work_1.default, { isMobile: isMobile });
+    else if (activeTab === "Work") {
+        text = React.createElement(Work_1.default, { isMobile: isMobile, setTab: setTab });
     }
-    else if (topic === "Art") {
-        text = React.createElement(Art_1.default, { isMobile: isMobile });
+    else if (activeTab === "Art") {
+        text = React.createElement(Art_1.default, { isMobile: isMobile, setTab: setTab });
     }
-    else if (topic === "Demo") {
-        text = React.createElement(Demo_1.default, { isMobile: isMobile });
+    else if (activeTab === "Demo") {
+        text = React.createElement(Demo_1.default, { isMobile: isMobile, setTab: setTab });
     }
     else {
-        text = topic;
+        text = activeTab;
     }
     return text;
 };
@@ -622,6 +678,13 @@ const tabs = ["About Me", "Work", "Art", "Demo"];
 const TabGroup = (props) => {
     const [activeTab, setActiveTab] = react_1.useState(tabs[0]);
     const [activeDemo, setActiveDemo] = react_1.useState(false);
+    function setTab(type) {
+        setActiveTab(type);
+        window.scrollTo(0, 0);
+        if (type !== "Demo") {
+            setActiveDemo(false);
+        }
+    }
     document.addEventListener("mousedown", (event) => {
         var target = event.target;
         if (target instanceof HTMLButtonElement || target instanceof HTMLImageElement) {
@@ -633,16 +696,12 @@ const TabGroup = (props) => {
     return (React.createElement(TabPage, { id: "window", maxWidth: props.isMobile ? "625px" : "1200px" },
         React.createElement(TabButtons, { className: "tab-buttons" },
             React.createElement(FixedButtons, null, tabs.map((type) => (React.createElement(Tab, { padding: props.isMobile ? "8 12" : "8 20", border: props.isMobile ? "solid" : "none", key: type, activeTab: activeTab === type, onClick: () => {
-                    setActiveTab(type);
-                    window.scrollTo(0, 0);
-                    if (type !== "Demo") {
-                        setActiveDemo(false);
-                    }
+                    setTab(type);
                 } }, type)))),
             React.createElement(ControlPanel_1.default, { isMobile: props.isMobile, isActive: activeTab === "Demo" }),
             React.createElement(WarningBox, { id: "WarningBox", onClick: () => { setActiveTab("Demo"); window.scrollTo(0, 0); } }, "Background disabled! Framerate was too low. See Demo for details.")),
         React.createElement("br", null),
-        React.createElement(Window, { id: "tabwindow", demoActive: activeDemo, fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "10px" : "2%" }, getWindow(activeTab, props.isMobile))));
+        React.createElement(Window, { id: "tabwindow", demoActive: activeDemo, fontSize: props.isMobile ? "14px" : "17px", radius: props.isMobile ? "10px" : "2%" }, getWindow(activeTab, setTab, props.isMobile))));
 };
 /* Track full page width to determine if we should resize for mobile */
 const WebsiteContainer = () => {
@@ -702,7 +761,9 @@ const ResumeFrame = styled_components_1.default.iframe `
 `;
 const Work = () => {
     return (React.createElement(React.Fragment, null,
-        "The bulk of my industry work has been split between two jobs, each for about 3 years.",
+        "I have about 7 years of industry work experience, split between three jobs, each in a different industry.",
+        React.createElement("h2", null, "Maize Analytics (SecureLink (Imprivata))"),
+        "In 2020, I started remote work at Maize Analytics (acquired by SecureLink in 2020 (acquired by Imprivata in 2021)). As a senior full-stack developer, I distribute my time between front-end, back-end, and database implementation needs. I also mentor junior developers, and work with product and design team members to architect new features.",
         React.createElement("h2", null, "ForeFlight (Boeing)"),
         "In 2018, after I moved to Austin, I began working at ForeFlight (acquired by Boeing in 2019). I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting. I also helped build and improve features for the Logbook web interface and created internal tools to help other teams manage data.",
         React.createElement("h2", null, "Quantcast"),
@@ -710,7 +771,7 @@ const Work = () => {
         React.createElement("h2", null, "Resume"),
         "This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.",
         React.createElement(WorkSection, null,
-            React.createElement(ResumeFrame, { height: "100%", src: "https://drive.google.com/file/d/1UyvxXlgMoTsYJgewymbfslwr240zbZkj/preview" }))));
+            React.createElement(ResumeFrame, { height: "100%", src: "RabbEthanFullResume.pdf" }))));
 };
 exports.default = Work;
 

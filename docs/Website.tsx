@@ -91,22 +91,22 @@ const WarningBox = styled.div`
 `
 
 /* Get matching react component based on clicked tab */
-const getWindow = (topic, isMobile) => {
+const getWindow = (activeTab, setTab, isMobile) => {
     var text = "";
-    if (topic === "About Me") {
-        text = <AboutMe isMobile={isMobile} />
+    if (activeTab === "About Me") {
+        text = <AboutMe isMobile={isMobile} setTab={setTab}/>
     }
-    else if (topic === "Work") {
-        text = <Work isMobile={isMobile} />
+    else if (activeTab === "Work") {
+        text = <Work isMobile={isMobile} setTab={setTab}/>
     }
-    else if (topic === "Art") {
-        text = <Art isMobile={isMobile} />
+    else if (activeTab === "Art") {
+        text = <Art isMobile={isMobile} setTab={setTab}/>
     }
-    else if (topic === "Demo") {
-        text = <Demo isMobile={isMobile} />
+    else if (activeTab === "Demo") {
+        text = <Demo isMobile={isMobile} setTab={setTab}/>
     }
     else {
-        text = topic;
+        text = activeTab;
     }
     return text;
 }
@@ -117,6 +117,14 @@ const tabs = ["About Me", "Work", "Art", "Demo"];
 const TabGroup = (props) => {
     const [activeTab, setActiveTab] = useState(tabs[0]);
     const [activeDemo, setActiveDemo] = useState(false);
+
+    function setTab(type) {
+        setActiveTab(type);
+        window.scrollTo(0, 0);
+        if (type !== "Demo") {
+            setActiveDemo(false);
+        }
+    }
 
     document.addEventListener("mousedown", (event) => {
         var target = event.target;
@@ -138,11 +146,7 @@ const TabGroup = (props) => {
                             key={type}
                             activeTab={activeTab === type}
                             onClick={() => {
-                                setActiveTab(type);
-                                window.scrollTo(0, 0);
-                                if (type !== "Demo") {
-                                    setActiveDemo(false);
-                                }
+                                setTab(type)
                             }}
                         >
                             {type}
@@ -158,7 +162,7 @@ const TabGroup = (props) => {
                 fontSize={props.isMobile ? "14px" : "17px"}
                 radius={props.isMobile ? "10px" : "2%"}
             >
-                {getWindow(activeTab, props.isMobile)}
+                {getWindow(activeTab, setTab, props.isMobile)}
             </Window>
         </TabPage>
     );
