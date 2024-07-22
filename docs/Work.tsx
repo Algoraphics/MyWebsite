@@ -37,7 +37,7 @@ const Work = () => {
             <h2>Resume</h2>
                 This is my long-form Resume. Click the button in the top right to get a closer look, or download the file.
             <WorkSection>
-                <ResumeFrame height="100%" src="RabbEthanFullResume.pdf" />
+                <ResumeFrame height="100%" src="EthanRabbFullResume.pdf" />
             </WorkSection>
         </>
     );
