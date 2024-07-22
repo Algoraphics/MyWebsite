@@ -17,11 +17,15 @@ const ResumeFrame = styled.iframe`
 const Work = () => {
     return (
         <>
-            I have about 7 years of industry work experience, split between three jobs, each in a different industry.
+            I have about 10 years of industry work experience, split between four full-time jobs, each in a different industry.
+            <h2>OnsiteIQ</h2>
+                In 2022, I switched to OnsiteIQ, a startup doing ML-based progress tracking for construction sites.
+                I again filled a senior full-stack role, focusing mostly on back-end design and implementation of customer-facing
+                products. I was the primary developer on multiple mission-critical feature releases.
             <h2>Maize Analytics (SecureLink (Imprivata))</h2>
                 In 2020, I started remote work at Maize Analytics (acquired by SecureLink in 2020 (acquired by Imprivata in 2021)).
-                As a senior full-stack developer, I distribute my time between front-end, back-end, and database implementation needs.
-                I also mentor junior developers, and work with product and design team members to architect new features.
+                As a senior full-stack developer, I distributed my time between front-end, back-end, and database implementation needs.
+                I also mentored junior developers, and worked with product and design team members to architect new features.
             <h2>ForeFlight (Boeing)</h2>
                 In 2018, after I moved to Austin, I began working at ForeFlight (acquired by Boeing in 2019).
                 I managed a variety of Spring microservices for the server team, focusing mostly on weather data and alerting.
